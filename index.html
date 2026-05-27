@@ -56,7 +56,7 @@
         button { font-family: inherit; }
 
         .eyebrow {
-            font-size: 0.58rem;
+            font-size: 0.6875rem;
             font-weight: 700;
             letter-spacing: 0.4em;
             text-transform: uppercase;
@@ -167,13 +167,23 @@
             display: flex;
             transition: opacity 0.3s cubic-bezier(0.25,0,0,1), visibility 0.3s;
         }
-        .nav-mobile[data-open="true"] { visibility: visible; opacity: 1; }
+        .nav-mobile[data-open="true"],
+        .nav-mobile[data-open="closing"] { visibility: visible; opacity: 1; }
         .nav-mobile a {
             font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 600;
             letter-spacing: 0.18em; text-transform: uppercase; color: white;
             opacity: 0; transform: translateY(12px);
-            transition: color 0.2s, opacity 0.3s cubic-bezier(0.25,0,0,1), transform 0.3s cubic-bezier(0.25,0,0,1);
+            transition: color 0.2s, opacity 0.25s cubic-bezier(0.25,0,0,1), transform 0.25s cubic-bezier(0.25,0,0,1);
         }
+        /* closing stagger — last link exits first, overlay stays visible via JS timeout */
+        .nav-mobile a:nth-child(1) { transition-delay: 0.12s; }
+        .nav-mobile a:nth-child(2) { transition-delay: 0.10s; }
+        .nav-mobile a:nth-child(3) { transition-delay: 0.08s; }
+        .nav-mobile a:nth-child(4) { transition-delay: 0.06s; }
+        .nav-mobile a:nth-child(5) { transition-delay: 0.04s; }
+        .nav-mobile a:nth-child(6) { transition-delay: 0.02s; }
+        .nav-mobile a:nth-child(7) { transition-delay: 0s; }
+        /* opening stagger overrides above */
         .nav-mobile[data-open="true"] a:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.06s; }
         .nav-mobile[data-open="true"] a:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.10s; }
         .nav-mobile[data-open="true"] a:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
@@ -253,7 +263,7 @@
 
         .hero-date {
             font-family: 'Zodiak', serif; font-size: clamp(1rem, 2.5vw, 1.2rem);
-            font-weight: 400; font-style: italic; color: rgba(255,255,255,0.88);
+            font-weight: 400; font-style: normal; color: rgba(255,255,255,0.88);
             margin-bottom: 0.6rem; opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
         }
 
@@ -470,19 +480,71 @@
             min-height: clamp(320px, 36vw, 520px);
         }
         .legacy-row-photo { position: relative; overflow: hidden; }
-        .legacy-row-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .legacy-row-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
         .legacy-row.photo-right .legacy-row-photo { order: 2; }
         .legacy-row.photo-right .legacy-row-text { order: 1; }
+
+        /* Photo slider */
+        .photo-slider { position: absolute; inset: 0; }
+        .photo-slider-track {
+            position: absolute; inset: 0;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .photo-slider-track::-webkit-scrollbar { display: none; }
+        @media (prefers-reduced-motion: reduce) { .photo-slider-track { scroll-behavior: auto; } }
+        .photo-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            scroll-snap-align: center;
+        }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 32px; height: 32px; border-radius: 50%;
+            background: rgba(13,18,37,0.5); border: 1px solid rgba(204,196,252,0.25);
+            color: white; font-size: 1rem; cursor: pointer; z-index: 2;
+            display: grid; place-items: center;
+            opacity: 0; transition: opacity 0.2s, background 0.2s;
+        }
+        .photo-slider:hover .slider-btn { opacity: 1; }
+        .slider-btn:hover { background: rgba(13,18,37,0.85); }
+        .slider-btn-prev { left: 10px; }
+        .slider-btn-next { right: 10px; }
+        @media (hover: none) { .slider-btn { display: none; } }
+        .slider-dots {
+            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 6px; z-index: 2;
+        }
+        .slider-dot {
+            width: 6px; height: 6px; border-radius: 50%; padding: 0; border: none;
+            background: rgba(255,255,255,0.35); cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .slider-dot.active { background: #ccc4fc; transform: scale(1.4); }
 
         .legacy-row-text {
             padding: clamp(2.5rem,4vw,3.5rem) clamp(2rem,4vw,3.5rem);
             display: flex; flex-direction: column; justify-content: center;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
         }
-        .legacy-row-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 1.1rem; }
+        .legacy-row-label { margin-bottom: 1.1rem; }
         .legacy-row-theme { font-family: 'Zodiak', serif; font-size: clamp(1.36rem,2.55vw,2.34rem); font-weight: 700; color: var(--on-dark); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.75rem; }
         .legacy-row-honorees-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.55rem; }
         .legacy-row-honorees { font-size: 0.88rem; color: var(--on-dark-muted); line-height: 1.45; }
+        .legacy-row-date { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+        .legacy-award-list { display: flex; flex-direction: column; gap: 0; }
+        .legacy-award-item { border-top: 1px solid rgba(255,255,255,0.08); padding: 0.7rem 0; }
+        .legacy-award-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .legacy-award-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); opacity: 0.75; margin-bottom: 0.2rem; line-height: 1.4; }
+        .legacy-award-name { font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700; color: white; line-height: 1.25; }
+        .legacy-award-affiliation { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.4; margin-top: 0.1rem; }
 
         /* MISSION */
         #mission { background: var(--dark-navy); position: relative; }
@@ -604,7 +666,11 @@
 
         /* FOOTER */
         footer { background: var(--navy-deeper); padding: 3rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-        .footer-left { display: flex; align-items: center; gap: 1.5rem; }
+        .footer-left, .cta-footer-left { display: flex; align-items: center; gap: 1.5rem; }
+        .cta-footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .cta-footer-right { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+        .cta-footer-right a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
+        .cta-footer-right a:hover { color: var(--lavender); }
         .footer-logo img { height: 28px; filter: brightness(0) invert(1); opacity: 0.45; }
         .footer-mission { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
         .footer-right { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
@@ -620,11 +686,12 @@
         .leadership-group:last-child { margin-bottom: 0; }
         .leadership-group-eyebrow { margin-bottom: 1.75rem; }
         .leadership-sub { margin-top: 2.25rem; }
-        .leadership-sub-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(19,35,91,0.38); margin-bottom: 1.25rem; }
-        .name-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.75rem 2rem; }
+        .name-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.1rem 2rem; }
         .name-entry-role { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(19,35,91,0.45); margin-bottom: 0.2rem; line-height: 1.45; }
-        .name-entry-name { font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700; color: var(--dark-navy); line-height: 1.3; margin-bottom: 0.3rem; }
-        .name-entry-title { font-size: 0.77rem; color: rgba(19,35,91,0.55); line-height: 1.5; }
+        .name-entry-name { font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700; color: var(--dark-navy); line-height: 1.3; margin-bottom: 0.2rem; }
+        .name-entry-officer-role { font-size: 0.77rem; font-weight: 600; color: rgba(19,35,91,0.65); line-height: 1.45; margin-bottom: 0.15rem; }
+        .name-entry-title { font-size: 0.77rem; color: rgba(19,35,91,0.5); line-height: 1.5; }
+        .leadership-sub-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(19,35,91,0.55); margin-bottom: 1.25rem; }
         .matrix-scroll-hint { display: none; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ywca-orange); text-align: center; margin-bottom: 0.75rem; }
         @media (max-width: 860px) { .matrix-scroll-hint { display: block; } }
 
@@ -843,7 +910,7 @@
                 <span class="hero-rule-icon">◆ ◆ ◆</span>
             </div>
             <p class="hero-date">Tuesday, October 13, 2026 · 6:00–9:00 PM</p>
-            <p class="hero-venue">City Winery · Pier 57, 25 11th Ave, New York, NY 10011</p>
+            <p class="hero-venue">City Winery · Pier 57 · NYC</p>
             <p class="hero-subhead">For more than 50 years, Salute has brought together civic, corporate, and philanthropic leaders to build pathways for New York's next generation.</p>
             <div class="hero-ctas">
                 <a href="#sponsorship" class="btn btn-persimmon">Support Salute</a>
@@ -930,7 +997,6 @@
         <div class="honorees-header reveal">
             <p class="eyebrow">2026 Honorees</p>
             <h2 class="honorees-title">This Year's Award Recipients</h2>
-            <p class="honorees-date">Tuesday, October 13, 2026</p>
             <p class="honorees-subtitle">We are proud to recognize outstanding leaders across four awards.</p>
         </div>
         <div class="honorees-grid">
@@ -1238,37 +1304,132 @@
             <!-- Row 1: 2025 — photo left, text right -->
             <div class="legacy-row reveal">
                 <div class="legacy-row-photo">
-                    <img src="./brand.assets/2025 Picture 3.jpg" alt="Guests and stage at Salute 2025 at City Winery">
+                    <div class="photo-slider" id="slider-2025">
+                        <div class="photo-slider-track">
+                            <img class="photo-slide" src="./brand.assets/2025_Picture_5.jpg" alt="Salute 2025 — celebration at City Winery" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2025_Picture_1.jpg" alt="Salute 2025 — guests at City Winery" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2025_Picture_2.jpg" alt="Salute 2025 — honoree ceremony at City Winery" loading="lazy">
+                        </div>
+                        <button class="slider-btn slider-btn-prev" aria-label="Previous photo">&#8249;</button>
+                        <button class="slider-btn slider-btn-next" aria-label="Next photo">&#8250;</button>
+                        <div class="slider-dots" role="tablist">
+                            <button class="slider-dot active" aria-label="Photo 1"></button>
+                            <button class="slider-dot" aria-label="Photo 2"></button>
+                            <button class="slider-dot" aria-label="Photo 3"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="legacy-row-text">
-                    <div class="legacy-row-label">Salute 2025</div>
+                    <div class="eyebrow legacy-row-label">Salute 2025</div>
                     <h3 class="legacy-row-theme">Empowered Girls, Empowered Women</h3>
-                    <div class="legacy-row-honorees-label">Honorees</div>
-                    <p class="legacy-row-honorees">Dr. Patricia Campos-Medina, Reshma Saujani, Tameka Alsop, Cora Walker, Gov. Kathy Hochul</p>
+                    <div class="legacy-row-date">October 22, 2025</div>
+                    <div class="legacy-award-list">
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Changemaker Champion Award</div>
+                            <div class="legacy-award-name">Dr. Patricia Campos-Medina</div>
+                            <div class="legacy-award-affiliation">Workers' Institute at Cornell University</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Corporate Leadership Award</div>
+                            <div class="legacy-award-name">Tameka Alsop</div>
+                            <div class="legacy-award-affiliation">Moody's</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Philanthropy Champion Award</div>
+                            <div class="legacy-award-name">Reshma Saujani</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Emerging Leader Award</div>
+                            <div class="legacy-award-name">Cora Walker</div>
+                            <div class="legacy-award-affiliation">Con Edison</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Hon. Kathy Hochul</div>
+                            <div class="legacy-award-affiliation">Governor of the State of New York</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Row 2: 2024 — photo right, text left -->
             <div class="legacy-row photo-right reveal reveal-delay-1">
                 <div class="legacy-row-photo">
-                    <img src="./brand.assets/2024 Picture 1.jpg" alt="Salute 2024, Championing Change">
+                    <div class="photo-slider" id="slider-2024">
+                        <div class="photo-slider-track">
+                            <img class="photo-slide" src="./brand.assets/2024_Picture_3.jpg" alt="Salute 2024 — celebration" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2024_Picture_1.jpg" alt="Salute 2024 — Championing Change" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2024_Picture_2.jpg" alt="Salute 2024 — honoree ceremony" loading="lazy">
+                        </div>
+                        <button class="slider-btn slider-btn-prev" aria-label="Previous photo">&#8249;</button>
+                        <button class="slider-btn slider-btn-next" aria-label="Next photo">&#8250;</button>
+                        <div class="slider-dots" role="tablist">
+                            <button class="slider-dot active" aria-label="Photo 1"></button>
+                            <button class="slider-dot" aria-label="Photo 2"></button>
+                            <button class="slider-dot" aria-label="Photo 3"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="legacy-row-text">
-                    <div class="legacy-row-label">Salute 2024</div>
+                    <div class="eyebrow legacy-row-label">Salute 2024</div>
                     <h3 class="legacy-row-theme">Championing Change</h3>
-                    <div class="legacy-row-honorees-label">Honorees</div>
-                    <p class="legacy-row-honorees">Natalie Edwards, Majora Carter, Rosa Patiño-Prenz</p>
+                    <div class="legacy-row-date">October 23, 2024</div>
+                    <div class="legacy-award-list">
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Changemaker Champion Award</div>
+                            <div class="legacy-award-name">Natalie Edwards</div>
+                            <div class="legacy-award-affiliation">National Grid</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Majora Carter</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Emerging Leader Award</div>
+                            <div class="legacy-award-name">Rosa Patiño-Prenz</div>
+                            <div class="legacy-award-affiliation">Con Edison</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Row 3: 2023 — photo left, text right -->
             <div class="legacy-row reveal reveal-delay-2">
                 <div class="legacy-row-photo">
-                    <img src="./brand.assets/2023 Picture 1.jpg" alt="Salute 2023, Celebrating 165 Years">
+                    <div class="photo-slider" id="slider-2023">
+                        <div class="photo-slider-track">
+                            <img class="photo-slide" src="./brand.assets/2023_Picture_1.jpg" alt="Salute 2023 — Celebrating 165 Years" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2023_Picture_2.jpg" alt="Salute 2023 — honoree ceremony" loading="lazy">
+                            <img class="photo-slide" src="./brand.assets/2023_Picture_3.jpg" alt="Salute 2023 — celebration" loading="lazy">
+                        </div>
+                        <button class="slider-btn slider-btn-prev" aria-label="Previous photo">&#8249;</button>
+                        <button class="slider-btn slider-btn-next" aria-label="Next photo">&#8250;</button>
+                        <div class="slider-dots" role="tablist">
+                            <button class="slider-dot active" aria-label="Photo 1"></button>
+                            <button class="slider-dot" aria-label="Photo 2"></button>
+                            <button class="slider-dot" aria-label="Photo 3"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="legacy-row-text">
-                    <div class="legacy-row-label">Salute 2023</div>
+                    <div class="eyebrow legacy-row-label">Salute 2023</div>
                     <h3 class="legacy-row-theme">Celebrating 165 Years</h3>
-                    <div class="legacy-row-honorees-label">Honorees</div>
-                    <p class="legacy-row-honorees">Janessa Cox-Irvin, Tracy Richelle High, Sarah Gund</p>
+                    <div class="legacy-row-date">October 11, 2023</div>
+                    <div class="legacy-award-list">
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Changemaker Champion Award</div>
+                            <div class="legacy-award-name">Janessa Cox-Irvin</div>
+                            <div class="legacy-award-affiliation">AllianceBernstein</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Philanthropy Champion Award</div>
+                            <div class="legacy-award-name">Tracy Richelle High</div>
+                            <div class="legacy-award-affiliation">Sullivan &amp; Cromwell, LLP</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Sarah Gund</div>
+                            <div class="legacy-award-affiliation">Educator and Philanthropist</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1311,7 +1472,7 @@
         <div class="leadership-group reveal">
             <p class="eyebrow leadership-group-eyebrow">Event Committee</p>
             <div class="name-grid">
-                <div class="name-entry"><div class="name-entry-name">Alison Schweizer</div></div>
+                <div class="name-entry"><div class="name-entry-name">Alison Martier Schweizer</div></div>
                 <div class="name-entry"><div class="name-entry-name">Beth Ann Day</div></div>
                 <div class="name-entry"><div class="name-entry-name">Diane Sinti</div></div>
                 <div class="name-entry"><div class="name-entry-name">Kaitlyn McConeghy</div></div>
@@ -1335,22 +1496,22 @@
                 <div class="leadership-sub-label">Officers</div>
                 <div class="name-grid">
                     <div class="name-entry">
-                        <div class="name-entry-role">Chair; Chair of Nominating Committee</div>
                         <div class="name-entry-name">Alison Martier Schweizer</div>
+                        <div class="name-entry-officer-role">Chair; Chair of Nominating Committee</div>
                     </div>
                     <div class="name-entry">
-                        <div class="name-entry-role">Vice Chair; Co-Chair, Strategic Planning Committee</div>
                         <div class="name-entry-name">Ayisha A. Saul</div>
+                        <div class="name-entry-officer-role">Vice Chair; Co-Chair, Strategic Planning Committee</div>
                         <div class="name-entry-title">Global Lead HR Business Partner, BlackRock</div>
                     </div>
                     <div class="name-entry">
-                        <div class="name-entry-role">Secretary</div>
                         <div class="name-entry-name">Lorryn Mai</div>
+                        <div class="name-entry-officer-role">Secretary</div>
                         <div class="name-entry-title">Partner, Ernst &amp; Young</div>
                     </div>
                     <div class="name-entry">
-                        <div class="name-entry-role">Treasurer; Co-Chair, Finance and Investment Committee</div>
                         <div class="name-entry-name">Paige L. Rabalais</div>
+                        <div class="name-entry-officer-role">Treasurer; Co-Chair, Finance and Investment Committee</div>
                         <div class="name-entry-title">Managing Director, Commonfund</div>
                     </div>
                 </div>
@@ -1552,32 +1713,23 @@
     <div class="container">
         <div class="cta-inner">
             <div class="cta-ornament" aria-hidden="true">◆◆◆</div>
-            <p class="eyebrow cta-eyebrow reveal">Join Salute 2026</p>
             <h2 class="cta-title reveal reveal-delay-1">Be Part of Something Lasting</h2>
             <div class="cta-buttons reveal reveal-delay-2">
                 <a href="#sponsorship" class="btn btn-persimmon">Support Salute</a>
             </div>
-            <div class="cta-contact-block reveal reveal-delay-3">
-                <span class="cta-contact-name">Michael Yerdon</span>
-                Senior Director of Development and Communications · YWCA NYC<br>
-                <a href="mailto:myerdon@ywcanyc.org">myerdon@ywcanyc.org</a>
-                &ensp;·&ensp;
-                <a href="tel:2129378700">212-937-8700</a>
+        </div>
+        <div class="cta-footer-bar">
+            <div class="cta-footer-left">
+                <div class="footer-logo"><img src="./brand.assets/YWCA LOGO NO TAGLINE.png" alt="YWCA NYC"></div>
+                <div class="footer-mission">Eliminating Racism · Empowering Women</div>
+            </div>
+            <div class="cta-footer-right">
+                &copy; 2026 YWCA of the City of New York &nbsp;·&nbsp; <a href="https://ywcanyc.org">ywcanyc.org</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-left">
-        <div class="footer-logo"><img src="./brand.assets/YWCA LOGO NO TAGLINE.png" alt="YWCA NYC"></div>
-        <div class="footer-mission">Eliminating Racism · Empowering Women</div>
-    </div>
-    <div class="footer-right">
-        &copy; 2026 YWCA of the City of New York &nbsp;·&nbsp; <a href="https://ywcanyc.org">ywcanyc.org</a>
-    </div>
-</footer>
 
 <script>
     const faqs = [
@@ -1633,10 +1785,20 @@
     // Mobile nav
     const hamburger = document.getElementById('navHamburger');
     const mobileNav = document.getElementById('mobileNav');
+    let closeTimer = null;
     function setOpen(open) {
+        clearTimeout(closeTimer);
         hamburger.setAttribute('aria-expanded', open);
-        mobileNav.setAttribute('data-open', open);
-        document.body.style.overflow = open ? 'hidden' : '';
+        if (open) {
+            mobileNav.setAttribute('data-open', 'true');
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileNav.setAttribute('data-open', 'closing'); // links stagger out; overlay stays visible
+            closeTimer = setTimeout(() => {
+                mobileNav.setAttribute('data-open', 'false'); // overlay fades
+                document.body.style.overflow = '';
+            }, 380); // longer than longest link delay (0.12s) + fade (0.25s) = 370ms
+        }
     }
     hamburger.addEventListener('click', () => setOpen(mobileNav.dataset.open !== 'true'));
     mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
@@ -1655,6 +1817,38 @@
             btn.setAttribute('aria-expanded', !open);
             btn.closest('.tier-card').dataset.open = !open;
         });
+    });
+
+    // Photo sliders
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.photo-slider').forEach(slider => {
+        const track = slider.querySelector('.photo-slider-track');
+        const slides = slider.querySelectorAll('.photo-slide');
+        const dots = slider.querySelectorAll('.slider-dot');
+        const prevBtn = slider.querySelector('.slider-btn-prev');
+        const nextBtn = slider.querySelector('.slider-btn-next');
+        if (!track || !slides.length) return;
+
+        function scrollToSlide(index) {
+            track.scrollTo({ left: track.clientWidth * index, behavior: prefersReduced ? 'instant' : 'smooth' });
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => scrollToSlide(i));
+        });
+
+        if (prevBtn) prevBtn.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: prefersReduced ? 'instant' : 'smooth' }));
+        if (nextBtn) nextBtn.addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: prefersReduced ? 'instant' : 'smooth' }));
+
+        const slideObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = Array.from(slides).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                }
+            });
+        }, { root: track, threshold: 0.5 });
+        slides.forEach(slide => slideObserver.observe(slide));
     });
 </script>
 <script>
