@@ -846,6 +846,9 @@
         .ticket-strip-price { font-family: 'Zodiak', serif; font-size: clamp(1.4rem,2.2vw,1.9rem); font-weight: 700; color: var(--ywca-orange); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
         .ticket-strip-note { font-size: 0.78rem; color: var(--on-light-muted); line-height: 1.45; }
         .ticket-strip-action { margin-top: 1rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); }
+        .tier-sponsor-row { list-style: none; border-top: 1px solid rgba(19,35,91,0.1); margin-top: 0.5rem; padding: 0.9rem 1rem 0.25rem; }
+        .tier-sponsor-link { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); text-decoration: none; transition: opacity 0.2s; cursor: pointer; display: inline-block; }
+        .tier-sponsor-link:hover { opacity: 0.7; }
         @media (max-width: 600px) { .ticket-strip { grid-template-columns: 1fr; } }
         .sponsorship-deadline-inline { font-size: 0.82rem; color: var(--on-light-muted); text-align: left; margin-top: 1.25rem; }
         .sponsorship-deadline-inline strong { color: var(--dark-navy); font-weight: 700; }
@@ -1131,6 +1134,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1150,6 +1154,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1169,6 +1174,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1188,6 +1194,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1207,6 +1214,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1226,6 +1234,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1945,8 +1954,7 @@
     });
 </script>
 <script>
-    var qgivTicketUrl = 'https://secure.qgiv.com/for/2026salute/event/1011823/';
-    function openQgiv() { window.open(qgivTicketUrl, 'qgiv', 'width=720,height=780,scrollbars=yes,resizable=yes'); }
+    function openQgiv() { document.getElementById('qgiv-load-modal-91416').click(); }
     document.querySelectorAll('.open-ticket-modal').forEach(function(el) {
         el.addEventListener('click', function(e) { e.preventDefault(); openQgiv(); });
     });
