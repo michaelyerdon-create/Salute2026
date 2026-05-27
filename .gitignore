@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+temporary screenshots/
+.claude/
+~$*
+*.docx
+Untitled-1

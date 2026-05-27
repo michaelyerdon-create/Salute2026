@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salute Gala 2026 | YWCA of the City of New York</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="icon" type="image/png" href="./brand.assets/YWCA LOGO NO TAGLINE.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=zodiak@300,400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 5-color palette */
+            --dark-navy:   #13235B;
+            --dark-forest: #0E2A1F;
+            --cream:       #F3EDE5;
+            --pale-orange: #FCE6C5;
+            --ywca-orange: #F33A1A;
+            /* Derived text tokens */
+            --on-dark:        rgba(255,255,255,0.88);
+            --on-dark-muted:  rgba(255,255,255,0.5);
+            --on-light:       #13235B;
+            --on-light-muted: rgba(19,35,91,0.6);
+            /* Legacy compat (used in buttons / nav / misc) */
+            --persimmon:   #F33A1A;
+            --lavender:    #CFC0FA;
+            --lavender-mid:#A690CE;
+            --plum:        #8B72BE;
+            --plum-dark:   #6B5494;
+            --navy:        #1C2B52;
+            --navy-dark:   #131B35;
+            --navy-deeper: #0D1225;
+            --primary-plum:#321A2E;
+            --text-dark:   #1A1028;
+            --text-mid:    #4A3D60;
+            --text-light:  #7A6E8A;
+            --section-pad: clamp(3rem, 5vw, 4.5rem);
+            --content-max: 1200px;
+            --gutter:      clamp(1.5rem, 5vw, 4rem);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Source Sans 3', 'Source Sans Pro', -apple-system, sans-serif;
+            color: var(--text-dark);
+            background: var(--ivory);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { display: block; max-width: 100%; }
+        a { text-decoration: none; }
+        button { font-family: inherit; }
+
+        .eyebrow {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--persimmon);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: '';
+            display: block;
+            flex-shrink: 0;
+            width: 2rem;
+            height: 1.5px;
+            background: currentColor;
+        }
+
+        .container {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .section-pad { padding: var(--section-pad) 0; }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0, 0, 1);
+            border: none;
+        }
+
+        .btn-persimmon { background: var(--persimmon); color: white; }
+        .btn-persimmon:hover { background: color-mix(in srgb, var(--persimmon) 80%, black); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(250,70,22,0.35); }
+
+        .btn-ghost-light { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.45); }
+        .btn-ghost-light:hover { border-color: var(--lavender); color: var(--lavender); transform: translateY(-2px); }
+
+        .btn-plum { background: var(--plum); color: white; }
+        .btn-plum:hover { background: var(--plum-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139,114,190,0.35); }
+
+        /* NAVIGATION */
+        #nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.25rem var(--gutter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+        }
+
+        #nav.scrolled {
+            background: rgba(13,18,37,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding-top: 0.875rem;
+            padding-bottom: 0.875rem;
+            border-bottom: 1px solid rgba(196,181,222,0.12);
+        }
+
+        .nav-brand img { height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--lavender); }
+        .nav-cta { background: var(--persimmon) !important; color: white !important; padding: 0.55rem 1.25rem; font-size: 0.65rem !important; }
+        .nav-cta:hover { background: color-mix(in srgb, var(--persimmon) 80%, black) !important; transform: none !important; box-shadow: none !important; }
+
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+        .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: white; }
+
+        .nav-mobile {
+            display: none;
+            position: fixed; inset: 0;
+            z-index: 999;
+            background: var(--navy-deeper);
+            flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+        }
+        .nav-mobile.open { display: flex; }
+        .nav-mobile a { font-family: 'Source Sans 3', sans-serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: white; transition: color 0.2s; }
+        .nav-mobile a:hover { color: var(--lavender); }
+        .nav-mobile-close {
+            position: absolute; top: 1.5rem; right: var(--gutter);
+            background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.6;
+        }
+
+        /* HERO */
+        #hero {
+            min-height: 100vh;
+            background: #0d1225;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+
+        .hero-gradient {
+            position: absolute; inset: 0; z-index: 0;
+            opacity: 0.85;
+            background:
+                radial-gradient(ellipse 90% 70% at 5% 5%,   #1a2d6e 0%, transparent 55%),
+                radial-gradient(ellipse 70% 90% at 95% 95%,  #2e0e3a 0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 50% 50%,  #1e1a5a 0%, transparent 70%),
+                linear-gradient(135deg,
+                    #0d1225 0%,
+                    #0e1530 8%,
+                    #10183c 16%,
+                    #141d50 24%,
+                    #1c1c58 32%,
+                    #221852 42%,
+                    #291448 52%,
+                    #2f1040 62%,
+                    #330e3a 72%,
+                    #380e34 85%,
+                    #3a0e30 100%
+                );
+        }
+
+        .hero-pattern {
+            position: absolute; inset: 0; z-index: 1;
+            background-image: url('./brand.assets/LockupPatternViolet.svg');
+            background-repeat: repeat;
+            background-size: clamp(82px, 8.25vw, 158px);
+            opacity: 0.01;
+            mix-blend-mode: screen;
+        }
+
+        .hero-glow {
+            position: absolute; inset: 0; z-index: 2;
+            background:
+                radial-gradient(60% 55% at 50% 42%, rgba(120,116,220,0.18), transparent 70%),
+                radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,0.45) 100%);
+        }
+
+        .hero-content {
+            position: relative; z-index: 3;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 8rem var(--gutter) 5rem;
+        }
+
+        .hero-pre {
+            font-size: 0.62rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase;
+            color: var(--ywca-orange); margin-bottom: 2.5rem;
+            opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-logo { width: clamp(240px, 34vw, 560px); opacity: 0; animation: fadeUp 0.9s 0.45s forwards; filter: drop-shadow(0 8px 40px rgba(0,0,0,0.25)); }
+
+        .hero-rule {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 2.75rem 0 2.25rem; color: var(--lavender);
+            opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+        }
+        .hero-rule::before, .hero-rule::after { content: ''; display: block; width: 80px; height: 1px; background: currentColor; opacity: 0.5; }
+        .hero-rule-icon { font-size: 0.45rem; opacity: 0.9; letter-spacing: 0.5rem; }
+
+        .hero-date {
+            font-family: 'Zodiak', serif; font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 400; font-style: italic; color: rgba(255,255,255,0.88);
+            margin-bottom: 0.6rem; opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+        }
+
+        .hero-venue {
+            font-size: 0.7rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase;
+            color: var(--lavender); margin-bottom: 1.75rem;
+            opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+        }
+
+        .hero-subhead {
+            max-width: 520px; font-size: clamp(0.875rem, 1.8vw, 1rem);
+            font-weight: 300; line-height: 1.45; color: rgba(255,255,255,0.6); margin-bottom: 3rem;
+            opacity: 0; animation: fadeUp 0.8s 1.05s forwards;
+        }
+
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
+
+        .hero-scroll {
+            position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+            z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+            opacity: 0; animation: fadeIn 1s 2s forwards;
+        }
+        .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(196,181,222,0.5), transparent); animation: scrollPulse 2.5s ease-in-out infinite; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scrollPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.25,0,0,1), transform 0.75s cubic-bezier(0.25,0,0,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* INTERSTITIAL */
+        .interstitial-image {
+            position: relative;
+            height: clamp(320px, 45vw, 580px);
+            overflow: hidden;
+        }
+        .interstitial-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            display: block;
+        }
+        .interstitial-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(19,27,53,0.35) 0%, rgba(19,27,53,0.1) 40%, rgba(19,27,53,0.35) 100%);
+        }
+
+        /* ABOUT */
+        #about { background: var(--cream); }
+
+        .about-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; line-height: 1.1; color: var(--dark-navy); margin: 1rem 0 1.75rem; letter-spacing: -0.01em; }
+        .about-body p { font-size: 1rem; line-height: 1.45; color: var(--on-light-muted); }
+        .about-body p + p { margin-top: 1.25rem; }
+
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 3rem; }
+        .stat { padding-left: 1.25rem; border-left: 2.5px solid rgba(19,35,91,0.25); }
+        .stat-number { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.13rem); font-weight: 700; color: var(--dark-navy); line-height: 1; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
+        .stat-label { font-size: 0.72rem; font-weight: 400; line-height: 1.45; color: rgba(19,35,91,0.55); }
+
+        /* HONOREES */
+        #honorees { background: var(--dark-navy); position: relative; }
+        .honorees-header { margin-bottom: 4rem; }
+        .honorees-header .eyebrow { color: var(--ywca-orange); }
+        .honorees-title { font-family: 'Zodiak', serif; font-size: clamp(1.25rem,2.1vw,2rem); font-weight: 700; color: var(--on-dark); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
+        .honorees-subtitle { font-size: 1rem; color: var(--on-dark-muted); line-height: 1.45; }
+        .honorees-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+
+        .honoree-card {
+            background: white; border: 1px solid rgba(19,35,91,0.1); padding: 2.25rem 2.5rem;
+            position: relative; overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.25,0,0,1), box-shadow 0.35s;
+        }
+        .honoree-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--ywca-orange), rgba(243,58,26,0.35)); }
+        .honoree-card:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(19,35,91,0.15); }
+
+        .honoree-award-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 0.75rem; }
+        .honoree-award-name { font-family: 'Zodiak', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark-navy); margin-bottom: 1.75rem; line-height: 1.15; letter-spacing: -0.01em; }
+        .honoree-placeholder-row { display: flex; align-items: center; gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid rgba(19,35,91,0.1); }
+        .honoree-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--pale-orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .honoree-avatar svg { width: 24px; height: 24px; stroke: var(--dark-navy); fill: none; opacity: 0.4; }
+        .honoree-name-tba { font-family: 'Zodiak', serif; font-size: 1rem; font-style: italic; color: var(--on-light-muted); margin-bottom: 0.25rem; }
+        .honoree-soon { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(19,35,91,0.35); }
+        .honorees-update-note { text-align: center; margin-top: 3rem; font-size: 0.875rem; font-style: italic; color: var(--on-dark-muted); }
+        .honorees-update-note a { color: var(--ywca-orange); border-bottom: 1px solid rgba(243,58,26,0.3); }
+        .honorees-date { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); margin-top: 0.6rem; }
+        .honorees-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+        .honorees-list-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .honorees-list-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+        .honorees-list-award { font-family: 'Zodiak', serif; font-size: 1.05rem; font-weight: 700; color: var(--on-dark); min-width: 260px; }
+        .honorees-list-name { font-size: 0.9rem; color: var(--on-dark-muted); font-style: italic; }
+
+        /* SPONSORSHIP */
+        #sponsorship { background: var(--cream); }
+        .sponsorship-header { margin-bottom: 4rem; }
+        .sponsorship-eyebrow { color: var(--ywca-orange) !important; }
+        .sponsorship-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.25rem; letter-spacing: -0.01em; line-height: 1.0; }
+        .sponsorship-subtitle { font-size: 1rem; line-height: 1.45; color: var(--on-light-muted); }
+
+        .tiers-row { display: grid; gap: 1.25rem; margin-bottom: 1.25rem; }
+        .tiers-top, .tiers-bottom { grid-template-columns: repeat(3,1fr); }
+
+        .tier-card {
+            background: rgba(255,255,255,0.045); border: 1px solid rgba(196,181,222,0.15); padding: 2.25rem;
+            position: relative; transition: background 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.25,0,0,1);
+        }
+        .tier-card:hover { background: rgba(196,181,222,0.08); border-color: rgba(196,181,222,0.35); transform: translateY(-4px); }
+        .tier-card.featured { background: rgba(139,114,190,0.18); border-color: rgba(196,181,222,0.5); }
+        .tier-card.featured::after { display: none; }
+
+        .tier-name { font-family: 'Zodiak', serif; font-size: 1.6rem; font-weight: 700; color: var(--lavender); margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+        .tier-price { font-size: 1.8rem; font-weight: 300; color: white; margin-bottom: 1.5rem; line-height: 1; }
+        .tier-price sup { font-size: 0.9rem; font-weight: 400; vertical-align: super; }
+        .tier-benefits { list-style: none; margin-bottom: 2rem; }
+        .tier-benefits li {
+            font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.62);
+            padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; gap: 0.75rem; align-items: flex-start;
+        }
+        .tier-benefits li::before { content: '◆'; font-size: 0.35rem; color: rgba(255,255,255,0.35); flex-shrink: 0; margin-top: 0.42rem; }
+
+        .tier-btn {
+            display: block; width: 100%; padding: 0.875rem; text-align: center;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+            border: 1px solid var(--ywca-orange); color: white; background: var(--ywca-orange); cursor: pointer;
+            transition: all 0.25s;
+        }
+        .tier-btn:hover { background: color-mix(in srgb, var(--ywca-orange) 80%, black); border-color: color-mix(in srgb, var(--ywca-orange) 80%, black); }
+        .tier-card.featured .tier-btn { background: var(--ywca-orange); border-color: var(--ywca-orange); color: white; }
+        .tier-card.featured .tier-btn:hover { background: color-mix(in srgb, var(--ywca-orange) 80%, black); border-color: color-mix(in srgb, var(--ywca-orange) 80%, black); }
+
+        /* TIER MATRIX */
+        .sponsorship-layout-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(19,35,91,0.35); margin: 3rem 0 1.25rem; display: block; }
+        .tier-matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 0.5rem; }
+        .tier-matrix { width: 100%; border-collapse: collapse; min-width: 680px; }
+        .tier-matrix th, .tier-matrix td { padding: 1rem 1.1rem; text-align: center; border-bottom: 1px solid rgba(19,35,91,0.08); font-size: 0.88rem; color: rgba(19,35,91,0.65); line-height: 1.4; vertical-align: middle; }
+        .tier-matrix thead th { font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700; color: var(--dark-navy); padding-bottom: 1.25rem; border-bottom: 2px solid rgba(19,35,91,0.15); vertical-align: bottom; }
+        .tier-matrix .mat-price { display: block; font-family: 'Zodiak', serif; font-size: clamp(1rem, 1.4vw, 1.3rem); font-weight: 700; color: var(--ywca-orange); margin-top: 0.3rem; letter-spacing: -0.01em; }
+        .tier-matrix td:first-child { text-align: left; font-weight: 600; color: var(--dark-navy); min-width: 170px; font-size: 0.85rem; }
+        .tier-matrix thead th:first-child { min-width: 170px; }
+        .tier-matrix tbody tr:hover td { background: rgba(19,35,91,0.03); }
+        .tier-matrix .chk { color: var(--ywca-orange); font-weight: 900; font-size: 1.1rem; }
+        .tier-matrix .val { color: var(--dark-navy); font-size: 0.82rem; line-height: 1.4; }
+        .tier-matrix .nil { color: rgba(19,35,91,0.2); font-size: 1rem; }
+        .tier-matrix th:nth-child(2), .tier-matrix td:nth-child(2) { background: rgba(19,35,91,0.04); }
+
+        /* TIER BANDS */
+        .tier-bands { margin-bottom: 0; }
+        .tier-band { display: grid; grid-template-columns: 175px 1fr; border-top: 1px solid rgba(255,255,255,0.1); padding: 1.75rem 0; transition: background 0.2s; }
+        .tier-band:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .tier-band:hover { background: rgba(255,255,255,0.02); }
+        .tier-band-left { padding-right: 2.5rem; border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center; }
+        .tier-band-name { font-family: 'Zodiak', serif; font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.2rem; }
+        .tier-band-price { font-size: 1.35rem; font-weight: 300; color: var(--ywca-orange); line-height: 1; }
+        .tier-band-right { padding-left: 2.5rem; display: flex; align-items: center; }
+        .tier-band-benefits { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 1.75rem; }
+        .tier-band-benefits li { font-size: 0.8rem; color: rgba(255,255,255,0.58); display: flex; align-items: baseline; gap: 0.45rem; }
+        .tier-band-benefits li::before { content: '—'; color: rgba(255,255,255,0.2); flex-shrink: 0; }
+
+        .sponsorship-cta { text-align: center; margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid rgba(19,35,91,0.12); }
+        .sponsorship-cta p { font-size: 0.9rem; color: var(--on-light-muted); margin-bottom: 1.5rem; }
+
+        @media (max-width: 640px) {
+            .tier-band { grid-template-columns: 1fr; }
+            .tier-band-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-right: 0; padding-bottom: 1rem; margin-bottom: 1rem; }
+            .tier-band-right { padding-left: 0; }
+        }
+
+        /* TICKETS */
+        #tickets { background: var(--cream); }
+        .tickets-header { max-width: 560px; }
+        .tickets-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.0; }
+        .tickets-subtitle { font-size: 1rem; color: var(--on-light-muted); line-height: 1.7; }
+        .tickets-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+
+        .ticket-card {
+            background: var(--dark-navy); border: 2px solid transparent; padding: 2.5rem 2rem; text-align: center;
+            transition: transform 0.35s cubic-bezier(0.25,0,0,1), box-shadow 0.35s, border-color 0.25s;
+        }
+        .ticket-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(19,35,91,0.25); border-color: rgba(255,255,255,0.15); }
+        .ticket-card.featured-ticket { border-color: var(--ywca-orange); }
+
+        .ticket-type { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--on-dark-muted); margin-bottom: 1rem; }
+        .featured-ticket .ticket-type { color: var(--ywca-orange); }
+        .ticket-price { font-family: 'Zodiak', serif; font-size: clamp(1.75rem,3vw,2.5rem); font-weight: 700; color: white; line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.015em; }
+        .featured-ticket .ticket-price { color: white; }
+        .ticket-note { font-size: 0.8rem; color: var(--on-dark-muted); line-height: 1.55; min-height: 2.75rem; margin-bottom: 2rem; }
+        .featured-ticket .ticket-note { color: rgba(255,255,255,0.65); opacity: 1; }
+
+        .ticket-btn {
+            display: inline-block; padding: 0.8rem 2rem;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+            background: var(--ywca-orange); color: white; cursor: pointer; border: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .ticket-btn:hover { background: color-mix(in srgb, var(--ywca-orange) 80%, black); transform: translateY(-2px); }
+        .featured-ticket .ticket-btn { background: var(--ywca-orange); }
+        .featured-ticket .ticket-btn:hover { background: color-mix(in srgb, var(--ywca-orange) 80%, black); }
+
+        /* PAST GALAS */
+        #legacy { background: var(--dark-navy); position: relative; }
+        .legacy-header { margin-bottom: 3.5rem; }
+        .legacy-eyebrow { color: var(--ywca-orange) !important; }
+        .legacy-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: white; margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.0; }
+        .legacy-intro { font-size: 1rem; color: var(--on-dark-muted); line-height: 1.45; }
+
+        .legacy-rows { display: flex; flex-direction: column; gap: 2rem; }
+        .legacy-row {
+            display: grid; grid-template-columns: 1fr 1fr;
+            min-height: clamp(320px, 36vw, 520px);
+        }
+        .legacy-row-photo { position: relative; overflow: hidden; }
+        .legacy-row-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .legacy-row.photo-right .legacy-row-photo { order: 2; }
+        .legacy-row.photo-right .legacy-row-text { order: 1; }
+
+        .legacy-row-text {
+            padding: clamp(2.5rem,4vw,3.5rem) clamp(2rem,4vw,3.5rem);
+            display: flex; flex-direction: column; justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+        .legacy-row-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 1.1rem; }
+        .legacy-row-theme { font-family: 'Zodiak', serif; font-size: clamp(1.36rem,2.55vw,2.34rem); font-weight: 700; color: var(--on-dark); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.75rem; }
+        .legacy-row-honorees-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.55rem; }
+        .legacy-row-honorees { font-size: 0.88rem; color: var(--on-dark-muted); line-height: 1.45; }
+
+        /* MISSION */
+        #mission { background: var(--dark-navy); position: relative; }
+        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,6vw,7rem); align-items: center; }
+        .mission-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: white; margin: 0.75rem 0 1.5rem; line-height: 1.0; letter-spacing: -0.01em; }
+        .mission-body { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65); }
+        .mission-programs { margin-top: 2.5rem; }
+        .program-item { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .program-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+        .program-name { font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 600; color: white; margin-bottom: 0.375rem; }
+        .program-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+        .mission-quote-card { background: var(--dark-forest); color: white; padding: 3rem; position: relative; overflow: hidden; }
+        .mission-quote-card::before { content: '"'; position: absolute; top: -1rem; left: 2rem; font-family: 'Zodiak', serif; font-size: 10rem; color: rgba(255,255,255,0.06); line-height: 1; }
+        .mission-quote-text { font-family: 'Zodiak', serif; font-size: clamp(1.1rem,2.5vw,1.5rem); font-style: italic; line-height: 1.6; color: white; position: relative; z-index: 1; margin-bottom: 1.75rem; }
+        .mission-quote-attr { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-muted); }
+        .mission-since { position: absolute; bottom: 1.5rem; right: 2rem; font-family: 'Zodiak', serif; font-size: 4.5rem; font-weight: 700; color: rgba(255,255,255,0.05); line-height: 1; }
+
+        /* FAQ */
+        #faq { background: var(--pale-orange); }
+        .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(3rem,6vw,7rem); align-items: start; }
+        .faq-sidebar { position: sticky; top: 7rem; }
+        .faq-sidebar-title { font-family: 'Zodiak', serif; font-size: clamp(1.28rem,2.13vw,1.91rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.5rem; line-height: 1.0; letter-spacing: -0.01em; }
+        .faq-sidebar-contact { background: white; padding: 1.75rem; border-left: 3px solid var(--dark-navy); }
+        .faq-contact-name { font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 600; color: var(--dark-navy); margin-bottom: 0.25rem; }
+        .faq-contact-title { font-size: 0.78rem; color: var(--text-light); margin-bottom: 1.25rem; line-height: 1.45; }
+        .faq-contact-link { display: flex; align-items: center; gap: 0.625rem; font-size: 0.82rem; color: var(--plum); transition: color 0.2s; margin-bottom: 0.5rem; }
+        .faq-contact-link:hover { color: var(--plum-dark); }
+        .faq-contact-link svg { width: 14px; height: 14px; flex-shrink: 0; stroke: currentColor; fill: none; }
+
+        .faq-items { display: flex; flex-direction: column; }
+        .faq-item { border-top: 1px solid rgba(19,35,91,0.15); }
+        .faq-item:last-child { border-bottom: 1px solid rgba(19,35,91,0.15); }
+        .faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.5rem 0; background: none; border: none; cursor: pointer; text-align: left; }
+        .faq-question-text { font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700; color: var(--dark-navy); line-height: 1.4; transition: color 0.2s; }
+        .faq-trigger:hover .faq-question-text { color: var(--plum); }
+        .faq-icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(19,35,91,0.25); display: grid; place-items: center; color: var(--dark-navy); transition: background 0.25s, border-color 0.25s; }
+        .faq-icon svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.35s; }
+        .faq-item.open .faq-icon { background: var(--dark-navy); border-color: var(--dark-navy); color: white; }
+        .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+        .faq-body { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.25,0,0,1); }
+        .faq-body-inner { padding-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.45; color: var(--text-mid); }
+
+        /* FUNDRAISE */
+        #fundraise { background: var(--pale-orange); }
+        .fundraise-header { margin-bottom: 3rem; max-width: 620px; }
+        .fundraise-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
+        .fundraise-sub { font-size: 1rem; line-height: 1.45; color: var(--on-light-muted); }
+
+        .fundraise-steps { list-style: none; padding: 0; margin: 0 0 2.75rem;
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+        .fundraise-step { border-top: 2px solid var(--ywca-orange); padding-top: 1rem; }
+        .fundraise-step-num { display: block; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 0.5rem; }
+        .fundraise-step-text { font-size: 0.95rem; line-height: 1.5; color: var(--dark-navy); }
+
+        .fundraise-progress { margin-bottom: 2.75rem; }
+        .fundraise-progress-bar { background: rgba(19,35,91,0.12); border-radius: 999px; height: 10px; overflow: hidden; }
+        .fundraise-progress-fill { background: var(--ywca-orange); height: 100%; border-radius: 999px; width: 42%; }
+        .fundraise-progress-labels { display: flex; justify-content: space-between; margin-top: 0.6rem; font-size: 0.82rem; color: var(--on-light-muted); }
+        .fundraise-progress-labels strong { color: var(--dark-navy); font-weight: 700; }
+
+        .fundraise-form-placeholder {
+            background: repeating-linear-gradient(45deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6) 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 24px);
+            border: 2px dashed rgba(243,58,26,0.4);
+            border-radius: 6px; min-height: 240px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem; gap: 0.5rem; margin-bottom: 2rem;
+        }
+        .fundraise-form-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ywca-orange); }
+        .fundraise-form-note { font-size: 0.9rem; color: var(--on-light-muted); max-width: 28rem; line-height: 1.6; }
+
+        .fundraise-alt { font-size: 0.9rem; margin-top: 1.5rem; color: var(--on-light-muted); }
+        .fundraise-alt a { color: var(--dark-navy); border-bottom: 1px solid rgba(19,35,91,0.3); transition: border-color 0.2s; }
+        .fundraise-alt a:hover { border-color: var(--ywca-orange); color: var(--ywca-orange); }
+
+        @media (max-width: 600px) {
+            .fundraise-steps { grid-template-columns: 1fr; gap: 1rem; }
+        }
+
+        /* CTA */
+        #cta {
+            text-align: center; position: relative; overflow: hidden;
+            background:
+                radial-gradient(ellipse 90% 70% at 5% 5%,   #1a2d6e 0%, transparent 55%),
+                radial-gradient(ellipse 70% 90% at 95% 95%,  #2e0e3a 0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 50% 50%,  #1e1a5a 0%, transparent 70%),
+                linear-gradient(135deg,
+                    #0d1225 0%,
+                    #0e1530 8%,
+                    #10183c 16%,
+                    #141d50 24%,
+                    #1c1c58 32%,
+                    #221852 42%,
+                    #291448 52%,
+                    #2f1040 62%,
+                    #330e3a 72%,
+                    #380e34 85%,
+                    #3a0e30 100%
+                );
+        }
+        #honorees::before, #legacy::before, #mission::before, #cta::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+            background-image: url('./brand.assets/LockupPatternViolet.svg');
+            background-repeat: repeat;
+            background-size: clamp(82px, 8.25vw, 158px);
+            opacity: 0.01;
+            mix-blend-mode: screen;
+        }
+        .cta-inner { position: relative; z-index: 1; }
+        .cta-ornament { display: flex; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,0.3); margin-bottom: 2rem; }
+        .cta-ornament::before, .cta-ornament::after { content: ''; display: block; width: 60px; height: 1px; background: currentColor; }
+        .cta-eyebrow { color: var(--ywca-orange) !important; margin-bottom: 1rem; }
+        .cta-title { font-family: 'Zodiak', serif; font-size: clamp(1.7rem,3.4vw,2.98rem); font-weight: 700; color: white; margin-bottom: 2.5rem; line-height: 1.0; letter-spacing: -0.01em; }
+        .cta-buttons { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
+        .cta-contact-block { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 3rem; font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 2; }
+        .cta-contact-name { display: block; font-family: 'Zodiak', serif; font-size: 1.1rem; color: white; font-weight: 600; margin-bottom: 0.25rem; }
+        .cta-contact-block a { color: var(--lavender); transition: color 0.2s; }
+        .cta-contact-block a:hover { color: white; }
+
+        /* FOOTER */
+        footer { background: var(--navy-deeper); padding: 3rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .footer-left { display: flex; align-items: center; gap: 1.5rem; }
+        .footer-logo img { height: 28px; filter: brightness(0) invert(1); opacity: 0.45; }
+        .footer-mission { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+        .footer-right { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+        .footer-right a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
+        .footer-right a:hover { color: var(--lavender); }
+
+        /* LEADERSHIP */
+        #leadership { background: var(--cream); }
+        .leadership-header { margin-bottom: 3.5rem; }
+        .leadership-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 0; letter-spacing: -0.01em; }
+        .leadership-group { margin-bottom: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(19,35,91,0.12); }
+        .leadership-header + .leadership-group { border-top: none; padding-top: 0; }
+        .leadership-group:last-child { margin-bottom: 0; }
+        .leadership-group-eyebrow { margin-bottom: 1.75rem; }
+        .leadership-sub { margin-top: 2.25rem; }
+        .leadership-sub-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(19,35,91,0.38); margin-bottom: 1.25rem; }
+        .name-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.75rem 2rem; }
+        .name-entry-role { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(19,35,91,0.45); margin-bottom: 0.2rem; line-height: 1.45; }
+        .name-entry-name { font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700; color: var(--dark-navy); line-height: 1.3; margin-bottom: 0.3rem; }
+        .name-entry-title { font-size: 0.77rem; color: rgba(19,35,91,0.55); line-height: 1.5; }
+        .matrix-scroll-hint { display: none; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ywca-orange); text-align: center; margin-bottom: 0.75rem; }
+        @media (max-width: 860px) { .matrix-scroll-hint { display: block; } }
+
+        /* TICKET BAND */
+        .ticket-band {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            border: 1px solid rgba(19,35,91,0.12);
+            margin: 3rem 0 1.25rem;
+        }
+        .ticket-col {
+            padding: 2.25rem 2rem; display: flex; flex-direction: column;
+            border-right: 1px solid rgba(19,35,91,0.12);
+        }
+        .ticket-col:last-child { border-right: none; }
+        .ticket-col-featured { border-top: 3px solid var(--ywca-orange); }
+        .ticket-col-badge {
+            font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em;
+            text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 0.6rem;
+        }
+        .ticket-col-name {
+            font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700;
+            color: var(--dark-navy); line-height: 1.25; margin-bottom: 0.75rem;
+        }
+        .ticket-col-price {
+            font-family: 'Zodiak', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700;
+            color: var(--ywca-orange); line-height: 1; margin-bottom: 0.6rem; letter-spacing: -0.02em;
+        }
+        .ticket-col-deadline {
+            display: inline-block; align-self: flex-start;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            background: var(--ywca-orange); color: white;
+            padding: 0.22rem 0.6rem; margin-bottom: 0.85rem;
+        }
+        .ticket-col-desc { font-size: 0.85rem; color: var(--on-light-muted); line-height: 1.6; }
+        .ticket-persuasion {
+            font-size: 0.82rem; color: var(--on-light-muted); font-style: italic;
+            text-align: center; margin-bottom: 2.5rem;
+        }
+        .ticket-cta { text-align: center; }
+        @media (max-width: 640px) {
+            .ticket-band { grid-template-columns: 1fr; }
+            .ticket-col { border-right: none; border-bottom: 1px solid rgba(19,35,91,0.12); }
+            .ticket-col:last-child { border-bottom: none; }
+            .ticket-col-featured { border-top: 3px solid var(--ywca-orange); }
+        }
+
+        /* WHAT SALUTE FUNDS */
+        #funds { background: var(--pale-orange); }
+        .funds-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem,6vw,7rem); align-items: start; }
+        .funds-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.25rem; letter-spacing: -0.01em; line-height: 1.1; }
+        .funds-body { font-size: 0.95rem; line-height: 1.45; color: rgba(19,35,91,0.7); }
+        .funds-pillars { list-style: none; display: flex; flex-direction: column; gap: 0; }
+        .funds-pillar { display: flex; align-items: baseline; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(19,35,91,0.1); }
+        .funds-pillar:first-child { border-top: 1px solid rgba(19,35,91,0.1); }
+        .funds-pillar-num { font-family: 'Zodiak', serif; font-size: 0.7rem; font-weight: 700; color: var(--ywca-orange); flex-shrink: 0; min-width: 1.25rem; }
+        .funds-pillar-name { font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700; color: var(--dark-navy); }
+        .funds-video { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; }
+        .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+        /* SPONSORSHIP CONTACT */
+        .sponsorship-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid rgba(19,35,91,0.12); }
+        .sponsorship-deadline { background: white; padding: 1.5rem 2rem; border-left: 3px solid var(--ywca-orange); }
+        .sponsorship-deadline-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ywca-orange); margin-bottom: 0.6rem; }
+        .sponsorship-deadline-text { font-family: 'Zodiak', serif; font-size: 0.95rem; color: var(--dark-navy); line-height: 1.5; font-weight: 600; }
+        .sponsorship-contact { }
+        .sponsorship-contact-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(19,35,91,0.4); margin-bottom: 0.75rem; }
+        .sponsorship-contact-name { font-family: 'Zodiak', serif; font-size: 1.05rem; font-weight: 700; color: var(--dark-navy); margin-bottom: 0.2rem; }
+        .sponsorship-contact-title { font-size: 0.8rem; color: rgba(19,35,91,0.55); line-height: 1.45; margin-bottom: 1rem; }
+        .sponsorship-contact-links { display: flex; flex-direction: column; gap: 0.35rem; }
+        .sponsorship-contact-link { font-size: 0.85rem; color: var(--dark-navy); display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+        .sponsorship-contact-link:hover { color: var(--ywca-orange); }
+        .ticket-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(19,35,91,0.12); margin-top: 2.5rem; }
+        .ticket-strip-item { background: var(--cream); padding: 1.75rem 2rem; cursor: pointer; transition: background 0.2s, transform 0.25s cubic-bezier(0.25,0,0,1), box-shadow 0.25s; }
+        .ticket-strip:hover .ticket-strip-item { background: var(--cream); }
+        .ticket-strip .ticket-strip-item:hover { background: white; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(19,35,91,0.12); }
+        .ticket-strip-featured { background: white; }
+        .ticket-strip-name { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(19,35,91,0.45); margin-bottom: 0.6rem; }
+        .ticket-strip-price { font-family: 'Zodiak', serif; font-size: clamp(1.4rem,2.2vw,1.9rem); font-weight: 700; color: var(--ywca-orange); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+        .ticket-strip-note { font-size: 0.78rem; color: var(--on-light-muted); line-height: 1.45; }
+        @media (max-width: 600px) { .ticket-strip { grid-template-columns: 1fr; } }
+        .sponsorship-deadline-inline { font-size: 0.82rem; color: var(--on-light-muted); text-align: left; margin-top: 1.25rem; }
+        .sponsorship-deadline-inline strong { color: var(--dark-navy); font-weight: 700; }
+        .sponsorship-btn-row { text-align: center; margin-top: 2rem; }
+
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .tiers-top, .tiers-bottom { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .mission-grid, .faq-layout { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(3,1fr); gap: 1.5rem 1.5rem; }
+            .faq-sidebar { position: static; }
+            .honorees-grid, .tickets-grid { grid-template-columns: 1fr; }
+            .legacy-row { grid-template-columns: 1fr; min-height: unset; }
+            .legacy-row .legacy-row-photo { order: 1 !important; height: 62vw; max-height: 360px; }
+            .legacy-row .legacy-row-text { order: 2 !important; }
+            .funds-layout { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; align-items: center; }
+            .name-grid { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 600px) {
+            .about-stats { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 500px) {
+            .name-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero-ctas { flex-direction: column; width: 100%; max-width: 280px; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="mobileNav">
+    <button class="nav-mobile-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#honorees" onclick="closeMobileNav()">Honorees</a>
+    <a href="#sponsorship" onclick="closeMobileNav()">Sponsorship</a>
+    <a href="#tickets" onclick="closeMobileNav()">Tickets</a>
+    <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+    <a href="#cta" onclick="closeMobileNav()" class="btn btn-persimmon" style="margin-top:1rem;">Support the Event</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav" role="navigation">
+    <a href="#top" class="nav-brand">
+        <img src="./brand.assets/YWCA LOGO NO TAGLINE.png" alt="YWCA of the City of New York">
+    </a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#honorees">Honorees</a></li>
+        <li><a href="#sponsorship">Sponsorship &amp; Tickets</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#sponsorship" class="nav-cta btn">Support the Event</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section id="top">
+    <div id="hero">
+        <div class="hero-gradient" aria-hidden="true"></div>
+        <div class="hero-pattern" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-content">
+            <p class="hero-pre">YWCA of the City of New York presents</p>
+            <img src="./brand.assets/SaluteGalaLogoTransparent.svg" alt="Salute Gala 2026" class="hero-logo">
+            <div class="hero-rule" aria-hidden="true">
+                <span class="hero-rule-icon">◆ ◆ ◆</span>
+            </div>
+            <p class="hero-date">Tuesday, October 13, 2026 · 6:00–9:00 PM</p>
+            <p class="hero-venue">City Winery · Pier 57, 25 11th Ave, New York, NY 10011</p>
+            <p class="hero-subhead">For more than 50 years, Salute has brought together civic, corporate, and philanthropic leaders to build pathways for New York's next generation.</p>
+            <div class="hero-ctas">
+                <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+            </div>
+        </div>
+        <div class="hero-scroll" aria-hidden="true">
+            <div class="scroll-line"></div>
+        </div>
+    </div>
+</section>
+
+<!-- INTERSTITIAL IMAGE -->
+<div class="interstitial-image">
+    <img src="./brand.assets/YWCA0305.jpg" alt="Guests at a past Salute Gala">
+    <div class="interstitial-overlay"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+    <div class="container">
+        <div>
+            <p class="eyebrow reveal">About the Event</p>
+            <h2 class="about-title reveal reveal-delay-1">An Evening Supporting New York's Next Generation</h2>
+            <div class="about-body reveal reveal-delay-2">
+                <p>Since 1858, YWCA NYC has worked to eliminate racism and advance opportunity. Salute is YWCA NYC's signature annual celebration and fundraiser. Every fall, hundreds of leaders from business, philanthropy, government, and community gather at City Winery to honor individuals and institutions building pathways for New York's next generation.</p>
+                <p>The 2026 program will recognize four honorees across four awards. The evening opens with a cocktail reception, followed by a seated dinner, awards program, and a live auction and paddle raise.</p>
+            </div>
+            <p class="eyebrow reveal" style="margin-top:2.5rem;">By the Numbers</p>
+            <div class="about-stats">
+                <div class="stat reveal reveal-delay-1"><div class="stat-number">165+</div><div class="stat-label">years serving New York City since our founding in 1858</div></div>
+                <div class="stat reveal reveal-delay-2"><div class="stat-number">3,000+</div><div class="stat-label">youth served annually</div></div>
+                <div class="stat reveal reveal-delay-3"><div class="stat-number">93%</div><div class="stat-label">of participants are from high-need NYC communities</div></div>
+                <div class="stat reveal reveal-delay-4"><div class="stat-number">16</div><div class="stat-label">program locations across Brooklyn, Manhattan, and Queens</div></div>
+                <div class="stat reveal reveal-delay-1"><div class="stat-number">83%</div><div class="stat-label">of high school participants say YWCA NYC is their only extracurricular STEM opportunity</div></div>
+                <div class="stat reveal reveal-delay-2"><div class="stat-number">100%</div><div class="stat-label">of graduating seniors were accepted into post-secondary programs</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT SALUTE FUNDS -->
+<section id="funds" class="section-pad">
+    <div class="container">
+        <div class="funds-layout">
+            <div>
+                <p class="eyebrow reveal">Where Your Support Goes</p>
+                <h2 class="funds-title reveal reveal-delay-1">What Salute Funds</h2>
+                <p class="funds-body reveal reveal-delay-2">Salute funds year-round programming across five areas: leadership and life skills, career and financial readiness, social justice education and advocacy, academic support and enrichment, and health, wellness, and safety. This work reaches students from kindergarten through early career across all five boroughs.</p>
+            </div>
+            <ul class="funds-pillars reveal reveal-delay-1">
+                <li class="funds-pillar">
+                    <span class="funds-pillar-num">01</span>
+                    <span class="funds-pillar-name">Leadership and Life Skills</span>
+                </li>
+                <li class="funds-pillar">
+                    <span class="funds-pillar-num">02</span>
+                    <span class="funds-pillar-name">Career and Financial Readiness</span>
+                </li>
+                <li class="funds-pillar">
+                    <span class="funds-pillar-num">03</span>
+                    <span class="funds-pillar-name">Social Justice Education and Advocacy</span>
+                </li>
+                <li class="funds-pillar">
+                    <span class="funds-pillar-num">04</span>
+                    <span class="funds-pillar-name">Academic Support and Enrichment</span>
+                </li>
+                <li class="funds-pillar">
+                    <span class="funds-pillar-num">05</span>
+                    <span class="funds-pillar-name">Health, Wellness, and Safety</span>
+                </li>
+            </ul>
+        </div>
+        <div class="funds-video reveal">
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/D-74giG-WOk" title="Salute Gala" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HONOREES -->
+<section id="honorees" class="section-pad">
+    <div class="container">
+        <div class="honorees-header reveal">
+            <p class="eyebrow">2026 Honorees</p>
+            <h2 class="honorees-title">This Year's Award Recipients</h2>
+            <p class="honorees-date">Tuesday, October 13, 2026</p>
+            <p class="honorees-subtitle">We are proud to recognize outstanding leaders across four awards.</p>
+        </div>
+        <div class="honorees-grid">
+            <div class="honoree-card reveal reveal-delay-1">
+                <div class="honoree-award-label">Award</div>
+                <div class="honoree-award-name">Changemaker Champion</div>
+                <div class="honoree-placeholder-row">
+                    <div class="honoree-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <div>
+                        <div class="honoree-name-tba">To be announced</div>
+                        <div class="honoree-soon">Coming soon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="honoree-card reveal reveal-delay-2">
+                <div class="honoree-award-label">Award</div>
+                <div class="honoree-award-name">Corporate Leadership Award</div>
+                <div class="honoree-placeholder-row">
+                    <div class="honoree-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <div>
+                        <div class="honoree-name-tba">To be announced</div>
+                        <div class="honoree-soon">Coming soon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="honoree-card reveal reveal-delay-3">
+                <div class="honoree-award-label">Award</div>
+                <div class="honoree-award-name">Dodge Distinguished Service Award</div>
+                <div class="honoree-placeholder-row">
+                    <div class="honoree-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <div>
+                        <div class="honoree-name-tba">To be announced</div>
+                        <div class="honoree-soon">Coming soon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="honoree-card reveal reveal-delay-4">
+                <div class="honoree-award-label">Award</div>
+                <div class="honoree-award-name">Emerging Leader Award</div>
+                <div class="honoree-placeholder-row">
+                    <div class="honoree-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <div>
+                        <div class="honoree-name-tba">To be announced</div>
+                        <div class="honoree-soon">Coming soon</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="honorees-update-note reveal">Honoree announcements coming soon. <a href="#cta">Sign up for updates.</a></p>
+    </div>
+</section>
+
+<!-- SPONSORSHIP -->
+<section id="sponsorship" class="section-pad">
+    <div class="container">
+        <div class="sponsorship-header reveal">
+            <p class="eyebrow sponsorship-eyebrow">Sponsor Salute 2026</p>
+            <h2 class="sponsorship-title">Support the Event</h2>
+            <p class="sponsorship-subtitle">Sponsorship is the most direct way to align your organization with YWCA NYC and gain visibility with leaders, funders, and partners across the city.</p>
+        </div>
+        <p class="matrix-scroll-hint">← Swipe to compare →</p>
+        <div class="tier-matrix-wrap reveal">
+            <table class="tier-matrix">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Changemaker<span class="mat-price">$50,000</span></th>
+                        <th>SHE-ro<span class="mat-price">$25,000</span></th>
+                        <th>Visionary<span class="mat-price">$15,000</span></th>
+                        <th>Catalyst<span class="mat-price">$10,000</span></th>
+                        <th>Advocate<span class="mat-price">$5,000</span></th>
+                        <th>Leader<span class="mat-price">$3,000</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seating</td>
+                        <td class="val">3 premium tables<br>30 seats</td>
+                        <td class="val">2 premium tables<br>20 seats</td>
+                        <td class="val">1 prestige table<br>10 seats</td>
+                        <td class="val">1 table<br>10 seats</td>
+                        <td class="val">5 tickets</td>
+                        <td class="val">3 tickets</td>
+                    </tr>
+                    <tr>
+                        <td>Program Ad</td>
+                        <td class="val">2-page spread</td>
+                        <td class="val">Full page</td>
+                        <td class="val">Half page</td>
+                        <td class="val">Quarter page</td>
+                        <td class="val">Listing</td>
+                        <td class="val">Listing</td>
+                    </tr>
+                    <tr>
+                        <td>Social Media</td>
+                        <td class="val">Pre &amp; post feature</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                    </tr>
+                    <tr>
+                        <td>Webpage, Signage &amp; Email</td>
+                        <td class="val">Premier / lead billing</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                    </tr>
+                    <tr>
+                        <td>FY26 Annual Report mention</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="nil">—</td>
+                    </tr>
+                    <tr>
+                        <td>Girls Symposium Recognition</td>
+                        <td class="chk">✓</td>
+                        <td class="chk">✓</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Volunteer Opportunity</td>
+                        <td class="chk">✓</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                        <td class="nil">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="sponsorship-deadline-inline reveal">Sponsor commitments received by <strong>August 14, 2026</strong> will be included in the printed invitation.</p>
+
+        <div class="ticket-strip reveal">
+            <div class="ticket-strip-item">
+                <div class="ticket-strip-name">Young Professional / Nonprofit Partner</div>
+                <div class="ticket-strip-price">$400</div>
+                <div class="ticket-strip-note">For guests 35 and under, or nonprofit sector partners.</div>
+            </div>
+            <div class="ticket-strip-item ticket-strip-featured">
+                <div class="ticket-strip-name">Early Bird</div>
+                <div class="ticket-strip-price">$750</div>
+                <div class="ticket-strip-note">Ends Aug 31, 2026 — save $250 before standard pricing begins.</div>
+            </div>
+            <div class="ticket-strip-item">
+                <div class="ticket-strip-name">Friend</div>
+                <div class="ticket-strip-price">$1,000</div>
+                <div class="ticket-strip-note">Full-support individual ticket.</div>
+            </div>
+        </div>
+
+        <div class="sponsorship-btn-row reveal">
+            <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+        </div>
+    </div>
+</section>
+
+<!-- PAST GALAS -->
+<section id="legacy" class="section-pad">
+    <div class="container">
+        <div class="legacy-header reveal">
+            <p class="eyebrow legacy-eyebrow">50 Years of Salute</p>
+            <h2 class="legacy-title">A Look Back</h2>
+            <p class="legacy-intro">For more than five decades, Salute has brought together New York's civic, corporate, and philanthropic leaders in support of YWCA NYC. Each year recognizes the people building real pathways for the city's next generation, and each year raises the resources that keep that work going.</p>
+        </div>
+        <div class="legacy-rows">
+            <!-- Row 1: 2025 — photo left, text right -->
+            <div class="legacy-row reveal">
+                <div class="legacy-row-photo">
+                    <img src="./brand.assets/2025 Picture 3.jpg" alt="Guests and stage at Salute 2025 at City Winery">
+                </div>
+                <div class="legacy-row-text">
+                    <div class="legacy-row-label">Salute 2025</div>
+                    <h3 class="legacy-row-theme">Empowered Girls, Empowered Women</h3>
+                    <div class="legacy-row-honorees-label">Honorees</div>
+                    <p class="legacy-row-honorees">Dr. Patricia Campos-Medina, Reshma Saujani, Tameka Alsop, Cora Walker, Gov. Kathy Hochul</p>
+                </div>
+            </div>
+            <!-- Row 2: 2024 — photo right, text left -->
+            <div class="legacy-row photo-right reveal reveal-delay-1">
+                <div class="legacy-row-photo">
+                    <img src="./brand.assets/2024 Picture 1.jpg" alt="Salute 2024, Championing Change">
+                </div>
+                <div class="legacy-row-text">
+                    <div class="legacy-row-label">Salute 2024</div>
+                    <h3 class="legacy-row-theme">Championing Change</h3>
+                    <div class="legacy-row-honorees-label">Honorees</div>
+                    <p class="legacy-row-honorees">Natalie Edwards, Majora Carter, Rosa Patiño-Prenz</p>
+                </div>
+            </div>
+            <!-- Row 3: 2023 — photo left, text right -->
+            <div class="legacy-row reveal reveal-delay-2">
+                <div class="legacy-row-photo">
+                    <img src="./brand.assets/2023 Picture 1.jpg" alt="Salute 2023, Celebrating 165 Years">
+                </div>
+                <div class="legacy-row-text">
+                    <div class="legacy-row-label">Salute 2023</div>
+                    <h3 class="legacy-row-theme">Celebrating 165 Years</h3>
+                    <div class="legacy-row-honorees-label">Honorees</div>
+                    <p class="legacy-row-honorees">Janessa Cox-Irvin, Tracy Richelle High, Sarah Gund</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-pad">
+    <div class="container">
+        <div class="faq-layout">
+            <div class="faq-sidebar">
+                <p class="eyebrow reveal">Questions</p>
+                <h2 class="faq-sidebar-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+                <div class="faq-sidebar-contact reveal reveal-delay-2">
+                    <div class="faq-contact-name">Michael Yerdon</div>
+                    <div class="faq-contact-title">Senior Director of Development<br>and Communications, YWCA NYC</div>
+                    <a href="mailto:myerdon@ywcanyc.org" class="faq-contact-link">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l9 6 9-6M3 8v11a1 1 0 001 1h16a1 1 0 001-1V8M3 8a1 1 0 011-1h16a1 1 0 011 1"/></svg>
+                        myerdon@ywcanyc.org
+                    </a>
+                    <a href="tel:2129378700" class="faq-contact-link">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        212-937-8700
+                    </a>
+                </div>
+            </div>
+            <div class="faq-items" id="faqContainer"></div>
+        </div>
+    </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="section-pad">
+    <div class="container">
+        <div class="leadership-header reveal">
+            <h2 class="leadership-title">YWCA NYC Leadership</h2>
+        </div>
+
+        <!-- Event Committee -->
+        <div class="leadership-group reveal">
+            <p class="eyebrow leadership-group-eyebrow">Event Committee</p>
+            <div class="name-grid">
+                <div class="name-entry"><div class="name-entry-name">Alison Schweizer</div></div>
+                <div class="name-entry"><div class="name-entry-name">Beth Ann Day</div></div>
+                <div class="name-entry"><div class="name-entry-name">Diane Sinti</div></div>
+                <div class="name-entry"><div class="name-entry-name">Kaitlyn McConeghy</div></div>
+                <div class="name-entry"><div class="name-entry-name">Karina Val</div></div>
+                <div class="name-entry"><div class="name-entry-name">Kim Rosenblum</div></div>
+                <div class="name-entry"><div class="name-entry-name">Lina Bracero</div></div>
+                <div class="name-entry"><div class="name-entry-name">Linda A. Derrick</div></div>
+                <div class="name-entry"><div class="name-entry-name">Mary F. Crawford</div></div>
+                <div class="name-entry"><div class="name-entry-name">Mekala Keshu</div></div>
+                <div class="name-entry"><div class="name-entry-name">Naeemah Rolle</div></div>
+                <div class="name-entry"><div class="name-entry-name">Tatiana Rodriguez</div></div>
+                <div class="name-entry"><div class="name-entry-name">Tracy Davis</div></div>
+            </div>
+        </div>
+
+        <!-- Board of Directors -->
+        <div class="leadership-group reveal">
+            <p class="eyebrow leadership-group-eyebrow">Board of Directors</p>
+
+            <div class="leadership-sub">
+                <div class="leadership-sub-label">Officers</div>
+                <div class="name-grid">
+                    <div class="name-entry">
+                        <div class="name-entry-role">Chair; Chair of Nominating Committee</div>
+                        <div class="name-entry-name">Alison Martier Schweizer</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-role">Vice Chair; Co-Chair, Strategic Planning Committee</div>
+                        <div class="name-entry-name">Ayisha A. Saul</div>
+                        <div class="name-entry-title">Global Lead HR Business Partner, BlackRock</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-role">Secretary</div>
+                        <div class="name-entry-name">Lorryn Mai</div>
+                        <div class="name-entry-title">Partner, Ernst &amp; Young</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-role">Treasurer; Co-Chair, Finance and Investment Committee</div>
+                        <div class="name-entry-name">Paige L. Rabalais</div>
+                        <div class="name-entry-title">Managing Director, Commonfund</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leadership-sub">
+                <div class="leadership-sub-label">Members</div>
+                <div class="name-grid">
+                    <div class="name-entry">
+                        <div class="name-entry-name">Arman Amini</div>
+                        <div class="name-entry-title">Portfolio Lead, C3 AI</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Bianca Bonfim</div>
+                        <div class="name-entry-title">Growth and Marketing Consultant, Hudson &amp; Jane Marketing</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Lina Bracero</div>
+                        <div class="name-entry-title">Principal, True North Strategies</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Mary Crawford</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Barbara Denham</div>
+                        <div class="name-entry-title">Senior Economist, Cities and Regions, Oxford Economics</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Linda Derrick</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Kathleen Dumes</div>
+                        <div class="name-entry-title">Vice President, Senior Investment Strategist, Bernstein Private Wealth Management</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Maggie Gregg</div>
+                        <div class="name-entry-title">Co-Chair, Fundraising &amp; Communications Committee; Chief People Officer, Nutrafol</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Sunsy Hong</div>
+                        <div class="name-entry-title">Managing Director, Head of Planning &amp; Experience, J.P. Morgan Wealth Management</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Natasha Robertson</div>
+                        <div class="name-entry-title">Partner, Norton Rose Fulbright</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Diane Sinti</div>
+                        <div class="name-entry-title">Co-Chair, Fundraising &amp; Communications Committee; Global Work re-Architected Leader &amp; Managing Director, Deloitte Consulting</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Kamiel Nawal Solomon</div>
+                        <div class="name-entry-title">Senior Program Manager, Recruitment to Retention, New York City Public Schools</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Karina Val</div>
+                        <div class="name-entry-title">Asset Management and Value Creation, Green Investments Group, Macquarie</div>
+                    </div>
+                    <div class="name-entry">
+                        <div class="name-entry-name">Natalie R. Williams</div>
+                        <div class="name-entry-title">Chair of Audit Committee; Managing Director &amp; Deputy General Counsel, Consumer &amp; Community Banking, JPMorgan Chase</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leadership-sub leadership-emeritus">
+                <div class="leadership-sub-label">Emeritus</div>
+                <div class="name-grid">
+                    <div class="name-entry">
+                        <div class="name-entry-name">Tracy Richelle High</div>
+                        <div class="name-entry-title">Partner, Sullivan &amp; Cromwell LLP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YPLC -->
+        <div class="leadership-group reveal">
+            <p class="eyebrow leadership-group-eyebrow">Young Professionals Leadership Council</p>
+            <div class="name-grid">
+                <div class="name-entry">
+                    <div class="name-entry-role">YPLC Chair</div>
+                    <div class="name-entry-name">Tracy Davis</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Angelica Lao</div>
+                    <div class="name-entry-title">PwC</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Cynthia Leal</div>
+                    <div class="name-entry-title">Deloitte</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Diane Taha</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Gloria Bui</div>
+                    <div class="name-entry-title">Macy's</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Helen Feng</div>
+                    <div class="name-entry-title">Oliver Wyman</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Jazmine Brite</div>
+                    <div class="name-entry-title">Google</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Jennifer McManus</div>
+                    <div class="name-entry-title">Apollo Global Management, Inc.</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Jianan Zhang</div>
+                    <div class="name-entry-title">Quantinno Capital Management</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Kaitlyn McConeghy</div>
+                    <div class="name-entry-title">BlackRock</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Maya Bedge</div>
+                    <div class="name-entry-title">McKinsey</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Mekala Keshu</div>
+                    <div class="name-entry-title">Tom Ford Fashion</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Monica Earle</div>
+                    <div class="name-entry-title">Duolingo</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Naeemah Rolle</div>
+                    <div class="name-entry-title">Nutrafol</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Nicola Bain</div>
+                    <div class="name-entry-title">CLA</div>
+                </div>
+                <div class="name-entry">
+                    <div class="name-entry-name">Rachel Torres</div>
+                    <div class="name-entry-title">PwC</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- START YOUR PAGE -->
+<section id="fundraise" class="section-pad">
+    <div class="container">
+        <div class="fundraise-header reveal">
+            <p class="eyebrow">The Future Is Now</p>
+            <h2 class="fundraise-title">Start Your Own Page</h2>
+            <p class="fundraise-sub">Set your own goal, rally your network, and raise funds for Girls Initiatives across New York City. Every page brings the future closer.</p>
+        </div>
+
+        <ul class="fundraise-steps">
+            <li class="fundraise-step reveal reveal-delay-1">
+                <span class="fundraise-step-num">01</span>
+                <span class="fundraise-step-text">Set your own goal and make it personal</span>
+            </li>
+            <li class="fundraise-step reveal reveal-delay-2">
+                <span class="fundraise-step-num">02</span>
+                <span class="fundraise-step-text">Share your page with your circle</span>
+            </li>
+            <li class="fundraise-step reveal reveal-delay-3">
+                <span class="fundraise-step-num">03</span>
+                <span class="fundraise-step-text">Watch your impact grow in real time</span>
+            </li>
+        </ul>
+
+        <div class="fundraise-progress reveal">
+            <div class="fundraise-progress-bar"><div class="fundraise-progress-fill"></div></div>
+            <div class="fundraise-progress-labels">
+                <span><strong>$189,000</strong> raised</span>
+                <span>Goal: <strong>$450,000</strong></span>
+            </div>
+        </div>
+
+        <div class="fundraise-form-placeholder reveal">
+            <span class="fundraise-form-label">Form goes here</span>
+            <span class="fundraise-form-note">Fundraising sign-up form will be embedded in this space.</span>
+        </div>
+
+        <div class="reveal">
+            <a href="#" class="btn">Start My Page</a>
+        </div>
+
+        <p class="fundraise-alt reveal">
+            Prefer to give directly?
+            <a href="#sponsorship">Support the Event</a> or
+            <a href="https://secure.qgiv.com/for/2026salute/" target="_blank" rel="noopener">make a gift</a>.
+        </p>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="section-pad">
+    <div class="container">
+        <div class="cta-inner">
+            <div class="cta-ornament" aria-hidden="true">◆◆◆</div>
+            <p class="eyebrow cta-eyebrow reveal">Join Salute 2026</p>
+            <h2 class="cta-title reveal reveal-delay-1">Be Part of Something Lasting</h2>
+            <div class="cta-buttons reveal reveal-delay-2">
+                <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+            </div>
+            <div class="cta-contact-block reveal reveal-delay-3">
+                <span class="cta-contact-name">Michael Yerdon</span>
+                Senior Director of Development and Communications · YWCA NYC<br>
+                <a href="mailto:myerdon@ywcanyc.org">myerdon@ywcanyc.org</a>
+                &ensp;·&ensp;
+                <a href="tel:2129378700">212-937-8700</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        <div class="footer-logo"><img src="./brand.assets/YWCA LOGO NO TAGLINE.png" alt="YWCA NYC"></div>
+        <div class="footer-mission">Eliminating Racism · Empowering Women</div>
+    </div>
+    <div class="footer-right">
+        &copy; 2026 YWCA of the City of New York &nbsp;·&nbsp; <a href="https://ywcanyc.org">ywcanyc.org</a>
+    </div>
+</footer>
+
+<script>
+    const faqs = [
+        { q: "When and where is Salute 2026?", a: "Salute 2026 will take place on Tuesday, October 13, 2026, at City Winery in New York City. The cocktail reception begins at 6:00 PM, followed by dinner and the awards program." },
+        { q: "What is the dress code?", a: "Business or cocktail attire." },
+        { q: "How do I purchase tickets or a sponsorship?", a: "You can purchase directly through this page, or contact Michael Yerdon at myerdon@ywcanyc.org or 212-937-8700 for tables, custom partnerships, or any questions." },
+        { q: "What is included with a sponsorship?", a: "Sponsorships range from $3,000 to $50,000 and include tickets or full tables, recognition in event materials and across YWCA NYC's website and communications, and varying levels of program ad space. Full details are listed in the Sponsorship Levels section above." },
+        { q: "Can I purchase a single ticket?", a: "Yes. Individual tickets are available at the Friend ($1,000), Early Bird ($750, through August 31), and Young Professional / Nonprofit Partner ($400) levels." },
+        { q: "Are dietary accommodations available?", a: "Yes. You will be asked about dietary needs during the ticket purchase process. For specific questions, please contact us directly." },
+        { q: "Is the venue accessible?", a: "City Winery is wheelchair accessible. If you have specific accessibility needs, please let us know in advance so we can ensure a smooth experience." },
+        { q: "Can I transfer my ticket to someone else?", a: "Yes. To transfer your ticket, email myerdon@ywcanyc.org with the name and contact information for your guest." },
+        { q: "What is your refund policy?", a: "Tickets and sponsorships are non-refundable but are fully tax-deductible to the extent allowed by law. If you are unable to attend, we encourage you to transfer your ticket or treat your purchase as a contribution to YWCA NYC's programs." },
+        { q: "Who do I contact with questions?", a: "Michael Yerdon, Senior Director of Development and Communications, at myerdon@ywcanyc.org or 212-937-8700." }
+    ];
+
+    const faqContainer = document.getElementById('faqContainer');
+    faqs.forEach(({ q, a }, i) => {
+        const item = document.createElement('div');
+        item.className = 'faq-item reveal' + (i < 3 ? ` reveal-delay-${i + 1}` : '');
+        item.innerHTML = `
+            <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question-text">${q}</span>
+                <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+            </button>
+            <div class="faq-body">
+                <div class="faq-body-inner">${a}</div>
+            </div>`;
+        const trigger = item.querySelector('.faq-trigger');
+        const body = item.querySelector('.faq-body');
+        const inner = item.querySelector('.faq-body-inner');
+        trigger.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => {
+                el.classList.remove('open');
+                el.querySelector('.faq-body').style.maxHeight = '0';
+                el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                body.style.maxHeight = inner.offsetHeight + 'px';
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+        faqContainer.appendChild(item);
+    });
+
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    // Mobile nav
+    const hamburger = document.getElementById('navHamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileNavClose');
+    hamburger.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    function closeMobileNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
+    mobileClose.addEventListener('click', closeMobileNav);
+
+    // Scroll reveals
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script>
+    var QGIV = 'https://secure.qgiv.com/for/2026salute/event/1011823/';
+    function openQgiv() { window.open(QGIV, 'qgiv', 'width=720,height=780,scrollbars=yes,resizable=yes'); }
+    document.querySelectorAll('.open-ticket-modal').forEach(function(el) {
+        el.addEventListener('click', function(e) { e.preventDefault(); openQgiv(); });
+    });
+    document.querySelectorAll('.ticket-strip-item').forEach(function(el) {
+        el.addEventListener('click', function() { openQgiv(); });
+    });
+</script>
+</body>
+</html>
