@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://api.fontshare.com">
-    <link href="https://api.fontshare.com/v2/css?f[]=zodiak@300,400,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=zodiak@700,400,1&display=swap" rel="stylesheet">
     <style>
         :root {
             /* 5-color palette */
@@ -142,23 +142,46 @@
         .nav-cta { background: var(--persimmon) !important; color: white !important; padding: 0.55rem 1.25rem; font-size: 0.65rem !important; }
         .nav-cta:hover { background: color-mix(in srgb, var(--persimmon) 80%, black) !important; transform: none !important; box-shadow: none !important; }
 
-        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-        .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: white; }
+        .nav-hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 5px;
+            cursor: pointer; padding: 4px; background: none; border: none; width: 32px; height: 32px;
+        }
+        .nav-hamburger span {
+            display: block; width: 24px; height: 1.5px; background: white;
+            transform-origin: center;
+            transition: transform 0.3s cubic-bezier(0.25,0,0,1), opacity 0.2s;
+        }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
         .nav-mobile {
-            display: none;
+            visibility: hidden; opacity: 0;
             position: fixed; inset: 0;
             z-index: 999;
-            background: var(--navy-deeper);
+            background:
+                radial-gradient(ellipse 90% 70% at 5% 5%, #1a2d6e 0%, transparent 55%),
+                radial-gradient(ellipse 70% 90% at 95% 95%, #2e0e3a 0%, transparent 55%),
+                linear-gradient(135deg, #0d1225 0%, #141d50 30%, #291448 65%, #3a0e30 100%);
             flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+            display: flex;
+            transition: opacity 0.3s cubic-bezier(0.25,0,0,1), visibility 0.3s;
         }
-        .nav-mobile.open { display: flex; }
-        .nav-mobile a { font-family: 'Source Sans 3', sans-serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: white; transition: color 0.2s; }
+        .nav-mobile[data-open="true"] { visibility: visible; opacity: 1; }
+        .nav-mobile a {
+            font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase; color: white;
+            opacity: 0; transform: translateY(12px);
+            transition: color 0.2s, opacity 0.3s cubic-bezier(0.25,0,0,1), transform 0.3s cubic-bezier(0.25,0,0,1);
+        }
+        .nav-mobile[data-open="true"] a:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.06s; }
+        .nav-mobile[data-open="true"] a:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.10s; }
+        .nav-mobile[data-open="true"] a:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
+        .nav-mobile[data-open="true"] a:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.18s; }
+        .nav-mobile[data-open="true"] a:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.22s; }
+        .nav-mobile[data-open="true"] a:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.26s; }
+        .nav-mobile[data-open="true"] a:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.30s; }
         .nav-mobile a:hover { color: var(--lavender); }
-        .nav-mobile-close {
-            position: absolute; top: 1.5rem; right: var(--gutter);
-            background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; opacity: 0.6;
-        }
 
         /* HERO */
         #hero {
@@ -213,7 +236,7 @@
         }
 
         .hero-pre {
-            font-size: 0.62rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase;
+            font-size: clamp(0.8rem, 0.6rem + 0.5vw, 1.0rem); font-weight: 600; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase;
             color: var(--ywca-orange); margin-bottom: 2.5rem;
             opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
         }
@@ -341,7 +364,7 @@
             background: rgba(255,255,255,0.045); border: 1px solid rgba(196,181,222,0.15); padding: 2.25rem;
             position: relative; transition: background 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.25,0,0,1);
         }
-        .tier-card:hover { background: rgba(196,181,222,0.08); border-color: rgba(196,181,222,0.35); transform: translateY(-4px); }
+        .tier-card:hover { border-color: rgba(196,181,222,0.35); transform: translateY(-4px); }
         .tier-card.featured { background: rgba(139,114,190,0.18); border-color: rgba(196,181,222,0.5); }
         .tier-card.featured::after { display: none; }
 
@@ -605,6 +628,63 @@
         .matrix-scroll-hint { display: none; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ywca-orange); text-align: center; margin-bottom: 0.75rem; }
         @media (max-width: 860px) { .matrix-scroll-hint { display: block; } }
 
+        /* TIER ACCORDION — mobile only */
+        .tier-accordion { display: none; flex-direction: column; gap: 0.6rem; margin-bottom: 0.5rem; }
+        @media (max-width: 860px) {
+            .tier-matrix-wrap { display: none; }
+            .matrix-scroll-hint { display: none; }
+            .tier-accordion { display: flex; }
+        }
+        .tier-card {
+            border: 1px solid rgba(27,33,80,0.45);
+            border-radius: 0;
+            background: white;
+            overflow: hidden;
+            transition: border-color 0.25s cubic-bezier(0.25,0,0,1);
+        }
+        .tier-card:hover, .tier-card[data-open="true"] { border-color: #fa3f20; }
+        .tier-card-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            width: 100%; padding: 0.85rem 1rem;
+            background: none; border: none; cursor: pointer; text-align: left;
+        }
+        .tier-card-header:focus-visible { outline: 2px solid rgba(27,33,80,0.35); outline-offset: -2px; }
+        .tier-card-name {
+            font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700;
+            color: #1b2150; flex: 1;
+        }
+        .tier-card-price {
+            font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700;
+            color: #fa3f20; letter-spacing: -0.01em; flex-shrink: 0;
+        }
+        .tier-acc-icon {
+            flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+            border: 1px solid rgba(19,35,91,0.25); display: grid; place-items: center;
+            color: var(--dark-navy); transition: background 0.25s, border-color 0.25s;
+        }
+        .tier-acc-icon svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.35s cubic-bezier(0.25,0,0,1); }
+        .tier-card-header[aria-expanded="true"] .tier-acc-icon { background: var(--dark-navy); border-color: var(--dark-navy); color: white; }
+        .tier-card-header[aria-expanded="true"] .tier-acc-icon svg { transform: rotate(45deg); }
+        .tier-card-panel {
+            display: grid; grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s cubic-bezier(0.25,0,0,1);
+        }
+        @media (prefers-reduced-motion: reduce) { .tier-card-panel { transition: none; } }
+        .tier-card-panel > ul {
+            overflow: hidden; margin: 0; padding: 0; list-style: none;
+        }
+        .tier-card[data-open="true"] .tier-card-panel { grid-template-rows: 1fr; }
+        .tier-benefit-row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            gap: 1rem; padding: 0.55rem 1rem;
+            border-top: 1px solid rgba(27,33,80,0.12);
+            font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem;
+        }
+        .tbr-label { color: rgba(27,33,80,0.5); flex-shrink: 0; }
+        .tbr-val   { color: #1b2150; text-align: right; }
+        .tbr-chk   { color: #fa3f20; font-size: 1rem; font-weight: 900; line-height: 1; }
+        .tbr-nil   { color: rgba(27,33,80,0.25); }
+
         /* TICKET BAND */
         .ticket-band {
             display: grid; grid-template-columns: repeat(3,1fr);
@@ -682,6 +762,7 @@
         .ticket-strip-name { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(19,35,91,0.45); margin-bottom: 0.6rem; }
         .ticket-strip-price { font-family: 'Zodiak', serif; font-size: clamp(1.4rem,2.2vw,1.9rem); font-weight: 700; color: var(--ywca-orange); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
         .ticket-strip-note { font-size: 0.78rem; color: var(--on-light-muted); line-height: 1.45; }
+        .ticket-strip-action { margin-top: 1rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); }
         @media (max-width: 600px) { .ticket-strip { grid-template-columns: 1fr; } }
         .sponsorship-deadline-inline { font-size: 0.82rem; color: var(--on-light-muted); text-align: left; margin-top: 1.25rem; }
         .sponsorship-deadline-inline strong { color: var(--dark-navy); font-weight: 700; }
@@ -714,21 +795,21 @@
         }
         @media (max-width: 600px) {
             .hero-ctas { flex-direction: column; width: 100%; max-width: 280px; }
-            .btn { width: 100%; }
+            .hero-ctas .btn { width: 100%; }
+            .nav-mobile .btn { width: auto; }
         }
     </style>
 </head>
 <body>
 
 <!-- MOBILE NAV -->
-<div class="nav-mobile" id="mobileNav">
-    <button class="nav-mobile-close" id="mobileNavClose" aria-label="Close menu">✕</button>
-    <a href="#about" onclick="closeMobileNav()">About</a>
-    <a href="#honorees" onclick="closeMobileNav()">Honorees</a>
-    <a href="#sponsorship" onclick="closeMobileNav()">Sponsorship</a>
-    <a href="#tickets" onclick="closeMobileNav()">Tickets</a>
-    <a href="#faq" onclick="closeMobileNav()">FAQ</a>
-    <a href="#cta" onclick="closeMobileNav()" class="btn btn-persimmon" style="margin-top:1rem;">Support the Event</a>
+<div class="nav-mobile" id="mobileNav" data-open="false" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="#about">About</a>
+    <a href="#honorees">Honorees</a>
+    <a href="#sponsorship">Sponsorship &amp; Tickets</a>
+    <a href="#faq">FAQ</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#sponsorship" class="btn btn-persimmon" style="margin-top:1rem;">Support Salute</a>
 </div>
 
 <!-- NAV -->
@@ -742,7 +823,7 @@
         <li><a href="#sponsorship">Sponsorship &amp; Tickets</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#sponsorship" class="nav-cta btn">Support the Event</a></li>
+        <li><a href="#sponsorship" class="nav-cta btn">Support Salute</a></li>
     </ul>
     <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -765,7 +846,7 @@
             <p class="hero-venue">City Winery · Pier 57, 25 11th Ave, New York, NY 10011</p>
             <p class="hero-subhead">For more than 50 years, Salute has brought together civic, corporate, and philanthropic leaders to build pathways for New York's next generation.</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+                <a href="#sponsorship" class="btn btn-persimmon">Support Salute</a>
             </div>
         </div>
         <div class="hero-scroll" aria-hidden="true">
@@ -911,6 +992,126 @@
             <p class="sponsorship-subtitle">Sponsorship is the most direct way to align your organization with YWCA NYC and gain visibility with leaders, funders, and partners across the city.</p>
         </div>
         <p class="matrix-scroll-hint">← Swipe to compare →</p>
+
+        <!-- MOBILE ACCORDION (hidden ≥ 861px) -->
+        <div class="tier-accordion" id="tierAccordion" aria-label="Sponsorship tiers">
+
+            <div class="tier-card" data-open="true">
+                <button class="tier-card-header" aria-expanded="true" aria-controls="tier-panel-1" id="tier-btn-1">
+                    <span class="tier-card-name">Changemaker</span>
+                    <span class="tier-card-price">$50,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-1" role="region" aria-labelledby="tier-btn-1">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">3 premium tables / 30 seats</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">2-page spread</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-val">Pre &amp; post feature</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-val">Premier / lead billing</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-chk">✓</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card" data-open="false">
+                <button class="tier-card-header" aria-expanded="false" aria-controls="tier-panel-2" id="tier-btn-2">
+                    <span class="tier-card-name">SHE-ro</span>
+                    <span class="tier-card-price">$25,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-2" role="region" aria-labelledby="tier-btn-2">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">2 premium tables / 20 seats</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">Full page</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card" data-open="false">
+                <button class="tier-card-header" aria-expanded="false" aria-controls="tier-panel-3" id="tier-btn-3">
+                    <span class="tier-card-name">Visionary</span>
+                    <span class="tier-card-price">$15,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-3" role="region" aria-labelledby="tier-btn-3">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">1 prestige table / 10 seats</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">Half page</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card" data-open="false">
+                <button class="tier-card-header" aria-expanded="false" aria-controls="tier-panel-4" id="tier-btn-4">
+                    <span class="tier-card-name">Catalyst</span>
+                    <span class="tier-card-price">$10,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-4" role="region" aria-labelledby="tier-btn-4">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">1 table / 10 seats</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">Quarter page</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card" data-open="false">
+                <button class="tier-card-header" aria-expanded="false" aria-controls="tier-panel-5" id="tier-btn-5">
+                    <span class="tier-card-name">Advocate</span>
+                    <span class="tier-card-price">$5,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-5" role="region" aria-labelledby="tier-btn-5">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">5 tickets</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">Listing</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card" data-open="false">
+                <button class="tier-card-header" aria-expanded="false" aria-controls="tier-panel-6" id="tier-btn-6">
+                    <span class="tier-card-name">Leader</span>
+                    <span class="tier-card-price">$3,000</span>
+                    <span class="tier-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="tier-card-panel" id="tier-panel-6" role="region" aria-labelledby="tier-btn-6">
+                    <ul>
+                        <li class="tier-benefit-row"><span class="tbr-label">Seating</span><span class="tbr-val">3 tickets</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Program Ad</span><span class="tbr-val">Listing</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Social Media</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Webpage, Signage &amp; Email</span><span class="tbr-chk">✓</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
+                        <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div><!-- /tier-accordion -->
+
         <div class="tier-matrix-wrap reveal">
             <table class="tier-matrix">
                 <thead>
@@ -999,21 +1200,28 @@
                 <div class="ticket-strip-name">Young Professional / Nonprofit Partner</div>
                 <div class="ticket-strip-price">$400</div>
                 <div class="ticket-strip-note">For guests 35 and under, or nonprofit sector partners.</div>
+                <!-- Ticket checkout: https://secure.qgiv.com/for/2026salute/event/1011823/ -->
+                <div class="ticket-strip-action">Get Tickets</div>
             </div>
             <div class="ticket-strip-item ticket-strip-featured">
                 <div class="ticket-strip-name">Early Bird</div>
                 <div class="ticket-strip-price">$750</div>
                 <div class="ticket-strip-note">Ends Aug 31, 2026 — save $250 before standard pricing begins.</div>
+                <!-- Ticket checkout: https://secure.qgiv.com/for/2026salute/event/1011823/ -->
+                <div class="ticket-strip-action">Get Tickets</div>
             </div>
             <div class="ticket-strip-item">
                 <div class="ticket-strip-name">Friend</div>
                 <div class="ticket-strip-price">$1,000</div>
                 <div class="ticket-strip-note">Full-support individual ticket.</div>
+                <!-- Ticket checkout: https://secure.qgiv.com/for/2026salute/event/1011823/ -->
+                <div class="ticket-strip-action">Get Tickets</div>
             </div>
         </div>
 
         <div class="sponsorship-btn-row reveal">
-            <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+            <!-- TODO: link to sponsorship commitment form -->
+            <a href="#" class="btn btn-persimmon">Sponsor Salute</a>
         </div>
     </div>
 </section>
@@ -1334,8 +1542,7 @@
 
         <p class="fundraise-alt reveal">
             Prefer to give directly?
-            <a href="#sponsorship">Support the Event</a> or
-            <a href="https://secure.qgiv.com/for/2026salute/" target="_blank" rel="noopener">make a gift</a>.
+            <a href="https://secure.qgiv.com/for/2026salute/event/1011823/" target="_blank" rel="noopener">Make a Gift</a>.
         </p>
     </div>
 </section>
@@ -1348,7 +1555,7 @@
             <p class="eyebrow cta-eyebrow reveal">Join Salute 2026</p>
             <h2 class="cta-title reveal reveal-delay-1">Be Part of Something Lasting</h2>
             <div class="cta-buttons reveal reveal-delay-2">
-                <a href="#" class="btn btn-persimmon open-ticket-modal">Support the Event</a>
+                <a href="#sponsorship" class="btn btn-persimmon">Support Salute</a>
             </div>
             <div class="cta-contact-block reveal reveal-delay-3">
                 <span class="cta-contact-name">Michael Yerdon</span>
@@ -1426,16 +1633,29 @@
     // Mobile nav
     const hamburger = document.getElementById('navHamburger');
     const mobileNav = document.getElementById('mobileNav');
-    const mobileClose = document.getElementById('mobileNavClose');
-    hamburger.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    function closeMobileNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
-    mobileClose.addEventListener('click', closeMobileNav);
+    function setOpen(open) {
+        hamburger.setAttribute('aria-expanded', open);
+        mobileNav.setAttribute('data-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', () => setOpen(mobileNav.dataset.open !== 'true'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
 
     // Scroll reveals
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Tier accordion (mobile)
+    document.querySelectorAll('.tier-card-header').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const open = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !open);
+            btn.closest('.tier-card').dataset.open = !open;
+        });
+    });
 </script>
 <script>
     var QGIV = 'https://secure.qgiv.com/for/2026salute/event/1011823/';
