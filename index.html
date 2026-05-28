@@ -107,8 +107,8 @@
         .btn-plum { background: var(--plum); color: white; }
         .btn-plum:hover { background: var(--plum-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139,114,190,0.35); }
 
-        .btn-lavender { background: var(--lavender); color: white; }
-        .btn-lavender:hover { background: var(--lavender-mid); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(207,192,250,0.4); }
+        .btn-lavender { background: var(--dark-navy); color: white; }
+        .btn-lavender:hover { background: var(--navy-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(19,35,91,0.3); }
 
         /* NAVIGATION */
         #nav {
@@ -617,9 +617,9 @@
 
         .fundraise-progress { margin-bottom: 2.75rem; }
         .fundraise-progress-bar { background: rgba(19,35,91,0.12); border-radius: 999px; height: 10px; overflow: hidden; }
-        .fundraise-progress-fill { background: var(--dark-navy); height: 100%; border-radius: 999px; width: 42%; }
+        .fundraise-progress-fill { background: var(--persimmon); height: 100%; border-radius: 999px; width: 42%; }
         .fundraise-progress-labels { display: flex; justify-content: space-between; margin-top: 0.6rem; font-size: 0.82rem; color: var(--on-light-muted); }
-        .fundraise-progress-labels strong { color: var(--dark-navy); font-weight: 700; }
+        .fundraise-progress-labels strong { color: var(--persimmon); font-weight: 700; }
 
         .fundraise-form-placeholder {
             background: repeating-linear-gradient(45deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6) 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 24px);
@@ -697,7 +697,7 @@
         .leadership-header { margin-bottom: 1.75rem; padding-top: 1rem; }
         .leadership-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.5rem; letter-spacing: -0.01em; }
         .leadership-title-rule { border: none; border-top: 1px solid rgba(19,35,91,0.18); margin: 0 0 0; }
-        .leadership-group { margin-bottom: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(19,35,91,0.12); }
+        .leadership-group { margin-bottom: 2rem; padding-top: 1.5rem; }
         .leadership-header + .leadership-group { border-top: none; padding-top: 0; }
         .leadership-group:last-child { margin-bottom: 0; }
         .leadership-group-eyebrow {
@@ -733,30 +733,34 @@
         @media (max-width: 860px) { .matrix-scroll-hint { display: block; } }
 
         /* TIER ACCORDION — mobile only */
-        .tier-accordion { display: none; flex-direction: column; gap: 0.6rem; margin-bottom: 0.5rem; }
+        .tier-accordion { display: none; flex-direction: column; gap: 0.5rem; }
         @media (max-width: 860px) {
             .tier-matrix-wrap { display: none; }
             .matrix-scroll-hint { display: none; }
             .tier-accordion { display: flex; }
         }
         .tier-card {
-            border: 1px solid rgba(27,33,80,0.45);
+            border: 1px solid rgba(19,35,91,0.22);
             border-radius: 0;
-            background: white;
+            background: rgba(19,35,91,0.04);
+            padding: 0;
             overflow: hidden;
-            transition: border-color 0.25s cubic-bezier(0.25,0,0,1);
+            transition: border-color 0.25s cubic-bezier(0.25,0,0,1), background 0.25s;
         }
-        .tier-card:hover, .tier-card[data-open="true"] { border-color: #fa3f20; }
+        .tier-card:hover { border-color: rgba(19,35,91,0.4); transform: none; }
+        .tier-card[data-open="true"] { border-color: var(--dark-navy); background: white; }
         .tier-card-header {
-            display: flex; align-items: center; gap: 0.75rem;
-            width: 100%; padding: 0.85rem 1rem;
+            display: flex; align-items: center; gap: 1rem;
+            width: 100%; padding: 1rem 1.25rem;
             background: none; border: none; cursor: pointer; text-align: left;
         }
-        .tier-card-header:focus-visible { outline: 2px solid rgba(27,33,80,0.35); outline-offset: -2px; }
+        .tier-card-header:focus-visible { outline: 2px solid var(--lavender); outline-offset: -2px; }
         .tier-card-name {
             font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700;
-            color: #1b2150; flex: 1;
+            color: rgba(19,35,91,0.45); flex: 1;
+            transition: color 0.2s;
         }
+        .tier-card[data-open="true"] .tier-card-name { color: var(--dark-navy); }
         .tier-card-price {
             font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700;
             color: #fa3f20; letter-spacing: -0.01em; flex-shrink: 0;
@@ -764,7 +768,7 @@
         .tier-acc-icon {
             flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
             border: 1px solid rgba(19,35,91,0.25); display: grid; place-items: center;
-            color: var(--dark-navy); transition: background 0.25s, border-color 0.25s;
+            color: rgba(19,35,91,0.4); transition: background 0.25s, border-color 0.25s, color 0.25s;
         }
         .tier-acc-icon svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.35s cubic-bezier(0.25,0,0,1); }
         .tier-card-header[aria-expanded="true"] .tier-acc-icon { background: var(--dark-navy); border-color: var(--dark-navy); color: white; }
@@ -775,12 +779,12 @@
         }
         @media (prefers-reduced-motion: reduce) { .tier-card-panel { transition: none; } }
         .tier-card-panel > ul {
-            overflow: hidden; margin: 0; padding: 0; list-style: none;
+            overflow: hidden; margin: 0; padding: 0 1rem; list-style: none;
         }
         .tier-card[data-open="true"] .tier-card-panel { grid-template-rows: 1fr; }
         .tier-benefit-row {
             display: flex; justify-content: space-between; align-items: baseline;
-            gap: 1rem; padding: 0.55rem 1rem;
+            gap: 1rem; padding: 0.55rem 0;
             border-top: 1px solid rgba(27,33,80,0.12);
             font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem;
         }
@@ -837,26 +841,77 @@
         .funds-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem,6vw,7rem); align-items: start; }
         .funds-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.25rem; letter-spacing: -0.01em; line-height: 1.1; }
         .funds-body { font-size: 0.95rem; line-height: 1.45; color: rgba(19,35,91,0.7); }
-        .funds-pillars { list-style: none; display: flex; flex-direction: column; gap: 0; }
-        .funds-pillar {
-            display: grid; grid-template-columns: 3.5rem 1fr;
-            align-items: stretch; border-bottom: 1px solid rgba(19,35,91,0.1);
-            transition: background 0.2s;
+        /* Programs tabs (desktop) / accordion (mobile) */
+        .programs-tab-list {
+            display: flex; gap: 0.35rem; align-items: flex-end;
+            border-bottom: 1px solid var(--dark-navy);
         }
-        .funds-pillar:first-child { border-top: 1px solid rgba(19,35,91,0.1); }
-        .funds-pillar:hover { background: rgba(19,35,91,0.025); }
-        .funds-pillar-num {
-            font-family: 'Zodiak', serif; font-size: 0.6rem; font-weight: 700;
-            color: var(--ywca-orange); letter-spacing: 0.08em;
-            padding: 1.5rem 1rem 1.5rem 0;
-            border-right: 1px solid rgba(19,35,91,0.1);
-            display: flex; align-items: center; justify-content: flex-end;
+        .programs-tab {
+            font-family: 'Zodiak', serif; font-size: 0.95rem; font-weight: 700;
+            color: rgba(19,35,91,0.4);
+            background: rgba(19,35,91,0.06);
+            border: 1px solid rgba(19,35,91,0.25);
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+            padding: 0.55rem 1.25rem;
+            cursor: pointer; text-align: left;
+            margin-bottom: -1px;
+            transition: color 0.2s, background 0.2s;
         }
-        .funds-pillar-name {
-            font-family: 'Zodiak', serif; font-size: 1.05rem; font-weight: 700;
-            color: var(--dark-navy); letter-spacing: -0.01em;
-            padding: 1.5rem 0 1.5rem 1.5rem;
-            display: flex; align-items: center;
+        .programs-tab:hover { color: var(--dark-navy); background: rgba(19,35,91,0.1); }
+        .programs-tab[aria-selected="true"] {
+            color: var(--dark-navy);
+            background: white;
+            border-color: var(--dark-navy);
+            border-bottom-color: white;
+        }
+        .programs-tab:focus-visible { outline: 2px solid var(--lavender); outline-offset: 2px; }
+        .programs-panel {
+            background: white;
+            border: 1px solid var(--dark-navy);
+            border-top: none;
+            padding: 2rem;
+            font-size: 1rem; line-height: 1.7; color: rgba(19,35,91,0.65);
+        }
+        .programs-panel[hidden] { display: none; }
+        .programs-acc { display: none; }
+        @media (max-width: 860px) {
+            .programs-tab-list { display: none; }
+            .programs-panel { display: none !important; }
+            .programs-acc { display: flex; flex-direction: column; gap: 0.5rem; }
+            .programs-acc-item {
+                border: 1px solid rgba(19,35,91,0.22);
+                background: rgba(19,35,91,0.04);
+                transition: background 0.25s cubic-bezier(0.25,0,0,1), border-color 0.25s;
+            }
+            .programs-acc-item[data-open="true"] {
+                background: white;
+                border-color: var(--dark-navy);
+            }
+            .programs-acc-btn {
+                width: 100%; display: flex; align-items: center; justify-content: space-between;
+                background: none; border: none; cursor: pointer; text-align: left;
+                padding: 1rem 1.25rem; gap: 1rem;
+                font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 700;
+                color: rgba(19,35,91,0.45); transition: color 0.2s;
+            }
+            .programs-acc-item[data-open="true"] .programs-acc-btn { color: var(--dark-navy); }
+            .programs-acc-icon {
+                flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+                border: 1px solid rgba(19,35,91,0.25); display: grid; place-items: center;
+                color: rgba(19,35,91,0.4); transition: background 0.25s, border-color 0.25s, color 0.25s;
+            }
+            .programs-acc-icon svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.35s cubic-bezier(0.25,0,0,1); }
+            .programs-acc-item[data-open="true"] .programs-acc-icon { background: var(--dark-navy); border-color: var(--dark-navy); color: white; }
+            .programs-acc-item[data-open="true"] .programs-acc-icon svg { transform: rotate(45deg); }
+            .programs-acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.25,0,0,1); }
+            .programs-acc-panel > div { overflow: hidden; }
+            .programs-acc-item[data-open="true"] .programs-acc-panel { grid-template-rows: 1fr; }
+            .programs-acc-panel-inner {
+                padding: 0.75rem 1.25rem 1.25rem;
+                border-top: 1px solid rgba(19,35,91,0.12);
+                font-size: 0.95rem; line-height: 1.6; color: rgba(19,35,91,0.65);
+            }
         }
         .funds-video { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
         .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; }
@@ -884,16 +939,17 @@
         .ticket-strip-note { font-size: 0.78rem; color: var(--on-light-muted); line-height: 1.45; }
         .ticket-strip-action { margin-top: 1rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); }
         .ticket-strip-rule { border: none; border-top: 1px solid rgba(19,35,91,0.15); margin: 1.25rem 0 0; }
-        .tier-sponsor-row { list-style: none; border-top: 1px solid rgba(19,35,91,0.1); margin-top: 0.5rem; padding: 0.9rem 1rem 0.25rem; }
+        .tier-sponsor-row { list-style: none; border-top: 1px solid rgba(19,35,91,0.1); margin-top: 0.5rem; padding: 0.9rem 0 0.25rem; }
         .tier-sponsor-link { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); text-decoration: none; transition: opacity 0.2s; cursor: pointer; display: inline-block; }
         .tier-sponsor-link:hover { opacity: 0.7; }
         @media (max-width: 600px) { .ticket-strip { grid-template-columns: 1fr; } }
         .sponsorship-deadline-inline { font-size: 0.82rem; color: var(--on-light-muted); text-align: left; margin-top: 1.25rem; padding-left: 1rem; }
-        .section-sub-divider { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark-navy); margin: 3.5rem 0 0.5rem; display: block; }
-        .section-sub-divider-rule { border: none; border-top: 2px solid var(--dark-navy); margin: 0 0 2rem; opacity: 0.6; }
+        .section-sub-divider { font-family: 'Zodiak', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; text-transform: none; color: var(--dark-navy); margin: 3.5rem 0 0.5rem; display: block; }
+        .section-sub-divider-rule { border: none; border-top: 1.5px solid var(--ywca-orange); margin: 0 0 2rem; }
         @media (max-width: 860px) { .sponsorship-deadline-inline { padding-left: 1.85rem; } }
         .sponsorship-deadline-inline strong { color: var(--dark-navy); font-weight: 700; }
         .sponsorship-btn-row { text-align: center; margin-top: 2rem; }
+        @media (max-width: 860px) { .sponsorship-btn-row { display: none; } }
 
 
         /* RESPONSIVE */
@@ -1039,8 +1095,8 @@
             <p class="eyebrow reveal">About the Event</p>
             <h2 class="about-title reveal reveal-delay-1">An Evening Supporting New York's Next Generation</h2>
             <div class="about-body reveal reveal-delay-2">
-                <p>Since 1858, YWCA NYC has worked to eliminate racism and advance opportunity. Salute is YWCA NYC's signature annual celebration and fundraiser. Every fall, hundreds of leaders from business, philanthropy, government, and community gather at City Winery to honor individuals and institutions building pathways for New York's next generation.</p>
-                <p>The 2026 program will recognize four honorees across four awards. The evening opens with a cocktail reception, followed by a seated dinner, awards program, and a live auction and paddle raise.</p>
+                <p>Since 1858, YWCA NYC has worked to eliminate racism and advance opportunity for women, girls, and families across New York City. Salute is our signature annual celebration and fundraiser, bringing together hundreds of leaders from business, philanthropy, government, and community to honor those building pathways for New York's next generation.</p>
+                <p>Guests will gather at City Winery for a cocktail reception, seated dinner, awards program, and live paddle raise, with opportunities to meet the students, staff, and volunteers who shape our work.</p>
             </div>
             <p class="eyebrow reveal" style="margin-top:2.5rem;">YWCA NYC by the Numbers</p>
             <div class="about-stats">
@@ -1062,30 +1118,55 @@
             <div>
                 <p class="eyebrow reveal">What Salute Funds</p>
                 <h2 class="funds-title reveal reveal-delay-1">Work That Reaches Every Borough</h2>
-                <p class="funds-body reveal reveal-delay-2">Salute funds year-round programming across five areas: leadership and life skills, career and financial readiness, social justice education and advocacy, academic support and enrichment, and health, wellness, and safety. This work reaches students from kindergarten through early career across all five boroughs.</p>
+                <p class="funds-body reveal reveal-delay-2">Salute funds year-round programming that reaches students from kindergarten through early career across all five boroughs.</p>
             </div>
-            <ul class="funds-pillars reveal reveal-delay-1">
-                <li class="funds-pillar">
-                    <span class="funds-pillar-num">01</span>
-                    <span class="funds-pillar-name">Leadership and Life Skills</span>
-                </li>
-                <li class="funds-pillar">
-                    <span class="funds-pillar-num">02</span>
-                    <span class="funds-pillar-name">Career and Financial Readiness</span>
-                </li>
-                <li class="funds-pillar">
-                    <span class="funds-pillar-num">03</span>
-                    <span class="funds-pillar-name">Social Justice Education and Advocacy</span>
-                </li>
-                <li class="funds-pillar">
-                    <span class="funds-pillar-num">04</span>
-                    <span class="funds-pillar-name">Academic Support and Enrichment</span>
-                </li>
-                <li class="funds-pillar">
-                    <span class="funds-pillar-num">05</span>
-                    <span class="funds-pillar-name">Health, Wellness, and Safety</span>
-                </li>
-            </ul>
+            <div class="programs-widget reveal reveal-delay-1">
+                <!-- Desktop tabs -->
+                <div class="programs-tab-list" role="tablist" aria-label="Programs">
+                    <button class="programs-tab" role="tab" aria-selected="true" aria-controls="prog-panel-1" id="prog-tab-1">Girls Initiatives</button>
+                    <button class="programs-tab" role="tab" aria-selected="false" aria-controls="prog-panel-2" id="prog-tab-2" tabindex="-1">After School Programs</button>
+                    <button class="programs-tab" role="tab" aria-selected="false" aria-controls="prog-panel-3" id="prog-tab-3" tabindex="-1">Girls Symposium</button>
+                </div>
+                <div class="programs-panel" id="prog-panel-1" role="tabpanel" aria-labelledby="prog-tab-1">
+                    <p>Prepares young women and gender-expansive youth to lead through advocacy, STEM, college and career readiness, entrepreneurship, and financial literacy.</p>
+                </div>
+                <div class="programs-panel" id="prog-panel-2" role="tabpanel" aria-labelledby="prog-tab-2" hidden>
+                    <p>Provides K–8 students with academic support, enrichment, trusted adult relationships, and a stable environment beyond the school day.</p>
+                </div>
+                <div class="programs-panel" id="prog-panel-3" role="tabpanel" aria-labelledby="prog-tab-3" hidden>
+                    <p>Brings hundreds of girls together for a citywide day of leadership, wellness, college and career exploration, and youth-led advocacy.</p>
+                </div>
+                <!-- Mobile accordion -->
+                <div class="programs-acc">
+                    <div class="programs-acc-item" data-open="true">
+                        <button class="programs-acc-btn" aria-expanded="true" aria-controls="prog-acc-1" id="prog-acc-btn-1">
+                            Girls Initiatives
+                            <span class="programs-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="programs-acc-panel" id="prog-acc-1" role="region" aria-labelledby="prog-acc-btn-1">
+                            <div><div class="programs-acc-panel-inner">Prepares young women and gender-expansive youth to lead through advocacy, STEM, college and career readiness, entrepreneurship, and financial literacy.</div></div>
+                        </div>
+                    </div>
+                    <div class="programs-acc-item" data-open="false">
+                        <button class="programs-acc-btn" aria-expanded="false" aria-controls="prog-acc-2" id="prog-acc-btn-2">
+                            After School Programs
+                            <span class="programs-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="programs-acc-panel" id="prog-acc-2" role="region" aria-labelledby="prog-acc-btn-2">
+                            <div><div class="programs-acc-panel-inner">Provides K–8 students with academic support, enrichment, trusted adult relationships, and a stable environment beyond the school day.</div></div>
+                        </div>
+                    </div>
+                    <div class="programs-acc-item" data-open="false">
+                        <button class="programs-acc-btn" aria-expanded="false" aria-controls="prog-acc-3" id="prog-acc-btn-3">
+                            Girls Symposium
+                            <span class="programs-acc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                        </button>
+                        <div class="programs-acc-panel" id="prog-acc-3" role="region" aria-labelledby="prog-acc-btn-3">
+                            <div><div class="programs-acc-panel-inner">Brings hundreds of girls together for a citywide day of leadership, wellness, college and career exploration, and youth-led advocacy.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="funds-video reveal">
             <div class="video-embed">
@@ -1184,7 +1265,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-chk">✓</span></li>
-                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Changemaker Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1224,7 +1305,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
-                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Visionary Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1244,7 +1325,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
-                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Catalyst Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1264,7 +1345,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-chk">✓</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
-                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become an Advocate Sponsor</a></li>
                     </ul>
                 </div>
             </div>
@@ -1284,7 +1365,7 @@
                         <li class="tier-benefit-row"><span class="tbr-label">FY26 Annual Report</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Girls Symposium Recognition</span><span class="tbr-nil">—</span></li>
                         <li class="tier-benefit-row"><span class="tbr-label">Custom Volunteer Opportunity</span><span class="tbr-nil">—</span></li>
-                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Sponsor</a></li>
+                        <li class="tier-sponsor-row"><a href="#" class="tier-sponsor-link qgiv-trigger">Become a Leader</a></li>
                     </ul>
                 </div>
             </div>
@@ -1561,7 +1642,7 @@
         <div class="faq-layout">
             <div class="faq-sidebar">
                 <p class="eyebrow reveal">Need to Know</p>
-                <h2 class="faq-sidebar-title reveal reveal-delay-1">FAQ</h2>
+                <h2 class="faq-sidebar-title reveal reveal-delay-1">Frequently Asked Questions</h2>
                 <div class="faq-below-contact reveal">
                     <div class="faq-below-card">
                         <p class="faq-below-header">If you have questions, please contact</p>
@@ -1800,9 +1881,9 @@
 <section id="fundraise" class="section-pad">
     <div class="container">
         <div class="fundraise-header reveal">
-            <p class="eyebrow">The Future Is Now</p>
-            <h2 class="fundraise-title">Start Your Own Page</h2>
-            <p class="fundraise-sub">Set your own goal, rally your network, and raise funds for Girls Initiatives across New York City. Every page brings the future closer.</p>
+            <p class="eyebrow">Rally Your Network</p>
+            <h2 class="fundraise-title">Start Your Own Fundraiser</h2>
+            <p class="fundraise-sub">Set your own goal, invite your friends and colleagues, and raise funds for YWCA NYC across the city. No gift is too small to make a difference.</p>
         </div>
 
         <ul class="fundraise-steps">
@@ -2016,6 +2097,39 @@
     });
     document.querySelectorAll('.ticket-strip-item').forEach(function(el) {
         el.addEventListener('click', function() { openQgiv(); });
+    });
+
+    // Programs tabs (desktop)
+    var progTabs = Array.from(document.querySelectorAll('.programs-tab'));
+    var progPanels = Array.from(document.querySelectorAll('.programs-panel'));
+    progTabs.forEach(function(tab, i) {
+        tab.addEventListener('click', function() {
+            progTabs.forEach(function(t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+            progPanels.forEach(function(p) { p.setAttribute('hidden',''); });
+            tab.setAttribute('aria-selected','true'); tab.setAttribute('tabindex','0');
+            progPanels[i].removeAttribute('hidden');
+        });
+        tab.addEventListener('keydown', function(e) {
+            var idx = i;
+            if (e.key === 'ArrowRight') idx = (i + 1) % progTabs.length;
+            else if (e.key === 'ArrowLeft') idx = (i - 1 + progTabs.length) % progTabs.length;
+            else return;
+            e.preventDefault();
+            progTabs[idx].focus(); progTabs[idx].click();
+        });
+    });
+
+    // Programs accordion (mobile)
+    document.querySelectorAll('.programs-acc-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.programs-acc-item');
+            var isOpen = item.dataset.open === 'true';
+            document.querySelectorAll('.programs-acc-item').forEach(function(el) {
+                el.dataset.open = 'false';
+                el.querySelector('.programs-acc-btn').setAttribute('aria-expanded','false');
+            });
+            if (!isOpen) { item.dataset.open = 'true'; btn.setAttribute('aria-expanded','true'); }
+        });
     });
 
     // Wire all support/donate buttons to open the Qgiv modal
