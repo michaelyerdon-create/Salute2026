@@ -45,6 +45,7 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Source Sans 3', 'Source Sans Pro', -apple-system, sans-serif;
+            font-weight: 500;
             color: var(--text-dark);
             background: var(--ivory);
             overflow-x: hidden;
@@ -55,7 +56,7 @@
         button { font-family: inherit; }
 
         .eyebrow {
-            font-size: 0.8rem;
+            font-size: 0.875rem;
             font-weight: 700;
             letter-spacing: 0.4em;
             text-transform: uppercase;
@@ -131,7 +132,7 @@
             border-bottom: 1px solid rgba(196,181,222,0.12);
         }
 
-        .nav-brand img { height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+        .nav-brand img { height: 32px; width: auto; opacity: 1; }
 
         .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
         .nav-links a {
@@ -260,7 +261,7 @@
         }
 
         .hero-pre {
-            font-size: clamp(0.8rem, 0.6rem + 0.5vw, 1.0rem); font-weight: 600; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase;
+            font-size: clamp(0.9rem, 0.675rem + 0.5625vw, 1.125rem); font-weight: 600; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase;
             color: var(--ywca-orange); margin-bottom: 2.5rem;
             opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
         }
@@ -296,16 +297,39 @@
 
         .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
 
-        .hero-scroll {
-            position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-            z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+        .scroll-cue {
+            position: absolute; bottom: 13px; left: 50%; transform: translateX(-50%);
+            z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 3px;
+            text-decoration: none;
             opacity: 0; animation: fadeIn 1s 2s forwards;
         }
-        .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(196,181,222,0.5), transparent); animation: scrollPulse 2.5s ease-in-out infinite; }
+        .scroll-cue__label {
+            font-size: 12px; letter-spacing: 0.14em; color: #FBF7EF;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+        }
+        .scroll-cue__chevrons {
+            display: flex; flex-direction: column; align-items: center; line-height: 0.5;
+            color: #E8633A; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.4));
+            animation: scrollCue 2.8s ease-in-out infinite;
+        }
+        .scroll-cue__chevrons svg:last-child { margin-top: -13px; }
+        .scroll-cue:focus-visible { outline: 2px solid #E8633A; outline-offset: 6px; border-radius: 4px; }
+        @keyframes scrollCue {
+            0%, 100% { opacity: 0.75; transform: translateY(0); }
+            50%      { opacity: 1;    transform: translateY(2px); }
+        }
+        @media (max-width: 640px) {
+            .scroll-cue { bottom: 18px; }
+            .scroll-cue__chevrons svg { width: 22px; height: 22px; }
+            .scroll-cue__chevrons svg:last-child { margin-top: -11px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-cue { animation: none; opacity: 1; }
+            .scroll-cue__chevrons { animation: none; opacity: 1; }
+        }
 
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes scrollPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.8; } }
 
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.25,0,0,1), transform 0.75s cubic-bezier(0.25,0,0,1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -341,7 +365,7 @@
         .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 3rem; }
         .stat { padding-left: 1.25rem; border-left: 2.5px solid rgba(19,35,91,0.25); }
         .stat-number { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.13rem); font-weight: 700; color: var(--dark-navy); line-height: 1; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
-        .stat-label { font-size: 0.85rem; font-weight: 400; line-height: 1.45; color: rgba(19,35,91,0.55); }
+        .stat-label { font-size: 1rem; font-weight: 500; line-height: 1.45; color: rgba(19,35,91,0.55); }
 
         /* HONOREES */
         #honorees { background: var(--dark-navy); position: relative; }
@@ -1078,12 +1102,16 @@
             <p class="hero-date">Tuesday, October 13, 2026 · 6:00–9:00 PM</p>
             <p class="hero-venue">City Winery · Pier 57 · NYC</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-persimmon qgiv-trigger">Support Salute</a>
+                <a href="#" class="btn btn-persimmon qgiv-trigger">Purchase</a>
             </div>
         </div>
-        <div class="hero-scroll" aria-hidden="true">
-            <div class="scroll-line"></div>
-        </div>
+        <a href="#about" class="scroll-cue" aria-label="Scroll to learn more">
+            <span class="scroll-cue__label">SCROLL</span>
+            <span class="scroll-cue__chevrons" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+        </a>
     </div>
 </section>
 
@@ -1201,7 +1229,7 @@
             </div>
             <div class="honoree-card reveal reveal-delay-3">
                 <div class="honoree-award-label">Award</div>
-                <div class="honoree-award-name">Dodge Distinguished Service Award</div>
+                <div class="honoree-award-name">Grace Hoadley Dodge Distinguished Service Award</div>
                 <div class="honoree-placeholder-row">
                     <div class="honoree-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                     <div>
@@ -1519,28 +1547,29 @@
                     <div class="legacy-row-date">October 22, 2025</div>
                     <div class="legacy-award-list">
                         <div class="legacy-award-item">
-                            <div class="legacy-award-label">Changemaker Champion Award</div>
-                            <div class="legacy-award-name">Dr. Patricia Campos-Medina</div>
-                            <div class="legacy-award-affiliation">Workers' Institute at Cornell University</div>
-                        </div>
-                        <div class="legacy-award-item">
                             <div class="legacy-award-label">Corporate Leadership Award</div>
                             <div class="legacy-award-name">Tameka Alsop</div>
                             <div class="legacy-award-affiliation">Moody's</div>
                         </div>
                         <div class="legacy-award-item">
+                            <div class="legacy-award-label">Changemaker Champion Award</div>
+                            <div class="legacy-award-name">Dr. Patricia Campos-Medina</div>
+                            <div class="legacy-award-affiliation">Workers' Institute at Cornell University</div>
+                        </div>
+                        <div class="legacy-award-item">
+                            <div class="legacy-award-label">Grace Hoadley Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Hon. Kathy Hochul</div>
+                            <div class="legacy-award-affiliation">Governor of the State of New York</div>
+                        </div>
+                        <div class="legacy-award-item">
                             <div class="legacy-award-label">Philanthropy Champion Award</div>
                             <div class="legacy-award-name">Reshma Saujani</div>
+                            <div class="legacy-award-affiliation">Moms First</div>
                         </div>
                         <div class="legacy-award-item">
                             <div class="legacy-award-label">Emerging Leader Award</div>
                             <div class="legacy-award-name">Cora Walker</div>
                             <div class="legacy-award-affiliation">Con Edison</div>
-                        </div>
-                        <div class="legacy-award-item">
-                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
-                            <div class="legacy-award-name">Hon. Kathy Hochul</div>
-                            <div class="legacy-award-affiliation">Governor of the State of New York</div>
                         </div>
                     </div>
                 </div>
@@ -1569,13 +1598,13 @@
                     <div class="legacy-row-date">October 23, 2024</div>
                     <div class="legacy-award-list">
                         <div class="legacy-award-item">
+                            <div class="legacy-award-label">Grace Hoadley Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Majora Carter</div>
+                        </div>
+                        <div class="legacy-award-item">
                             <div class="legacy-award-label">Changemaker Champion Award</div>
                             <div class="legacy-award-name">Natalie Edwards</div>
                             <div class="legacy-award-affiliation">National Grid</div>
-                        </div>
-                        <div class="legacy-award-item">
-                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
-                            <div class="legacy-award-name">Majora Carter</div>
                         </div>
                         <div class="legacy-award-item">
                             <div class="legacy-award-label">Emerging Leader Award</div>
@@ -1614,14 +1643,14 @@
                             <div class="legacy-award-affiliation">AllianceBernstein</div>
                         </div>
                         <div class="legacy-award-item">
+                            <div class="legacy-award-label">Grace Hoadley Dodge Distinguished Service Award</div>
+                            <div class="legacy-award-name">Sarah Gund</div>
+                            <div class="legacy-award-affiliation">Educator and Philanthropist</div>
+                        </div>
+                        <div class="legacy-award-item">
                             <div class="legacy-award-label">Philanthropy Champion Award</div>
                             <div class="legacy-award-name">Tracy Richelle High</div>
                             <div class="legacy-award-affiliation">Sullivan &amp; Cromwell, LLP</div>
-                        </div>
-                        <div class="legacy-award-item">
-                            <div class="legacy-award-label">Dodge Distinguished Service Award</div>
-                            <div class="legacy-award-name">Sarah Gund</div>
-                            <div class="legacy-award-affiliation">Educator and Philanthropist</div>
                         </div>
                     </div>
                 </div>
@@ -1967,7 +1996,7 @@
 <script>
     const faqs = [
         { q: "When and where is Salute 2026?", a: "Salute 2026 will take place on Tuesday, October 13, 2026, at City Winery in New York City. The cocktail reception begins at 6:00 PM, followed by dinner and the awards program." },
-        { q: "What is the dress code?", a: "Business or cocktail attire." },
+        { q: "What is the dress code?", a: "Cocktail attire." },
         { q: "How do I purchase tickets or a sponsorship?", a: "You can purchase directly through this page, or contact YWCA NYC's Development office at <a href=\"mailto:development@ywcanyc.org\">development@ywcanyc.org</a> or <a href=\"tel:+12127554500\">212-755-4500</a> for tables, custom partnerships, or any questions." },
         { q: "Can I purchase a single ticket?", a: "Yes. Individual tickets are available at the Friend ($1,000), Early Bird ($750, through August 31), and Young Professional / Nonprofit Partner ($400) levels." },
         { q: "What if I can't attend but still want to support?", a: "You're welcome to make a direct gift in any amount. Contributions support YWCA NYC's year-round programs for young people and families across New York City. All gifts are fully tax-deductible. <a href=\"#\" class=\"qgiv-trigger\">Give Online</a>." },
