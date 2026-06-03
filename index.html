@@ -136,13 +136,13 @@
 
         .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
         .nav-links a {
-            font-size: 0.7rem; font-weight: 600;
+            font-size: 0.75rem; font-weight: 600;
             letter-spacing: 0.18em; text-transform: uppercase;
             color: rgba(255,255,255,0.7);
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--lavender); }
-        .nav-cta { background: var(--persimmon) !important; color: white !important; padding: 0.55rem 1.25rem; font-size: 0.65rem !important; font-weight: 700 !important; }
+        .nav-cta { background: var(--persimmon) !important; color: white !important; padding: 0.55rem 1.25rem; font-size: 0.75rem !important; font-weight: 700 !important; }
         .nav-cta:hover { background: color-mix(in srgb, var(--persimmon) 80%, black) !important; transform: none !important; box-shadow: none !important; }
 
         .nav-attend-btn {
@@ -610,8 +610,8 @@
         .faq-sidebar-contact { background: white; padding: 1.75rem; border-left: 3px solid var(--dark-navy); }
         .faq-contact-name { font-family: 'Zodiak', serif; font-size: 1rem; font-weight: 600; color: var(--dark-navy); margin-bottom: 0.25rem; }
         .faq-contact-title { font-size: 0.78rem; color: var(--text-light); margin-bottom: 1.25rem; line-height: 1.45; }
-        .faq-contact-link { display: flex; align-items: center; gap: 0.625rem; font-size: 0.82rem; color: var(--plum); transition: color 0.2s; margin-bottom: 0.5rem; }
-        .faq-contact-link:hover { color: var(--plum-dark); }
+        .faq-contact-link { display: flex; align-items: center; gap: 0.625rem; font-size: 0.82rem; color: var(--persimmon); transition: color 0.2s; margin-bottom: 0.5rem; }
+        .faq-contact-link:hover { color: color-mix(in srgb, var(--persimmon) 80%, black); }
         .faq-contact-link svg { width: 14px; height: 14px; flex-shrink: 0; stroke: currentColor; fill: none; }
 
         .faq-items { display: flex; flex-direction: column; }
@@ -715,8 +715,9 @@
         .footer-right { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
         .footer-right a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
         .footer-right a:hover { color: var(--lavender); }
-        .footer-social { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
+        .footer-social { display: flex; align-items: center; justify-content: center; gap: 1.75rem; margin-top: 2.5rem; }
         .footer-social-link { color: rgba(255,255,255,0.35); transition: color 0.2s; display: flex; align-items: center; line-height: 1; }
+        .footer-social-link svg { width: 24px; height: 24px; }
         .footer-social-link:hover { color: var(--lavender); }
 
         /* LEADERSHIP */
@@ -1054,6 +1055,67 @@
 
         /* Item 9: start my page button left-aligned on mobile */
         .fundraise-btn-row { text-align: center; margin-top: 2rem; }
+
+        /* Constant Contact signup lightbox */
+        .cc-modal { position: fixed; inset: 0; z-index: 100000000; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+        .cc-modal[data-open="true"] { display: flex; }
+        .cc-modal-overlay { position: absolute; inset: 0; background: rgba(13,18,37,0.72); backdrop-filter: blur(4px); opacity: 0; animation: ccFade 0.25s ease forwards; }
+        .cc-modal-panel {
+            position: relative; z-index: 1; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto;
+            background: var(--cream); border-radius: 14px; padding: 2.75rem 2.25rem 2.25rem;
+            box-shadow: 0 30px 80px rgba(13,18,37,0.45), 0 4px 16px rgba(13,18,37,0.25);
+            border-top: 4px solid var(--persimmon);
+            opacity: 0; transform: translateY(12px); animation: ccRise 0.32s cubic-bezier(0.25,0,0,1) 0.04s forwards;
+        }
+        .cc-modal-close {
+            position: absolute; top: 0.85rem; right: 0.85rem; width: 2.25rem; height: 2.25rem; border-radius: 50%;
+            border: none; background: rgba(19,35,91,0.06); color: var(--dark-navy); font-size: 1.5rem; line-height: 1;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.2s;
+        }
+        .cc-modal-close:hover { background: rgba(19,35,91,0.12); }
+        .cc-modal-close:active { transform: scale(0.94); }
+        .cc-modal-close:focus-visible { outline: 2px solid var(--persimmon); outline-offset: 2px; }
+        .cc-modal-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--persimmon); margin-bottom: 0.6rem; }
+        .cc-modal-title { font-family: 'Zodiak', serif; font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 700; color: var(--dark-navy); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+        .cc-modal-sub { font-size: 0.95rem; line-height: 1.5; color: var(--on-light-muted); margin-bottom: 1.5rem; }
+        .cc-form-mount { min-height: 60px; }
+        /* Brand styling for the Constant Contact form inside the lightbox */
+        .cc-form-mount .ctct-form-custom { font-family: 'Source Sans 3', sans-serif !important; }
+        /* Hide CC's own title/description — the lightbox already provides them */
+        .cc-form-mount .ctct-form-header,
+        .cc-form-mount .ctct-form-text { display: none !important; }
+        .cc-form-mount .ctct-form-field { margin-bottom: 1rem !important; }
+        .cc-form-mount .ctct-form-label {
+            font-size: 0.75rem !important; font-weight: 600 !important; letter-spacing: 0.06em !important;
+            text-transform: uppercase !important; color: var(--on-light-muted) !important; margin-bottom: 0.35rem !important; display: block !important;
+        }
+        .cc-form-mount .ctct-form-required::before { color: var(--persimmon) !important; }
+        .cc-form-mount .ctct-form-element {
+            width: 100% !important; box-sizing: border-box !important; padding: 0.7rem 0.85rem !important;
+            font-size: 0.95rem !important; font-family: inherit !important; color: var(--dark-navy) !important;
+            background: #fff !important; border: 1px solid rgba(19,35,91,0.18) !important; border-radius: 8px !important;
+            transition: border-color 0.2s, box-shadow 0.2s !important;
+        }
+        .cc-form-mount .ctct-form-element:focus {
+            outline: none !important; border-color: var(--persimmon) !important; box-shadow: 0 0 0 3px rgba(243,58,26,0.12) !important;
+        }
+        .cc-form-mount .ctct-form-button {
+            width: 100% !important; margin-top: 0.5rem !important; padding: 0.8rem 1.5rem !important;
+            font-family: inherit !important; font-size: 0.8rem !important; font-weight: 700 !important;
+            letter-spacing: 0.1em !important; text-transform: uppercase !important; color: #fff !important;
+            background: var(--persimmon) !important; border: none !important; border-radius: 8px !important;
+            cursor: pointer !important; transition: background 0.2s, transform 0.2s !important;
+        }
+        .cc-form-mount .ctct-form-button:hover { background: color-mix(in srgb, var(--persimmon) 82%, black) !important; }
+        .cc-form-mount .ctct-form-button:active { transform: scale(0.99) !important; }
+        .cc-form-mount .ctct-gdpr-text,
+        .cc-form-mount .ctct-form-footer-link { font-size: 0.68rem !important; line-height: 1.5 !important; color: rgba(19,35,91,0.4) !important; }
+        .cc-form-mount .ctct-form-footer-link { color: var(--persimmon) !important; }
+        @keyframes ccFade { to { opacity: 1; } }
+        @keyframes ccRise { to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) {
+            .cc-modal-overlay, .cc-modal-panel { animation-duration: 0.01s; }
+        }
     </style>
 </head>
 <body>
@@ -1250,7 +1312,7 @@
                 </div>
             </div>
         </div>
-        <p class="honorees-update-note reveal">Honoree announcements coming soon. <a href="#cta">Sign up for updates.</a></p>
+        <p class="honorees-update-note reveal">Honoree announcements coming soon. <a href="#" class="cc-signup-trigger">Sign up for updates.</a></p>
     </div>
 </section>
 
@@ -1258,9 +1320,9 @@
 <section id="sponsorship" class="section-pad">
     <div class="container">
         <div class="sponsorship-header reveal">
-            <p class="eyebrow sponsorship-eyebrow">Sponsor Salute 2026</p>
+            <p class="eyebrow sponsorship-eyebrow">Be Part of Salute 2026</p>
             <h2 class="sponsorship-title">Support the Event</h2>
-            <p class="sponsorship-subtitle">Sponsorship is the most direct way to stand with YWCA NYC and connect with leaders, funders, and partners across the city.</p>
+            <p class="sponsorship-subtitle">Sponsorship is the most direct way to stand with YWCA NYC and connect with civic, corporate, and philanthropic leaders across the city.</p>
         </div>
         <span class="section-sub-divider">Sponsorship Levels</span>
         <hr class="section-sub-divider-rule">
@@ -1504,6 +1566,9 @@
                 <hr class="ticket-strip-rule">
             </div>
         </div>
+
+        <span class="section-sub-divider">Make a Donation</span>
+        <hr class="section-sub-divider-rule">
 
         <p class="give-callout reveal">Can't make it this year? A direct gift goes just as far. <a href="#" class="give-callout-link qgiv-trigger">Make a Gift</a> to support YWCA NYC programs year-round.</p>
 
@@ -1955,6 +2020,23 @@
     <script>(function(w, d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://secure.qgiv.com/resources/core/js/embed.js";fjs.parentNode.insertBefore(js, fjs);})(window, document, 'script', 'qgiv-embedjs');</script>
 </div>
 
+<!-- SIGN UP FOR UPDATES — Constant Contact lightbox -->
+<div class="cc-modal" id="ccModal" data-open="false" role="dialog" aria-modal="true" aria-labelledby="ccModalTitle">
+    <div class="cc-modal-overlay" data-cc-close></div>
+    <div class="cc-modal-panel">
+        <button type="button" class="cc-modal-close" aria-label="Close" data-cc-close>&times;</button>
+        <p class="cc-modal-eyebrow">Salute 2026</p>
+        <h2 class="cc-modal-title" id="ccModalTitle">Stay in the Loop</h2>
+        <p class="cc-modal-sub">Be the first to hear when honorees, sponsors, and ticket details are announced.</p>
+        <div class="cc-form-mount">
+            <!-- Begin Constant Contact Active Forms -->
+            <script> var _ctct_m = "65347394365c10ea53532ebe69ca1042"; </script>
+            <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+            <!-- End Constant Contact Active Forms -->
+        </div>
+    </div>
+</div>
+
 <!-- FINAL CTA -->
 <section id="cta" class="section-pad">
     <div class="container">
@@ -2002,7 +2084,7 @@
         { q: "What if I can't attend but still want to support?", a: "You're welcome to make a direct gift in any amount. Contributions support YWCA NYC's year-round programs for young people and families across New York City. All gifts are fully tax-deductible. <a href=\"#\" class=\"qgiv-trigger\">Give Online</a>." },
         { q: "Are dietary accommodations available?", a: "Yes. After your ticket is confirmed, our team will follow up to gather dietary needs along with your seating details. For specific questions, please contact us directly." },
         { q: "Is the venue accessible?", a: "City Winery is wheelchair accessible. If you have specific accessibility needs, please let us know in advance so we can ensure a smooth experience." },
-        { q: "Can I transfer my ticket to someone else?", a: "Yes. To transfer your ticket, email myerdon@ywcanyc.org with the name and contact information for your guest." },
+        { q: "Can I transfer my ticket to someone else?", a: "Yes. To transfer your ticket, email <a href=\"mailto:development@ywcanyc.org\">development@ywcanyc.org</a> with the name and contact information for your guest." },
         { q: "What is your refund policy?", a: "Tickets and sponsorships are non-refundable but are fully tax-deductible to the extent allowed by law. If you are unable to attend, we encourage you to transfer your ticket or treat your purchase as a contribution to YWCA NYC's programs." }
     ];
 
@@ -2173,6 +2255,21 @@
         var loader = document.getElementById('qgiv-load-modal-91416');
         if (loader) loader.click();
     });
+
+    // Constant Contact "Sign up for updates" lightbox
+    (function() {
+        var ccModal = document.getElementById('ccModal');
+        if (!ccModal) return;
+        function openCC() { ccModal.setAttribute('data-open', 'true'); document.body.style.overflow = 'hidden'; }
+        function closeCC() { ccModal.setAttribute('data-open', 'false'); document.body.style.overflow = ''; }
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.cc-signup-trigger')) { e.preventDefault(); openCC(); return; }
+            if (e.target.closest('[data-cc-close]')) { closeCC(); }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && ccModal.getAttribute('data-open') === 'true') closeCC();
+        });
+    })();
 
     // Qgiv modal enhancements: close button + scrollable iframe
     (function() {
