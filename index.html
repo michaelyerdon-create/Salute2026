@@ -1081,6 +1081,8 @@
         .cc-form-mount { min-height: 60px; }
         /* Brand styling for the Constant Contact form inside the lightbox */
         .cc-form-mount .ctct-form-custom { font-family: 'Source Sans 3', sans-serif !important; }
+        /* Flatten CC's white inner card so the form blends into the cream lightbox panel */
+        .cc-form-mount .ctct-form-defaults { background: transparent !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
         /* Hide CC's own title/description — the lightbox already provides them */
         .cc-form-mount .ctct-form-header,
         .cc-form-mount .ctct-form-text { display: none !important; }
@@ -2028,11 +2030,9 @@
         <p class="cc-modal-eyebrow">Salute 2026</p>
         <h2 class="cc-modal-title" id="ccModalTitle">Stay in the Loop</h2>
         <p class="cc-modal-sub">Be the first to hear when honorees, sponsors, and ticket details are announced.</p>
-        <div class="cc-form-mount">
-            <!-- Begin Constant Contact Active Forms -->
-            <script> var _ctct_m = "65347394365c10ea53532ebe69ca1042"; </script>
-            <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
-            <!-- End Constant Contact Active Forms -->
+        <div class="cc-form-mount" id="ccFormMount">
+            <!-- Constant Contact inline form target; widget script is loaded on first open (so it renders in a visible container) -->
+            <div class="ctct-inline-form" data-form-id="828fd4f1-7b88-4aa2-957b-0e1c6e3af9f6"></div>
         </div>
     </div>
 </div>
@@ -2260,7 +2260,25 @@
     (function() {
         var ccModal = document.getElementById('ccModal');
         if (!ccModal) return;
-        function openCC() { ccModal.setAttribute('data-open', 'true'); document.body.style.overflow = 'hidden'; }
+        var ccLoaded = false;
+        // The CC widget skips rendering into a display:none container, so load it on first
+        // open — when the lightbox is visible — and let it inject the form into the mount.
+        function loadCCForm() {
+            if (ccLoaded) return;
+            ccLoaded = true;
+            window._ctct_m = '65347394365c10ea53532ebe69ca1042';
+            var mount = document.getElementById('ccFormMount');
+            var s = document.createElement('script');
+            s.id = 'signupScript';
+            s.async = true; s.defer = true;
+            s.src = 'https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js';
+            mount.appendChild(s);
+        }
+        function openCC() {
+            ccModal.setAttribute('data-open', 'true');
+            document.body.style.overflow = 'hidden';
+            loadCCForm();
+        }
         function closeCC() { ccModal.setAttribute('data-open', 'false'); document.body.style.overflow = ''; }
         document.addEventListener('click', function(e) {
             if (e.target.closest('.cc-signup-trigger')) { e.preventDefault(); openCC(); return; }
