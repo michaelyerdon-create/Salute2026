@@ -391,7 +391,7 @@
         .honoree-avatar svg { width: 24px; height: 24px; stroke: var(--dark-navy); fill: none; opacity: 0.4; }
         .honoree-name-tba { font-family: 'Zodiak', serif; font-size: 1rem; font-style: italic; color: var(--on-light-muted); margin-bottom: 0.25rem; }
         .honoree-soon { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(19,35,91,0.35); }
-        .honorees-update-note { text-align: center; margin-top: 3rem; font-size: 0.875rem; font-style: italic; color: var(--on-dark-muted); }
+        .honorees-update-note { text-align: left; margin-top: 3rem; font-size: 0.875rem; font-style: italic; color: var(--on-dark-muted); }
         .honorees-update-note a { color: var(--ywca-orange); border-bottom: 1px solid rgba(243,58,26,0.3); }
         .honorees-date { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); margin-top: 0.6rem; }
         .honorees-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
@@ -1338,7 +1338,8 @@
             <h2 class="honorees-title">Meet the 2026 Honorees</h2>
             <p class="honorees-subtitle">Salute honors leaders whose work advances opportunity for women, girls, and communities across the city.</p>
         </div>
-        <div class="honorees-grid">
+        <!-- Honoree cards temporarily hidden — not ready to announce. Remove the inline style to re-enable. -->
+        <div class="honorees-grid" style="display:none" aria-hidden="true">
             <div class="honoree-card reveal reveal-delay-1">
                 <div class="honoree-award-label">Award</div>
                 <div class="honoree-award-name">Changemaker Champion</div>
@@ -2056,8 +2057,8 @@
     </div>
 </section>
 
-<!-- START YOUR PAGE -->
-<section id="fundraise" class="section-pad">
+<!-- START YOUR PAGE — temporarily hidden, not ready to share publicly. Remove the inline style to re-enable. -->
+<section id="fundraise" class="section-pad" style="display:none" aria-hidden="true">
     <div class="container">
         <div class="fundraise-header reveal">
             <p class="eyebrow">Rally Your Network</p>
