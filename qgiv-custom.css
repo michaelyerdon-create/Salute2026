@@ -1,0 +1,504 @@
+/* ============================================================
+   YWCA NYC — Salute Gala 2026 P2P  ·  Qgiv custom CSS (consolidated)
+   Shared field for form 1078015: microsite (hobnob) + P2P registration app.
+   - @import lines must stay at the very top.
+   - Also set theme Primary Color #13235B and Thermometer color #F33A1A.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=zodiak@800,700,400,1&display=swap');
+
+:root{
+  --navy:#13235B; --navy-deep:#0D1225; --navy-soft:#1d3576;
+  --orange:#F33A1A; --orange-dark:#C72E13;
+  --cream:#F3EDE5; --pale-orange:#FCE6C5;
+  --ink:#13235B; --muted:rgba(19,35,91,.62); --hairline:rgba(19,35,91,.14);
+}
+
+/* ============================================================
+   MICROSITE (hobnob theme)
+   ============================================================ */
+
+/* Base */
+.page-container,.qgiv-widget-container,body{font-family:'Source Sans 3',-apple-system,sans-serif!important;color:var(--ink)}
+.page-container{background-color:var(--cream)!important}
+.event-body,.event-content{color:var(--ink)}
+
+/* Headings -> Zodiak */
+h1,h2,h3,h4,.title,
+.heading-alpha,.heading-beta,.heading-gamma,.heading-delta,.heading-epsilon,.widget-title{
+  font-family:'Zodiak',Georgia,serif!important;font-weight:700!important;letter-spacing:-.01em!important;color:var(--navy)!important}
+
+/* Top utility bar */
+.global-bar.ui-primary-color{background-color:var(--navy-deep)!important}
+.global-bar .nav-item-label,.global-bar a{color:rgba(255,255,255,.85)!important}
+
+/* Primary color hooks -> navy */
+.ui-primary-color{background-color:var(--navy)!important}
+.ui-text-primary-color{color:var(--navy)!important}
+.ui-border-primary-color{border-color:var(--navy)!important}
+.ui-primary-color-darken-5,.ui-primary-color-darken-10,.ui-primary-color-darken-15,.ui-primary-color-darken-20{background-color:var(--navy-deep)!important}
+.ui-primary-color-lighten-5,.ui-primary-color-lighten-10,.ui-primary-color-lighten-15,.ui-primary-color-lighten-20{background-color:var(--navy-soft)!important}
+.ui-application-primary-color,a.ui-application-primary-color{color:var(--orange)!important}
+
+/* Event header */
+.event-header .header-image-container.no-image{
+  min-height:150px!important;
+  background:
+    radial-gradient(ellipse 90% 80% at 8% 10%,#1a2d6e 0%,transparent 58%),
+    radial-gradient(ellipse 70% 90% at 95% 95%,#2e0e3a 0%,transparent 58%),
+    linear-gradient(135deg,#0d1225 0%,#141d50 35%,#291448 70%,#3a0e30 100%)!important}
+.event-header-info{background:var(--cream)!important}
+.event-title-container .title{font-size:2rem!important;line-height:1.1!important}
+.event-meta{font-size:.72rem!important;font-weight:700!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--orange)!important}
+.avatar.ui-border-primary-color{border-color:var(--orange)!important}
+.user-avatar-placeholder.ui-primary-color{background-color:var(--navy)!important}
+.user-avatar-label{letter-spacing:.16em!important}
+
+/* Main navigation */
+.main-navigation .nav-item-link{font-size:.75rem!important;font-weight:600!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--navy)!important;transition:color .2s ease!important}
+.main-navigation .nav-item-link:hover{color:var(--orange)!important}
+
+/* Buttons — shared shape */
+.ui-button{border-radius:0!important;font-family:'Source Sans 3',sans-serif!important;font-size:.7rem!important;font-weight:700!important;letter-spacing:.2em!important;text-transform:uppercase!important;transition:background-color .25s ease,transform .2s ease,box-shadow .25s ease!important}
+.ui-button:hover{transform:translateY(-2px)!important}
+.ui-button:focus-visible{outline:2px solid var(--orange)!important;outline-offset:3px!important}
+
+/* Secondary / tertiary -> navy */
+.ui-button.ui-secondary-color,.ui-button.secondary,.ui-button.tertiary{background-color:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important}
+.ui-button.ui-secondary-color:hover,.ui-button.secondary:hover,.ui-button.tertiary:hover{background-color:var(--navy-deep)!important;box-shadow:0 10px 26px rgba(19,35,91,.30)!important}
+
+/* Campaign action buttons (Make a Donation / Register) -> navy, hover orange */
+.ui-button.ui-primary-color,.ui-button.qgiv-load-modal{background-color:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important}
+.ui-button.ui-primary-color:hover,.ui-button.qgiv-load-modal:hover,
+.ui-button.ui-primary-color:focus-visible,.ui-button.qgiv-load-modal:focus-visible{
+  background-color:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;transform:translateY(-2px)!important;box-shadow:0 10px 28px rgba(243,58,26,.32)!important}
+
+/* Nav "Donate" link-button -> orange */
+.nav-item-link--button.qgiv-load-modal{background-color:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important}
+.nav-item-link--button.qgiv-load-modal:hover{background-color:var(--orange-dark)!important;border-color:var(--orange-dark)!important}
+
+/* Widgets */
+.widget{color:var(--ink)}
+.widget-title{position:relative;padding-bottom:.6rem!important;margin-bottom:1.25rem!important}
+.widget-title::after{content:'';position:absolute;left:0;bottom:0;width:40px;height:2px;background:var(--orange)}
+.leaderboard-widget,.supporters-widget,.activity-list-container{background:#fff!important;border:1px solid var(--hairline)!important;border-left:3px solid var(--navy)!important;padding:1.5rem!important}
+
+/* Tabs / pills */
+.pill-tabs .js-tab-link.active,.pill-tabs .js-tab-link[aria-selected="true"]{background-color:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important}
+.pill-tabs .js-tab-link{color:var(--navy)!important}
+
+/* Hobnob form fields */
+.form-field:focus,.search-field:focus{border-color:var(--orange)!important;box-shadow:0 0 0 3px rgba(243,58,26,.15)!important;outline:none!important}
+
+/* Footer */
+.event-footer,.hobnob-footer{background:var(--navy-deep)!important;color:rgba(255,255,255,.6)!important}
+.event-footer a,.hobnob-footer a{color:rgba(255,255,255,.7)!important}
+.event-footer a:hover,.hobnob-footer a:hover{color:var(--orange)!important}
+.footer-button.donate-now-button{background-color:var(--orange)!important;border-color:var(--orange)!important}
+
+/* Content links */
+.event-content a:not(.ui-button):not(.nav-item-link){color:var(--orange)!important;text-underline-offset:3px}
+
+/* Login dropdown "Sign Up Now" — white on orange */
+a.create-account-button.ui-application-primary-color,.create-account-button{
+  display:block!important;background-color:var(--orange)!important;color:#fff!important;border:0!important;border-radius:0!important;
+  padding:.85rem 1.25rem!important;font-family:'Source Sans 3',sans-serif!important;font-weight:700!important;letter-spacing:.16em!important;
+  text-transform:uppercase!important;text-align:center!important;text-decoration:none!important}
+a.create-account-button.ui-application-primary-color:hover,.create-account-button:hover{background-color:var(--orange-dark)!important;color:#fff!important}
+
+/* ============================================================
+   THERMOMETER -> slim bar + horizontal stat row
+   (graphic hidden; bar + labels injected via Text/HTML widget)
+   ============================================================ */
+.thermometer-graphic{display:none!important}
+.salute-prog{max-width:680px;margin:0 auto .5rem;padding:0 1rem;text-align:center}
+.salute-prog__eyebrow{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin:0 0 1rem}
+.salute-prog__track{position:relative;height:12px;border-radius:999px;background:#E8E5DD;overflow:hidden}
+.salute-prog__fill{position:absolute;inset:0 auto 0 0;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--orange),var(--orange-dark));transition:width 1s cubic-bezier(.25,0,0,1)}
+
+.thermometer-widget .thermometer-content{display:block!important;min-height:0!important}
+.thermometer-widget .thermometer-stats{display:flex!important;flex-wrap:nowrap!important;justify-content:space-between!important;align-items:baseline!important;gap:1rem!important;width:100%!important;max-width:720px;margin:0 auto!important;padding:1.25rem 0!important}
+.thermometer-widget .thermometer-stat{flex:1 1 0!important;width:auto!important;max-width:none!important;float:none!important;text-align:center!important;margin:0!important;padding:0!important;min-height:0!important}
+.thermometer-widget .thermometer-stat-value,
+.thermometer-widget .thermometer-stat-value span{font-family:'Zodiak',serif!important;font-weight:700!important;line-height:1!important;font-size:clamp(1.6rem,3.4vw,2.1rem)!important}
+.thermometer-widget .supporting-text{font-family:'Source Sans 3',sans-serif!important;font-size:.7rem!important;font-weight:700!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--muted)!important;margin-top:.45rem!important}
+.thermometer-widget .current-stat .achievement-amount .ui-text-primary-color{color:var(--orange)!important}
+@media (max-width:480px){
+  .thermometer-widget .thermometer-stats{flex-wrap:wrap!important;gap:1.25rem 0!important}
+  .thermometer-widget .thermometer-stat{flex:1 0 33%!important}
+}
+
+/* ============================================================
+   P2P REGISTRATION FORM (React app) — match the Salute ticketing modal
+   Targets Qgiv's shared React component classes.
+   ============================================================ */
+.qgiv-form,.qgiv-widget-container,.p2p-registration-app,.p2p-registration-app *{font-family:'Source Sans 3',-apple-system,sans-serif!important}
+.qgiv-form{background-color:var(--cream)!important;color:var(--ink)!important}
+
+/* Headings -> Zodiak navy */
+.p2p-registration-app .header__title,
+.p2p-registration-app h1,.p2p-registration-app h2,.p2p-registration-app legend{font-family:'Zodiak',Georgia,serif!important;font-weight:700!important;color:var(--navy)!important}
+
+/* Progress stepper -> orange */
+.event-progress-bar__indicator--filled,
+.event-progress-bar__indicator--filled .event-progress-bar__svg,
+[class*="progress-bar__indicator--filled"]{color:var(--orange)!important}
+[class*="progress-bar__line"]{background:rgba(19,35,91,.15)!important}
+
+/* Form fields -> squared, navy focus */
+.field-container__inner{border:1px solid rgba(19,35,91,.16)!important;border-radius:0!important;box-shadow:none!important}
+.field-container__inner:focus-within{border-color:var(--navy)!important;box-shadow:0 0 0 1px rgba(19,35,91,.25)!important}
+.field-container--error .field-container__inner,.field-input--error{border:1px solid var(--orange)!important;box-shadow:0 0 0 1px var(--orange)!important}
+.field-input__input{color:var(--navy)!important}
+.field-container__label{color:var(--muted)!important}
+.field-container__desc-icon{color:var(--navy)!important}
+
+/* Primary button -> orange square */
+.p2p-registration-app .button--primary{background:var(--orange)!important;border:none!important;border-radius:0!important;padding:.95rem 3rem!important;font-weight:700!important;color:#fff!important}
+.p2p-registration-app .button--primary .button__content{color:#fff!important}
+.p2p-registration-app .button--primary:hover:not(.-disabled){background:var(--orange-dark)!important;filter:none!important}
+.p2p-registration-app .button--primary.-disabled{background:#7A6E8A!important;opacity:.6!important}
+
+/* Back / secondary -> orange text */
+.controls-container .button--secondary,.controls-container .button--text,.controls-container a[class*="back"]{color:var(--orange)!important;font-weight:700!important}
+.controls-container .button--secondary svg,.controls-container .button--text svg{color:var(--orange)!important;fill:var(--orange)!important;stroke:var(--orange)!important}
+
+/* Summary total -> Zodiak orange */
+.p2p-registration-app [class*="summary"] [class*="total"]{font-family:'Zodiak',serif!important;color:var(--orange)!important}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){.ui-button,.ui-button:hover,.main-navigation .nav-item-link,.salute-prog__fill{transition:none!important;transform:none!important}}
+
+/* ============================================================
+   PART 1 — BUTTON HIERARCHY
+   One orange primary (Start Your Page / Register); the other two stay navy.
+     41217962 = Make a Donation
+     41217963 = Register   (label = "Start a Page")
+     41219647 = Learn More About Salute
+   ============================================================ */
+.widget[data-id="41217963"] .ui-button.ui-primary-color{
+  background-color:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;
+}
+.widget[data-id="41217963"] .ui-button.ui-primary-color:hover,
+.widget[data-id="41217963"] .ui-button.ui-primary-color:focus-visible{
+  background-color:var(--orange-dark)!important;border-color:var(--orange-dark)!important;
+  transform:translateY(-2px)!important;box-shadow:0 10px 28px rgba(243,58,26,.32)!important;
+}
+.widget[data-id="41217962"] .ui-button.ui-primary-color:hover,
+.widget[data-id="41219647"] .ui-button.ui-primary-color:hover{
+  background-color:var(--navy-deep)!important;border-color:var(--navy-deep)!important;
+  box-shadow:0 10px 26px rgba(19,35,91,.30)!important;
+}
+.widget[data-id="41217963"] .ui-button{ letter-spacing:.22em!important; }
+
+
+/* ============================================================
+   PART 2 — LEADERBOARD + RECENT DONATIONS
+   PREREQ: add the native widgets in the CMS editor first.
+   ============================================================ */
+.leaderboard-widget,
+.team-leaderboard-widget,
+.activity-list-container,
+.recent-donations-widget{
+  background:var(--navy)!important;border:none!important;border-left:none!important;
+  border-radius:8px!important;padding:clamp(1.25rem,2.5vw,2rem)!important;color:#fff!important;
+}
+.leaderboard-widget .widget-title,
+.team-leaderboard-widget .widget-title,
+.recent-donations-widget .widget-title,
+.activity-list-container .widget-title{ color:#fff!important; }
+.leaderboard-widget .widget-title::after,
+.recent-donations-widget .widget-title::after{ background:var(--orange); }
+
+.leaderboard-widget [class*="leader"][class*="item"],
+.leaderboard-widget li,
+.team-leaderboard-widget li{
+  display:grid!important;grid-template-columns:2rem 2.8rem 1fr auto;align-items:center;gap:1rem;
+  background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:6px!important;padding:.85rem 1.1rem!important;margin:0 0 .6rem!important;list-style:none!important;
+}
+.leaderboard-widget [class*="rank"]{
+  font-family:'Zodiak',serif!important;font-weight:700!important;
+  font-size:1.1rem!important;color:rgba(255,255,255,.5)!important;text-align:center!important;
+}
+.leaderboard-widget li:first-child [class*="rank"]{ color:var(--orange)!important; }
+.leaderboard-widget [class*="avatar"]{
+  width:2.8rem!important;height:2.8rem!important;border-radius:50%!important;overflow:hidden!important;
+  background:var(--navy)!important;border:2px solid rgba(255,255,255,.18)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  font-weight:700!important;font-size:.85rem!important;color:#fff!important;flex-shrink:0!important;
+}
+.leaderboard-widget [class*="avatar"] img{width:100%!important;height:100%!important;object-fit:cover!important;}
+.leaderboard-widget [class*="name"]{ font-weight:700!important;font-size:1rem!important;color:#fff!important;text-decoration:none!important; }
+.leaderboard-widget [class*="name"]:hover{ color:var(--orange)!important; }
+.leaderboard-widget [class*="amount"],
+.leaderboard-widget [class*="raised"]{
+  font-family:'Zodiak',serif!important;font-weight:700!important;font-size:1.2rem!important;
+  color:#fff!important;text-align:right!important;white-space:nowrap!important;
+}
+.leaderboard-widget [class*="progress"]{
+  height:6px!important;border-radius:999px!important;background:rgba(255,255,255,.14)!important;
+  overflow:hidden!important;margin-top:.5rem!important;max-width:18rem!important;
+}
+.leaderboard-widget [class*="progress"] [class*="fill"],
+.leaderboard-widget [class*="progress"] > div{
+  height:100%!important;border-radius:999px!important;background:linear-gradient(90deg,var(--orange),#ff7a4d)!important;
+}
+.activity-list-container [class*="item"],
+.recent-donations-widget li,
+.activity-list-container li{
+  display:flex!important;align-items:center!important;gap:1rem!important;
+  background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:6px!important;padding:.8rem 1.1rem!important;margin:0 0 .5rem!important;list-style:none!important;
+}
+.activity-list-container [class*="name"],
+.recent-donations-widget [class*="name"]{ color:#fff!important;font-weight:700!important; }
+.activity-list-container [class*="amount"],
+.recent-donations-widget [class*="amount"]{
+  font-family:'Zodiak',serif!important;font-weight:700!important;color:var(--orange)!important;
+  margin-left:auto!important;white-space:nowrap!important;
+}
+.activity-list-container [class*="time"],
+.recent-donations-widget [class*="time"]{ color:rgba(255,255,255,.45)!important;font-size:.8rem!important; }
+.activity-list-container [class*="avatar"],
+.recent-donations-widget [class*="avatar"]{
+  width:2.4rem!important;height:2.4rem!important;border-radius:50%!important;overflow:hidden!important;flex-shrink:0!important;
+}
+.activity-list-container [class*="avatar"] img,
+.recent-donations-widget [class*="avatar"] img{width:100%!important;height:100%!important;object-fit:cover!important;}
+
+
+/* ============================================================
+   TOP NAV — right-aligned group + STICKY pin
+   ============================================================ */
+/* Neutralize the ancestor containing-block triggers (this is what blocks sticky) */
+html, body,
+.page-container,
+.view-container,
+.event-container,
+.event-body,
+.event-content{
+  overflow:visible!important;transform:none!important;filter:none!important;perspective:none!important;
+}
+
+/* Right-align the two items as a tidy group on the RIGHT */
+.main-navigation .navigation{
+  display:flex!important;flex-direction:row-reverse!important;justify-content:flex-start!important;
+  align-items:stretch!important;gap:0!important;
+}
+.main-navigation .nav-item{flex:0 0 auto!important;display:flex!important;align-items:stretch!important}
+
+/* Start Fundraising — quiet text link, underline on hover/active */
+.main-navigation .nav-item-link:not(.nav-item-link--button){
+  display:flex!important;align-items:center!important;min-height:72px!important;height:100%!important;
+  padding:0 2.1rem!important;font-family:'Source Sans 3',sans-serif!important;
+  font-size:.76rem!important;font-weight:700!important;letter-spacing:.16em!important;text-transform:uppercase!important;
+  color:var(--navy)!important;box-shadow:inset 0 -3px 0 transparent!important;
+  transition:color .2s ease,box-shadow .2s ease!important;
+}
+.main-navigation .nav-item-link:not(.nav-item-link--button):hover,
+.main-navigation .nav-item-link:not(.nav-item-link--button).active{
+  color:var(--orange)!important;box-shadow:inset 0 -3px 0 var(--orange)!important;
+}
+
+/* Make a Gift — orange CTA, sized to its text */
+.main-navigation .nav-item-link--button.qgiv-load-modal{
+  display:flex!important;align-items:center!important;flex:0 0 auto!important;
+  min-height:72px!important;height:100%!important;padding:0 2.6rem!important;
+  background:var(--orange)!important;border:none!important;border-radius:0!important;color:#fff!important;
+  font-family:'Source Sans 3',sans-serif!important;
+  font-size:.76rem!important;font-weight:700!important;letter-spacing:.18em!important;text-transform:uppercase!important;
+  transition:background-color .2s ease!important;
+}
+.main-navigation .nav-item-link--button.qgiv-load-modal:hover,
+.main-navigation .nav-item-link--button.qgiv-load-modal:focus,
+.main-navigation .nav-item-link--button.qgiv-load-modal:focus-visible{
+  background:var(--orange-dark)!important;color:#fff!important;transform:none!important;box-shadow:none!important;
+}
+
+/* Pin the nav */
+.main-navigation{
+  position:-webkit-sticky!important;position:sticky!important;top:0!important;z-index:9999!important;
+  background:#F3EDE5!important;box-shadow:0 2px 10px rgba(19,35,91,.10)!important;
+}
+
+
+/* ============================================================
+   SIGN IN / SIGN UP DROPDOWN  (verified against live DOM)
+   KEEP ONLY ONE COPY OF THIS BLOCK. Pasting it twice overflows
+   Qgiv's CSS field, which truncates the stylesheet mid-rule and
+   breaks the card — that was the original bug.
+   ============================================================ */
+
+/* (A) Lift the top bar + dropdown above the sticky nav.
+   z-index only works on a positioned element, hence position:relative. */
+header.global-bar{position:relative!important;z-index:10000!important}     /* > nav's 9999 */
+.global-bar .account-navigation,
+.global-bar .login-container{position:relative!important}
+.login-dropdown-container{z-index:10001!important}
+
+/* Trigger stays readable; hide the wrong-event notch above the card */
+.global-bar .login-container .nav-item-label{background:transparent!important;color:#fff!important}
+.login-dropdown-container .js-wrong-event-message.hide-content{display:none!important}
+
+/* (B) Card shell */
+.login-dropdown-container{
+  width:340px!important;max-width:92vw!important;padding:0 0 .25rem!important;
+  background:#fff!important;border:1px solid var(--hairline)!important;border-radius:10px!important;
+  box-shadow:0 18px 50px rgba(13,18,37,.28)!important;overflow:hidden!important}
+.login-dropdown-container .js-nav-sign-in-section{padding:1.25rem 1.25rem 0!important}
+.login-dropdown-container .login-form-container{padding:0!important}
+
+/* Injected heading — scoped to the dropdown only
+   (the standalone /login/ page has its own h3, so we don't touch it) */
+.login-dropdown-container .js-nav-sign-in-section::before{
+  content:"Welcome back";display:block;
+  font-family:'Zodiak',Georgia,serif;font-weight:700;font-size:1.5rem;
+  color:var(--navy);letter-spacing:-.01em;margin:0 0 .15rem}
+.login-dropdown-container .login-form-container::before{
+  content:"Sign in to your fundraising page";display:block;
+  color:var(--muted);font-size:.9rem;margin:0 0 1.1rem}
+
+/* Labels + inputs — normal 48px height (platform makes them oversized) */
+.login-dropdown-container .field-container{margin:0 0 .85rem!important}
+.login-dropdown-container .field-label{
+  font-size:.7rem!important;font-weight:700!important;letter-spacing:.08em!important;
+  text-transform:uppercase!important;color:var(--navy)!important;margin-bottom:.35rem!important}
+.login-dropdown-container .field-container .form-field{
+  height:48px!important;min-height:0!important;max-height:48px!important;box-sizing:border-box!important;
+  width:100%!important;border:1.5px solid var(--hairline)!important;border-radius:8px!important;
+  padding:0 14px!important;font-size:15px!important;line-height:normal!important;
+  background:#fbfaf8!important;color:var(--navy)!important;font-family:'Source Sans 3',sans-serif!important;
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease!important}
+.login-dropdown-container .field-container .form-field:focus{
+  border-color:var(--navy)!important;background:#fff!important;
+  box-shadow:0 0 0 3px rgba(19,35,91,.12)!important;outline:none!important}
+.login-dropdown-container .form-field::placeholder{color:#9aa0ad!important}
+/* Tame Chrome's blue/yellow autofill wash */
+.login-dropdown-container .form-field:-webkit-autofill,
+.login-dropdown-container .form-field:-webkit-autofill:hover,
+.login-dropdown-container .form-field:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--navy)!important;
+  -webkit-box-shadow:0 0 0 40px #fbfaf8 inset!important;
+  caret-color:var(--navy)!important}
+
+/* SIGN IN — full-width navy button */
+.login-dropdown-container .form-actions-login{
+  display:block!important;position:static!important;height:auto!important;margin:.25rem 0 0!important}
+.login-dropdown-container .login-button.ui-button{
+  display:block!important;width:100%!important;float:none!important;position:static!important;
+  background:var(--navy)!important;border:none!important;border-radius:8px!important;color:#fff!important;
+  padding:13px 22px!important;margin:0!important;font-family:'Source Sans 3',sans-serif!important;
+  font-size:.8rem!important;font-weight:700!important;letter-spacing:.16em!important;text-transform:uppercase!important;
+  transition:background-color .15s ease!important}
+.login-dropdown-container .login-button.ui-button:hover{background:var(--navy-deep)!important;transform:none!important}
+
+/* THE OVERLAP FIX: the platform positions the help-link container
+   absolutely, so it lands on top of the button. Force it back into
+   normal flow, centered BELOW the button. position:static is the key. */
+.login-dropdown-container .form-actions-login-content-container,
+.login-dropdown-container .form-actions-login-content,
+.login-dropdown-container .form-actions-login-text{
+  display:block!important;position:static!important;inset:auto!important;
+  width:100%!important;float:none!important;text-align:center!important;margin:0!important;transform:none!important}
+.login-dropdown-container .form-actions-login-text{margin:.7rem 0 .2rem!important}
+.login-dropdown-container .form-action-link{
+  display:inline-block!important;color:var(--muted)!important;font-weight:600!important;
+  font-size:.8rem!important;text-decoration:underline!important;text-underline-offset:2px!important}
+.login-dropdown-container .form-action-link p{margin:0!important}
+.login-dropdown-container .form-action-link:hover{color:var(--orange)!important}
+
+/* Divider — own row, with flanking hairlines */
+.login-dropdown-container .divider{
+  clear:both!important;display:flex!important;align-items:center!important;gap:.75rem!important;
+  margin:1rem 1.25rem!important}
+.login-dropdown-container .divider::before,
+.login-dropdown-container .divider::after{content:"";flex:1;height:1px;background:var(--hairline)}
+.login-dropdown-container .divider-content{color:#9aa0ad!important;font-size:.82rem!important;white-space:nowrap!important}
+
+/* Social row — icons render inside a Qgiv iframe, so their COLOURS
+   cannot be restyled from here; we only tidy the wrapper. */
+.login-dropdown-container .social-login-container{padding:.25rem 1.25rem .9rem!important;margin:0!important}
+.login-dropdown-container .social-login-container .qgiv-social-authentication{width:100%!important;border:0!important}
+
+/* SIGN UP NOW — orange, inset to match the inputs */
+.login-dropdown-container .create-account-button{
+  display:block!important;width:auto!important;margin:0 1.25rem 1.1rem!important;
+  border-radius:8px!important;padding:1rem 1.25rem!important;letter-spacing:.18em!important}
+
+
+/* ============================================================
+   USER ACCOUNT AREA (fundraiser dashboard) — .ua-* screens
+   ============================================================ */
+.ua-content .event-content{color:var(--ink)!important}
+.ua-content .heading-alpha{font-size:2rem!important;line-height:1.1!important}
+.ua-content .divider{border-top:1px solid var(--hairline)!important}
+
+/* Account side panel — dark gradient */
+.ua-panel,.ua-panel-body{
+  background:linear-gradient(160deg,#141d50 0%,var(--navy-deep) 70%,#1a1230 100%)!important;
+  color:rgba(255,255,255,.9)!important}
+.ua-panel .manage-avatar .avatar{box-shadow:0 0 0 4px rgba(243,58,26,.12)!important}
+.ua-panel .user-avatar-placeholder.ui-primary-color{background:var(--navy-soft)!important}
+.ua-panel .user-avatar-label{color:#fff!important}
+.ua-panel .navigation .nav-item{
+  background:transparent!important;border-radius:6px!important;overflow:hidden!important;margin-bottom:.15rem!important}
+.ua-panel .navigation .nav-item-link{
+  display:block!important;padding:.85rem 1.1rem!important;font-family:'Source Sans 3',sans-serif!important;
+  font-size:.74rem!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important;
+  color:rgba(255,255,255,.78)!important;border-left:3px solid transparent!important;
+  transition:color .2s ease,background-color .2s ease,border-color .2s ease!important}
+.ua-panel .navigation .nav-item-link:hover{
+  color:#fff!important;background:rgba(255,255,255,.06)!important;border-left-color:var(--orange)!important}
+.ua-panel .navigation .nav-item.ui-primary-color{
+  background:rgba(255,255,255,.08)!important;border-left:3px solid var(--orange)!important}
+.ua-panel .navigation .nav-item.ui-primary-color .nav-item-link{color:#fff!important;border-left-color:transparent!important}
+.ua-panel .ui-button.ui-secondary-color{
+  background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;border-radius:4px!important}
+.ua-panel .ui-button.ui-secondary-color:hover{
+  background:var(--orange-dark)!important;border-color:var(--orange-dark)!important;box-shadow:0 10px 26px rgba(243,58,26,.30)!important}
+.ua-panel .ua-toggle-button{color:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.15)!important}
+
+/* Welcome-quest CTA card */
+.welcome-quest-cta--bg-dark{
+  border-radius:10px!important;overflow:hidden!important;border:none!important;
+  background:radial-gradient(ellipse 90% 80% at 8% 8%,#1a2d6e 0%,transparent 58%),radial-gradient(ellipse 70% 90% at 95% 95%,#2e0e3a 0%,transparent 58%),linear-gradient(135deg,#0d1225 0%,#141d50 38%,#241653 70%,#3a0e30 100%)!important}
+.welcome-quest-cta .welcome-quest-cta__content>p:first-child{
+  font-family:'Source Sans 3',sans-serif!important;font-size:.72rem!important;font-weight:700!important;
+  letter-spacing:.22em!important;text-transform:uppercase!important;color:var(--orange)!important}
+.welcome-quest-cta .welcome-quest-cta__content>p:first-child strong{color:var(--orange)!important}
+.welcome-quest-cta h2{font-family:'Zodiak',Georgia,serif!important;font-weight:700!important;color:#fff!important;margin:.4rem 0 .9rem!important}
+.welcome-quest-cta p.text-white,.welcome-quest-cta .text-white{color:rgba(255,255,255,.82)!important}
+.welcome-quest-cta p.text-white strong{color:#fff!important}
+.welcome-quest-cta .ui-button.ui-secondary-color{
+  background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;border-radius:4px!important}
+.welcome-quest-cta .ui-button.ui-secondary-color:hover{
+  background:var(--orange-dark)!important;border-color:var(--orange-dark)!important;box-shadow:0 10px 26px rgba(243,58,26,.30)!important}
+
+/* Button-block tiles */
+.button-block{
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  gap:.7rem!important;text-align:center!important;text-decoration:none!important;min-height:140px!important;padding:1.5rem 1rem!important;
+  background:#fff!important;border:1px solid var(--hairline)!important;border-bottom:3px solid transparent!important;
+  border-radius:8px!important;color:var(--navy)!important;
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease!important}
+.button-block:hover{
+  border-bottom-color:var(--orange)!important;transform:translateY(-3px)!important;box-shadow:0 14px 30px rgba(19,35,91,.12)!important}
+.button-block .button-block-icon{font-size:2rem!important;color:var(--orange)!important;line-height:1!important}
+.button-block .button-block-label{
+  font-family:'Zodiak',Georgia,serif!important;font-weight:700!important;color:var(--navy)!important;margin:0!important;font-size:1rem!important;line-height:1.2!important}
+.button-block:hover .button-block-label{color:var(--navy)!important}
+
+/* Account tabs + editable fields */
+.ua-content .ui-tabs.js-tabs{border-bottom:1px solid var(--hairline)!important;display:flex!important;gap:.25rem!important}
+.ua-content .ui-tabs.js-tabs .js-tab{list-style:none!important}
+.ua-content .ui-tabs.js-tabs .js-tab-link{
+  display:block!important;padding:.7rem 1.1rem!important;font-family:'Source Sans 3',sans-serif!important;
+  font-size:.74rem!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important;
+  color:var(--muted)!important;text-decoration:none!important;border-bottom:3px solid transparent!important;
+  transition:color .2s ease,border-color .2s ease!important}
+.ua-content .ui-tabs.js-tabs .js-tab-link:hover{color:var(--navy)!important}
+.ua-content .ui-tabs.js-tabs .js-tab.active-tab .js-tab-link{color:var(--navy)!important;border-bottom-color:var(--orange)!important}
+.ua_edit_content .field-container.non-editable{
+  background:#fff!important;border:1px solid var(--hairline)!important;border-radius:8px!important;padding:1rem 1.25rem!important}
+.ua-content .full-url,.ua-content .truncated-url,.ua-content .truncated-entity-id{color:var(--navy)!important}
