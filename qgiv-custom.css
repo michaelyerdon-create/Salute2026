@@ -689,3 +689,14 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .useradmin-thermometer .thermometer-graphic svg{
   float:none!important;display:inline-block!important;margin:0 auto!important;
 }
+
+
+/* PFP thermometer: scale the oversized native graphic down to fit the
+   sidebar, clipping the freed layout space so the stats sit just below. */
+.useradmin-thermometer .thermometer-graphic{
+  display:flex!important;justify-content:center!important;align-items:flex-start!important;
+  width:100%!important;height:300px!important;overflow:hidden!important;margin:0 auto .25rem!important;float:none!important;
+}
+.useradmin-thermometer .thermometer-graphic svg{
+  transform:scale(.56)!important;transform-origin:top center!important;float:none!important;
+}
