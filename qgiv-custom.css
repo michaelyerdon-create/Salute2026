@@ -128,6 +128,22 @@ a.create-account-button.ui-application-primary-color:hover,.create-account-butto
   .thermometer-widget .thermometer-stat{flex:1 0 33%!important}
 }
 
+/* Thermometer footer buttons (Make a Gift / Start Fundraising) — both navy,
+   both hover orange; a little gap between them; tighter space above so the
+   stacked pair doesn't run too far down the page. */
+.thermometer-widget .thermometer-stats{padding-bottom:.5rem!important}
+.thermometer-widget .thermometer-buttons{margin-top:.5rem!important;padding-top:0!important}
+.thermometer-widget .thermometer-buttons .ui-button{
+  display:block!important;width:100%!important;margin:0 0 .55rem!important;
+  background:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important;
+  transition:background-color .15s ease,border-color .15s ease!important;
+}
+.thermometer-widget .thermometer-buttons .ui-button:last-child{margin-bottom:0!important}
+.thermometer-widget .thermometer-buttons .ui-button:hover,
+.thermometer-widget .thermometer-buttons .ui-button:focus-visible{
+  background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;
+}
+
 /* ============================================================
    P2P REGISTRATION FORM (React app) — match the Salute ticketing modal
    Targets Qgiv's shared React component classes.
