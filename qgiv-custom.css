@@ -676,3 +676,16 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .useradmin-thermometer .thermometer-stat-value,
 .useradmin-thermometer .thermometer-stat-value span{font-size:1.35rem!important}
 .useradmin-thermometer .supporting-text{font-size:.54rem!important;letter-spacing:.1em!important;margin-top:.35rem!important}
+
+
+/* PFP thermometer: recolor the green SVG (#00a850) -> navy, and beat the
+   native float so the graphic actually centers in the column. */
+.useradmin-thermometer .thermometer-graphic svg [fill="#00a850"]{fill:var(--navy)!important}
+.useradmin-thermometer .thermometer-graphic svg [stroke="#00a850"]{stroke:var(--navy)!important}
+.useradmin-thermometer .thermometer-graphic{
+  float:none!important;display:block!important;width:100%!important;text-align:center!important;
+}
+.useradmin-thermometer .thermometer-graphic .svg-container,
+.useradmin-thermometer .thermometer-graphic svg{
+  float:none!important;display:inline-block!important;margin:0 auto!important;
+}
