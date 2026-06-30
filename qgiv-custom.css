@@ -630,3 +630,38 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons .ui-button:focus-visible{
   background:var(--orange)!important;color:#fff!important;
 }
+
+
+/* ============================================================
+   PFP / DASHBOARD thermometer (.useradmin-thermometer) — show
+   Qgiv's NATIVE vertical thermometer graphic recolored to brand,
+   instead of our injected slim bar. (Best-effort SVG recolor;
+   refine the fill values once the rendered markup is confirmed.)
+   ============================================================ */
+.useradmin-thermometer .thermometer-graphic{display:block!important;text-align:center!important;margin:0 auto 1rem!important}
+.useradmin-thermometer .salute-prog{display:none!important}
+.useradmin-thermometer .thermometer-graphic svg{max-width:100%!important;height:auto!important}
+
+/* Recolor the Raphael SVG: Qgiv theme blues -> brand navy/orange */
+.useradmin-thermometer .thermometer-graphic svg [fill="#1f6fd9"],
+.useradmin-thermometer .thermometer-graphic svg [fill="#307ce1"],
+.useradmin-thermometer .thermometer-graphic svg [fill="#468ae5"]{fill:var(--orange)!important}
+.useradmin-thermometer .thermometer-graphic svg [fill="#5d99e8"],
+.useradmin-thermometer .thermometer-graphic svg [fill="#73a7eb"],
+.useradmin-thermometer .thermometer-graphic svg [fill="#e6ebee"]{fill:#E8E2D6!important}
+.useradmin-thermometer .thermometer-graphic svg [stroke="#1f6fd9"],
+.useradmin-thermometer .thermometer-graphic svg [stroke="#5d99e8"]{stroke:var(--navy)!important}
+
+/* Stats + Update My Goal button on-brand */
+.useradmin-thermometer .thermometer-stat-value,
+.useradmin-thermometer .thermometer-stat-value span{color:var(--navy)!important}
+.useradmin-thermometer .current-stat .thermometer-stat-value span,
+.useradmin-thermometer .percentage-stat .thermometer-stat-value span{color:var(--orange)!important}
+.useradmin-thermometer .widget-footer .ui-button,
+.useradmin-thermometer .update-goal{
+  background:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important;border-radius:2px!important;
+}
+.useradmin-thermometer .widget-footer .ui-button:hover,
+.useradmin-thermometer .update-goal:hover{
+  background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;
+}
