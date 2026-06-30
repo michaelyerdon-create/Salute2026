@@ -700,3 +700,17 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .useradmin-thermometer .thermometer-graphic svg{
   transform:scale(.56)!important;transform-origin:top center!important;float:none!important;
 }
+
+
+/* PFP thermometer: size via the SVG's viewBox (clean + responsive) — drop the
+   earlier transform/clip. Small user-unit coords => it has a viewBox, so a
+   width on the <svg> scales the whole drawing with no clipping. */
+.useradmin-thermometer .thermometer-graphic{
+  display:flex!important;justify-content:center!important;align-items:flex-start!important;
+  width:100%!important;height:auto!important;overflow:visible!important;margin:0 auto .5rem!important;float:none!important;
+}
+.useradmin-thermometer .thermometer-graphic .svg-container{width:auto!important;float:none!important;margin:0 auto!important}
+.useradmin-thermometer .thermometer-graphic svg{
+  transform:none!important;float:none!important;display:block!important;margin:0 auto!important;
+  width:130px!important;max-width:130px!important;height:auto!important;
+}
