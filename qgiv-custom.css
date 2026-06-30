@@ -281,45 +281,61 @@ html, body,
   overflow:visible!important;transform:none!important;filter:none!important;perspective:none!important;
 }
 
-/* Right-align the two items as a tidy group on the RIGHT */
+/* Right-align the items as a tidy group on the RIGHT */
 .main-navigation .navigation{
   display:flex!important;flex-direction:row-reverse!important;justify-content:flex-start!important;
   align-items:stretch!important;gap:0!important;
 }
-.main-navigation .nav-item{flex:0 0 auto!important;display:flex!important;align-items:stretch!important}
+.main-navigation .nav-item{
+  flex:0 0 auto!important;display:flex!important;align-items:center!important;
+}
 
-/* Start Fundraising — quiet text link, underline on hover/active */
+/* Short, centered dividers between items (not full-height).
+   Layout is row-reverse, so :not(:last-child) is what sits to the
+   RIGHT of a neighbor — that's where the divider belongs. */
+.main-navigation .nav-item:not(:last-child)::before{
+  content:""!important;flex:0 0 auto!important;align-self:center!important;
+  width:1px!important;height:26px!important;background:rgba(19,35,91,.20)!important;
+}
+
+/* Plain links (Home / Start Fundraising) — navy, hover -> dark orange. No underline. */
 .main-navigation .nav-item-link:not(.nav-item-link--button){
-  display:flex!important;align-items:center!important;min-height:72px!important;height:100%!important;
-  padding:0 2.1rem!important;font-family:'Source Sans 3',sans-serif!important;
-  font-size:.76rem!important;font-weight:700!important;letter-spacing:.16em!important;text-transform:uppercase!important;
-  color:var(--navy)!important;box-shadow:inset 0 -3px 0 transparent!important;
-  transition:color .2s ease,box-shadow .2s ease!important;
+  display:flex!important;align-items:center!important;min-height:72px!important;
+  padding:0 1.65rem!important;font-family:'Source Sans 3',sans-serif!important;
+  font-size:.74rem!important;font-weight:700!important;letter-spacing:.16em!important;text-transform:uppercase!important;
+  color:var(--navy)!important;box-shadow:none!important;
+  transition:color .15s ease!important;
 }
 .main-navigation .nav-item-link:not(.nav-item-link--button):hover,
 .main-navigation .nav-item-link:not(.nav-item-link--button).active{
-  color:var(--orange)!important;box-shadow:inset 0 -3px 0 var(--orange)!important;
+  color:var(--orange-dark)!important;box-shadow:none!important;
 }
 
-/* Make a Gift — orange CTA, sized to its text */
+/* Make a Gift — outlined orange pill, vertically centered (NOT a full block) */
 .main-navigation .nav-item-link--button.qgiv-load-modal{
-  display:flex!important;align-items:center!important;flex:0 0 auto!important;
-  min-height:72px!important;height:100%!important;padding:0 2.6rem!important;
-  background:var(--orange)!important;border:none!important;border-radius:0!important;color:#fff!important;
+  display:inline-flex!important;align-items:center!important;align-self:center!important;flex:0 0 auto!important;
+  min-height:0!important;height:auto!important;margin:0 1.35rem!important;padding:.62rem 1.35rem!important;
+  background:transparent!important;border:1.5px solid var(--orange)!important;border-radius:4px!important;color:var(--navy)!important;
   font-family:'Source Sans 3',sans-serif!important;
-  font-size:.76rem!important;font-weight:700!important;letter-spacing:.18em!important;text-transform:uppercase!important;
-  transition:background-color .2s ease!important;
+  font-size:.74rem!important;font-weight:700!important;letter-spacing:.16em!important;text-transform:uppercase!important;
+  box-shadow:none!important;transition:background-color .15s ease,border-color .15s ease,color .15s ease!important;
 }
 .main-navigation .nav-item-link--button.qgiv-load-modal:hover,
 .main-navigation .nav-item-link--button.qgiv-load-modal:focus,
 .main-navigation .nav-item-link--button.qgiv-load-modal:focus-visible{
-  background:var(--orange-dark)!important;color:#fff!important;transform:none!important;box-shadow:none!important;
+  background:var(--orange-dark)!important;border-color:var(--orange-dark)!important;color:#fff!important;
+  transform:none!important;box-shadow:none!important;
 }
 
-/* Pin the nav */
+/* Keyboard focus visibility for the plain links */
+.main-navigation .nav-item-link:not(.nav-item-link--button):focus-visible{
+  outline:2px solid var(--orange-dark)!important;outline-offset:-3px!important;
+}
+
+/* Pin the nav — warm tan band, visibly distinct from the cream page */
 .main-navigation{
   position:-webkit-sticky!important;position:sticky!important;top:0!important;z-index:9999!important;
-  background:#F3EDE5!important;box-shadow:0 2px 10px rgba(19,35,91,.10)!important;
+  background:#EAD8B6!important;box-shadow:0 2px 10px rgba(19,35,91,.10)!important;
 }
 
 
