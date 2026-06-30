@@ -737,3 +737,24 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .useradmin-thermometer .salute-prog__fill{
   border-radius:999px!important;background:linear-gradient(90deg,var(--orange),var(--orange-dark))!important;
 }
+
+
+/* ============================================================
+   "My Fundraising Tools" dropdown — replace the default green
+   accents (icon circles + bottom bar) with brand navy/orange.
+   ============================================================ */
+.account-tools-dropdown-container .account-tool-icon{
+  border-color:var(--navy)!important;color:var(--navy)!important;
+  transition:background-color .15s ease,border-color .15s ease,color .15s ease!important;
+}
+.account-tools-dropdown-container .account-tool a:hover .account-tool-icon{
+  background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;
+}
+.account-tools-dropdown-container .account-tool-label{color:var(--navy)!important}
+.account-tools-dropdown-container .account-tool a:hover .account-tool-label{color:var(--orange)!important}
+/* neutralize green borders/bars on the panel + tidy the buttons strip */
+.account-tools-dropdown-container,
+.account-tools-dropdown-container .additional-tools{border-color:rgba(19,35,91,.14)!important}
+.account-tools-dropdown-container .additional-tools{
+  border-top:1px solid rgba(19,35,91,.12)!important;background:#FBF8F3!important;
+}
