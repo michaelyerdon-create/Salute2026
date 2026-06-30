@@ -1,0 +1,30 @@
+<!-- ============================================================
+     Salute 2026 P2P — external stylesheet loader
+     Paste into a Text/HTML widget placed FIRST on the page.
+     Why a <script> and not @import: Qgiv injects the Custom CSS
+     field AFTER its own theme rules, and CSS ignores any @import
+     that isn't the very first rule — so @import there is dropped.
+     This appends a real <link> to <head>, which always applies.
+     It then collapses its own widget row so it adds no whitespace.
+     ============================================================ -->
+<script>
+(function(){
+  var d = document;
+  var l = d.createElement('link');
+  l.rel  = 'stylesheet';
+  l.href = 'https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@main/qgiv-custom.css';
+  d.head.appendChild(l);
+
+  // Hide this loader's own layout row so it contributes no padding.
+  var s = d.currentScript;
+  var w = s && s.closest && s.closest('.grid');
+  if (w) {
+    w.style.display = 'none';                       // collapse the row immediately
+    var fix = function(){                            // and drop the divider it leaves behind
+      var n = w.nextElementSibling;
+      if (n && n.classList && n.classList.contains('content-layout-divider')) n.style.display = 'none';
+    };
+    if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', fix); else fix();
+  }
+})();
+</script>
