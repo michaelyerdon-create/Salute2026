@@ -84,6 +84,7 @@
   #ywca-story .yw-cta{ display:flex; align-items:center; gap:1.4rem; flex-wrap:wrap; }
   #ywca-story .yw-btn{
     display:inline-block; background:var(--orange); color:#fff; text-decoration:none;
+    font-family:inherit; border:none; cursor:pointer;
     font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
     padding:1rem 2.2rem; border-radius:2px; transition:background-color .15s ease;
   }
@@ -133,7 +134,11 @@
       </div>
 
       <div class="yw-cta">
-        <a class="yw-btn" href="https://secure.qgiv.com/event/salute2026/account/2388374/donate/">Give to my page</a>
+        <button class="yw-btn qgiv-load-modal" type="button"
+          data-event-url="https://secure.qgiv.com/api/v1/donationform/salute2026/donate/registration/2388374/?"
+          data-event-name="Salute 2026 Donation Form"
+          data-standard-donation-form="1">Give to my page</button>
+        <a class="yw-link" href="https://secure.qgiv.com/event/salute2026/account/2388374/">Share my page</a>
       </div>
     </div>
 
