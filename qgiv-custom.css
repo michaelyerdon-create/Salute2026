@@ -714,3 +714,26 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
   transform:none!important;float:none!important;display:block!important;margin:0 auto!important;
   width:130px!important;max-width:130px!important;height:auto!important;
 }
+
+
+/* ============================================================
+   PFP thermometer — FINAL: abandon the native SVG (won't size /
+   respond cleanly) and use the slim orange bar instead. Re-hide
+   the graphic, show + style the injected bar. Responsive by nature.
+   ============================================================ */
+.useradmin-thermometer .thermometer-graphic{display:none!important}
+.useradmin-thermometer .salute-prog{
+  display:block!important;max-width:none!important;margin:0 0 .6rem!important;padding:0!important;
+}
+.useradmin-thermometer .salute-prog__eyebrow{
+  font-family:'Source Sans 3',sans-serif!important;font-weight:700!important;font-size:.62rem!important;
+  letter-spacing:.22em!important;text-transform:uppercase!important;color:var(--orange)!important;
+  text-align:center!important;margin:0 0 .9rem!important;
+}
+.useradmin-thermometer .salute-prog__track{
+  height:11px!important;border-radius:999px!important;background:#E8E2D6!important;
+  box-shadow:inset 0 1px 2px rgba(19,35,91,.08)!important;overflow:hidden!important;
+}
+.useradmin-thermometer .salute-prog__fill{
+  border-radius:999px!important;background:linear-gradient(90deg,var(--orange),var(--orange-dark))!important;
+}
