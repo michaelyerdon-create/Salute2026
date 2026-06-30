@@ -283,8 +283,7 @@ html, body,
 
 /* Right-align the items as a tidy group on the RIGHT.
    Qgiv's DOM order is [Start Fundraising, Make a Gift, Home], so we
-   reorder with `order` to render: Home · Start Fundraising · Make a Gift
-   (the orange CTA always anchors the right end). */
+   reorder with `order` to render: Home · Make a Gift · Start Fundraising. */
 .main-navigation .navigation{
   display:flex!important;flex-direction:row!important;justify-content:flex-end!important;
   align-items:stretch!important;gap:0!important;
@@ -292,16 +291,16 @@ html, body,
 .main-navigation .nav-item{
   flex:0 0 auto!important;display:flex!important;align-items:center!important;order:1!important;
 }
-.main-navigation .nav-item:has(a[href$="/register/"]){order:2!important;}   /* Start Fundraising */
-.main-navigation .nav-item:has(.nav-item-link--button){order:3!important;}   /* Make a Gift (CTA) */
+.main-navigation .nav-item:has(.nav-item-link--button){order:2!important;}   /* Make a Gift (middle) */
+.main-navigation .nav-item:has(a[href$="/register/"]){order:3!important;}     /* Start Fundraising (right) */
 
 /* Short, centered dividers between items (not full-height), placed on the
    LEFT of each item that has a neighbor to its left:
-     • Make a Gift always has one (never leftmost).
-     • Start Fundraising only when a Home item is present (logged-in);
-       on the logged-out home page it's leftmost, so no divider. */
-.main-navigation .nav-item:has(.nav-item-link--button)::before,
-.main-navigation .navigation:has(a[href$="/salute2026/"]) .nav-item:has(a[href$="/register/"])::before{
+     • Start Fundraising always has one (it's rightmost in both navs).
+     • Make a Gift only when a Home item is present (logged-in); on the
+       logged-out home page it's leftmost, so no divider. */
+.main-navigation .nav-item:has(a[href$="/register/"])::before,
+.main-navigation .navigation:has(a[href$="/salute2026/"]) .nav-item:has(.nav-item-link--button)::before{
   content:""!important;flex:0 0 auto!important;align-self:center!important;
   width:1px!important;height:26px!important;background:rgba(19,35,91,.20)!important;
 }
