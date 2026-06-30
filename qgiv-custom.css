@@ -565,3 +565,68 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .ua_edit_content .field-container.non-editable{
   background:#fff!important;border:1px solid var(--hairline)!important;border-radius:8px!important;padding:1rem 1.25rem!important}
 .ua-content .full-url,.ua-content .truncated-url,.ua-content .truncated-entity-id{color:var(--navy)!important}
+
+
+/* ============================================================
+   "YOUR IMPACT SO FAR" — unify thermometer + its footer buttons
+   into ONE cream card. Scoped to the public/horizontal thermometer;
+   the PFP .useradmin-thermometer is excluded so it's untouched.
+   (Appended last so it wins over the earlier THERMOMETER block.)
+   ============================================================ */
+.thermometer-widget:not(.useradmin-thermometer){
+  background:#FBF8F3!important;border:1px solid rgba(19,35,91,.12)!important;
+  border-radius:8px!important;padding:2.4rem!important;
+  max-width:620px!important;margin:0 auto!important;box-shadow:0 1px 2px rgba(19,35,91,.04)!important;
+}
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-content{padding:0!important;margin:0!important;min-height:0!important}
+
+/* Eyebrow */
+.thermometer-widget:not(.useradmin-thermometer) .salute-prog{max-width:none!important;margin:0 0 .55rem!important;padding:0!important}
+.thermometer-widget:not(.useradmin-thermometer) .salute-prog__eyebrow{
+  font-family:'Source Sans 3',sans-serif!important;font-weight:700!important;font-size:.66rem!important;
+  letter-spacing:.26em!important;text-transform:uppercase!important;color:var(--orange)!important;
+  text-align:center!important;margin:0 0 1.2rem!important;
+}
+/* Progress track + fill */
+.thermometer-widget:not(.useradmin-thermometer) .salute-prog__track{
+  height:13px!important;border-radius:999px!important;background:#E8E2D6!important;
+  box-shadow:inset 0 1px 2px rgba(19,35,91,.08)!important;overflow:hidden!important;
+}
+.thermometer-widget:not(.useradmin-thermometer) .salute-prog__fill{
+  border-radius:999px!important;background:linear-gradient(90deg,var(--orange),var(--orange-dark))!important;
+}
+
+/* Stats row */
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-stats{
+  padding:1.5rem 0 1.7rem!important;margin:0 auto!important;max-width:none!important;
+}
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-stat-value,
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-stat-value span{
+  font-family:'Zodiak',serif!important;font-weight:700!important;font-size:38px!important;
+  line-height:1!important;letter-spacing:-.02em!important;
+}
+.thermometer-widget:not(.useradmin-thermometer) .current-stat .thermometer-stat-value,
+.thermometer-widget:not(.useradmin-thermometer) .current-stat .thermometer-stat-value span,
+.thermometer-widget:not(.useradmin-thermometer) .percentage-stat .thermometer-stat-value,
+.thermometer-widget:not(.useradmin-thermometer) .percentage-stat .thermometer-stat-value span{color:var(--orange)!important}
+.thermometer-widget:not(.useradmin-thermometer) .goal-stat .thermometer-stat-value,
+.thermometer-widget:not(.useradmin-thermometer) .goal-stat .thermometer-stat-value span{color:var(--navy)!important}
+.thermometer-widget:not(.useradmin-thermometer) .supporting-text{
+  font-family:'Source Sans 3',sans-serif!important;font-weight:700!important;font-size:.62rem!important;
+  letter-spacing:.16em!important;text-transform:uppercase!important;color:rgba(19,35,91,.55)!important;margin-top:.5rem!important;
+}
+
+/* Footer buttons — stacked, navy, full width, hover orange */
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons{margin-top:0!important;padding-top:0!important}
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons .ui-button{
+  display:block!important;width:100%!important;margin:0 0 .75rem!important;
+  background:var(--navy)!important;border:none!important;border-radius:2px!important;color:#fff!important;
+  font-family:'Source Sans 3',sans-serif!important;font-weight:700!important;font-size:.72rem!important;
+  letter-spacing:.18em!important;text-transform:uppercase!important;padding:1.05rem!important;
+  transition:background-color .15s ease!important;
+}
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons .ui-button:last-child{margin-bottom:0!important}
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons .ui-button:hover,
+.thermometer-widget:not(.useradmin-thermometer) .thermometer-buttons .ui-button:focus-visible{
+  background:var(--orange)!important;color:#fff!important;
+}
