@@ -1,0 +1,49 @@
+<!-- ============================================================
+     Salute 2026 P2P — GLOBAL site-wide head/code snippet
+     Paste into Qgiv's site-wide Custom Header / Tracking Code field
+     (NOT a per-page widget). Loads on EVERY page — event home,
+     personal fundraising pages, dashboard, etc. — so the theme is
+     applied everywhere from one place.
+
+     Contains:
+       1. <link> to the hosted theme CSS (pinned to an immutable tag).
+       2. The thermometer progress-bar script (hides the default
+          graphic, draws the orange bar, relabels the stats) so any
+          thermometer on any page gets the Salute treatment.
+
+     RELEASING: bump the version in the <link> href (v1.0.1, ...) when
+     CSS changes, then paste the updated snippet back into this field.
+
+     Once this is live you can DELETE the per-page loader widget and
+     the per-page thermometer-script widget from the home page — this
+     snippet does both, everywhere.
+     ============================================================ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@v1.0.0/qgiv-custom.css">
+<script>
+(function () {
+  function num(t){ return parseFloat((t||'').replace(/[^0-9.]/g,'')) || 0; }
+  function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+  function sync(){
+    document.querySelectorAll('.thermometer-widget').forEach(function(w){
+      var stats=w.querySelector('.thermometer-stats'); if(!stats) return;
+      var wrap=w.querySelector('.salute-prog');
+      if(!wrap){
+        wrap=document.createElement('div'); wrap.className='salute-prog';
+        wrap.innerHTML='<p class="salute-prog__eyebrow">Your impact so far</p><div class="salute-prog__track"><div class="salute-prog__fill"></div></div>';
+        stats.parentNode.insertBefore(wrap,stats);
+      }
+      var a=w.querySelector('.current-stat .js-thermometer-stat-value');
+      var g=w.querySelector('.goal-stat .js-thermometer-stat-value');
+      var ach=num(a&&a.textContent), goal=num(g&&g.textContent);
+      var pct=goal>0?Math.max(0,Math.min(100,(ach/goal)*100)):0;
+      wrap.querySelector('.salute-prog__fill').style.width=pct.toFixed(1)+'%';
+      if(a) a.textContent=money(ach);
+      if(g) g.textContent=money(goal);
+      var L=function(s,t){var e=w.querySelector(s+' .supporting-text'); if(e) e.textContent=t;};
+      L('.current-stat','Raised'); L('.goal-stat','Goal'); L('.percentage-stat','Of goal reached');
+    });
+  }
+  function start(){ sync(); setInterval(sync,2500); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start); else start();
+})();
+</script>
