@@ -758,3 +758,17 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .account-tools-dropdown-container .additional-tools{
   border-top:1px solid rgba(19,35,91,.12)!important;background:#FBF8F3!important;
 }
+
+
+/* Tools dropdown — beat Qgiv's green hover fill with a higher-specificity
+   brand override, and keep the open trigger label readable on the dark bar. */
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:hover .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:focus .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:active .account-tool-icon{
+  background:var(--orange)!important;background-color:var(--orange)!important;
+  border-color:var(--orange)!important;color:#fff!important;
+}
+.global-bar .account-navigation .account-tools-container > .nav-item-label,
+.global-bar .account-navigation .account-tools-container > .nav-item-label.ui-dark-color{
+  color:#fff!important;background:transparent!important;
+}
