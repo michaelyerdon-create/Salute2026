@@ -665,3 +665,14 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .useradmin-thermometer .update-goal:hover{
   background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important;
 }
+
+
+/* PFP thermometer refinements: center the graphic; shrink the stats so the
+   three columns fit the narrow sidebar (esp. "OF GOAL REACHED"). */
+.useradmin-thermometer .thermometer-graphic{display:flex!important;justify-content:center!important}
+.useradmin-thermometer .thermometer-graphic .svg-container,
+.useradmin-thermometer .thermometer-graphic svg{margin:0 auto!important}
+.useradmin-thermometer .thermometer-stats{max-width:none!important;gap:.5rem!important;padding:.5rem 0 1rem!important}
+.useradmin-thermometer .thermometer-stat-value,
+.useradmin-thermometer .thermometer-stat-value span{font-size:1.35rem!important}
+.useradmin-thermometer .supporting-text{font-size:.54rem!important;letter-spacing:.1em!important;margin-top:.35rem!important}
