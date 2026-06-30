@@ -547,7 +547,7 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
   transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease!important}
 .button-block:hover{
   border-bottom-color:var(--orange)!important;transform:translateY(-3px)!important;box-shadow:0 14px 30px rgba(19,35,91,.12)!important}
-.button-block .button-block-icon{font-size:2rem!important;color:var(--orange)!important;line-height:1!important}
+.button-block .button-block-icon{font-size:2rem!important;color:var(--navy)!important;line-height:1!important}
 .button-block .button-block-label{
   font-family:'Zodiak',Georgia,serif!important;font-weight:700!important;color:var(--navy)!important;margin:0!important;font-size:1rem!important;line-height:1.2!important}
 .button-block:hover .button-block-label{color:var(--navy)!important}
