@@ -8,7 +8,7 @@
      This appends a real <link> to <head>, which always applies.
 
      VERSION PINNING: the href points at an immutable git tag
-     (@v1.0.12). jsDelivr serves pinned refs instantly and caches
+     (@v1.0.13). jsDelivr serves pinned refs instantly and caches
      them forever — no purge, no throttling, no stale cache.
      To ship a CSS change: commit, bump the tag (v1.0.1, ...),
      push the tag, then update the version in the href below and
@@ -21,7 +21,7 @@
   var d = document;
   var l = d.createElement('link');
   l.rel  = 'stylesheet';
-  l.href = 'https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@v1.0.12/qgiv-custom.css';
+  l.href = 'https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@v1.0.13/qgiv-custom.css';
   d.head.appendChild(l);
 
   // Hide this loader's own layout row so it contributes no padding.
