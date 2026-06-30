@@ -7,10 +7,12 @@
      that isn't the very first rule — so @import there is dropped.
      This appends a real <link> to <head>, which always applies.
 
-     The ?t= cache-buster (5-minute buckets) defeats jsDelivr's
-     7-day browser cache, so edits show up within ~5 min without
-     a hard refresh. For launch, replace the href with a pinned
-     version (e.g. @1.0.0) and drop the ?t= to restore caching.
+     VERSION PINNING: the href points at an immutable git tag
+     (@v1.0.0). jsDelivr serves pinned refs instantly and caches
+     them forever — no purge, no throttling, no stale cache.
+     To ship a CSS change: commit, bump the tag (v1.0.1, ...),
+     push the tag, then update the version in the href below and
+     re-paste this widget. That single number is the release knob.
 
      It also collapses its own widget row so it adds no whitespace.
      ============================================================ -->
@@ -19,7 +21,7 @@
   var d = document;
   var l = d.createElement('link');
   l.rel  = 'stylesheet';
-  l.href = 'https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@main/qgiv-custom.css?t=' + Math.floor(Date.now()/300000);
+  l.href = 'https://cdn.jsdelivr.net/gh/michaelyerdon-create/Salute2026@v1.0.0/qgiv-custom.css';
   d.head.appendChild(l);
 
   // Hide this loader's own layout row so it contributes no padding.
