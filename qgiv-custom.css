@@ -772,3 +772,17 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 .global-bar .account-navigation .account-tools-container > .nav-item-label.ui-dark-color{
   color:#fff!important;background:transparent!important;
 }
+
+
+/* Tools dropdown — comprehensive override of the green icon fill across
+   every trigger state (li hover, link hover/focus/active, .active class).
+   The icon span carries no inline style, so specificity + !important wins. */
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool:hover .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:hover .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:focus .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a:active .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool a.active .account-tool-icon,
+.global-bar .account-tools-dropdown-container .account-tools-navigation .account-tool.active .account-tool-icon{
+  background:var(--orange)!important;background-color:var(--orange)!important;
+  border-color:var(--orange)!important;color:#fff!important;
+}
