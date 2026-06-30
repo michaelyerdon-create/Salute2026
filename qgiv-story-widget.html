@@ -1,0 +1,143 @@
+<!-- ============================================================
+     Salute 2026 P2P — "Why I'm raising my hand" story section
+     Paste into a Qgiv "Text / HTML" widget on a PERSONAL page.
+     Scoped to #ywca-story. No JS.
+
+     >>> PERSONALIZE THE MARKED PLACEHOLDERS:
+         IMG_PRIMARY  – host the real program photo in Qgiv, swap the src
+         [NAME] / [ROLE] / [INITIALS]  – signature
+         body paragraphs + pull-quote – the fundraiser's own words
+         CTA hrefs – your page's donate + share URLs
+     ============================================================ -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap');
+  @import url('https://api.fontshare.com/v2/css?f[]=zodiak@700,800&display=swap');
+
+  #ywca-story *{ box-sizing:border-box; }
+  #ywca-story{
+    --navy:#13235B; --orange:#F33A1A; --orange-dark:#C72E13;
+    font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--navy); -webkit-font-smoothing:antialiased; margin:0; padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,2rem);
+  }
+
+  #ywca-story .yw-grid{
+    display:grid; grid-template-columns:0.92fr 1.08fr; gap:clamp(2rem,4.5vw,4.5rem);
+    align-items:stretch; background:#fff; border:1px solid rgba(19,35,91,.08);
+    border-radius:8px; overflow:hidden; box-shadow:0 22px 60px rgba(13,18,37,.12);
+    max-width:1180px; margin:0 auto;
+  }
+
+  /* LEFT — image */
+  #ywca-story .yw-media{ position:relative; background:#0D1225; min-height:540px; }
+  #ywca-story .yw-media img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 28%; display:block;
+  }
+  #ywca-story .yw-veil{
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(13,18,37,.55) 0%, transparent 38%);
+  }
+  #ywca-story .yw-chip{
+    position:absolute; left:26px; bottom:26px; display:flex; align-items:center; gap:.6rem;
+  }
+  #ywca-story .yw-chip i{
+    width:8px; height:8px; background:var(--orange); transform:rotate(45deg); flex-shrink:0;
+  }
+  #ywca-story .yw-chip span{
+    color:#fff; font-size:.66rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  }
+
+  /* RIGHT — text */
+  #ywca-story .yw-text{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(2.4rem,4vw,3.6rem); padding-left:clamp(1rem,1.5vw,1.6rem);
+  }
+  #ywca-story .yw-eyebrow{
+    font-size:.72rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--orange); margin:0 0 1.1rem;
+  }
+  #ywca-story h2{
+    font-family:'Zodiak',Georgia,serif; font-weight:700;
+    font-size:clamp(1.9rem,2.8vw,2.6rem); line-height:1.08; letter-spacing:-.015em;
+    color:var(--navy); margin:0 0 1.4rem; max-width:18ch;
+  }
+  #ywca-story .yw-text p{
+    font-size:1.05rem; line-height:1.62; color:rgba(19,35,91,.78); margin:0 0 1.1rem;
+  }
+  #ywca-story .yw-quote{
+    font-family:'Zodiak',Georgia,serif; font-weight:700; font-size:1.22rem; line-height:1.4;
+    color:var(--navy); border-left:3px solid var(--orange); padding-left:1.3rem;
+    margin:.5rem 0 1.8rem;
+  }
+
+  /* Signature */
+  #ywca-story .yw-sig{ display:flex; align-items:center; gap:.9rem; margin:0 0 1.8rem; }
+  #ywca-story .yw-sig-mark{
+    width:46px; height:46px; flex-shrink:0; border-radius:50%; background:var(--orange);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.95rem; letter-spacing:.02em;
+  }
+  #ywca-story .yw-sig-name{ font-size:1rem; font-weight:700; color:var(--navy); line-height:1.2; }
+  #ywca-story .yw-sig-role{ font-size:.86rem; color:rgba(19,35,91,.6); }
+
+  /* CTA */
+  #ywca-story .yw-cta{ display:flex; align-items:center; gap:1.4rem; flex-wrap:wrap; }
+  #ywca-story .yw-btn{
+    display:inline-block; background:var(--orange); color:#fff; text-decoration:none;
+    font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    padding:1rem 2.2rem; border-radius:2px; transition:background-color .15s ease;
+  }
+  #ywca-story .yw-btn:hover{ background:var(--orange-dark); }
+  #ywca-story .yw-link{
+    color:var(--navy); font-weight:700; font-size:.92rem; text-decoration:underline;
+    text-underline-offset:3px; transition:color .15s ease;
+  }
+  #ywca-story .yw-link:hover{ color:var(--orange); }
+
+  @media (max-width:820px){
+    #ywca-story .yw-grid{ grid-template-columns:1fr; }
+    #ywca-story .yw-media{ min-height:360px; }
+    #ywca-story .yw-text{ padding:2rem 1.6rem; }
+  }
+</style>
+
+<section id="ywca-story" aria-label="Why I'm raising my hand">
+  <div class="yw-grid">
+
+    <!-- LEFT: image — >>> swap IMG_PRIMARY with your hosted program photo <<< -->
+    <div class="yw-media">
+      <img src="https://placehold.co/720x900" alt="YWCA NYC program participants in a Girls Initiatives session">
+      <div class="yw-veil"></div>
+      <div class="yw-chip"><i></i><span>Girls Initiatives · Brooklyn</span></div>
+    </div>
+
+    <!-- RIGHT: story -->
+    <div class="yw-text">
+      <p class="yw-eyebrow">Why I'm raising my hand</p>
+      <h2>These are the New Yorkers I'm showing up for.</h2>
+
+      <!-- >>> Replace with your own story <<< -->
+      <p>I've seen what happens when a young person gets one steady adult in their corner and a place that believes in them. That's what YWCA NYC has been doing across the five boroughs for over 165 years — and it's why I'm asking you to stand with me this year.</p>
+      <p>Every gift I raise goes straight to after-school enrichment, college and STEM mentorship, and the year-round programs that open doors for women, girls, and families who too often get overlooked.</p>
+
+      <!-- >>> Replace with your own line <<< -->
+      <p class="yw-quote">"When we invest in her future, the whole city moves forward — and I want to be part of that."</p>
+
+      <!-- >>> Signature: initials / name / role <<< -->
+      <div class="yw-sig">
+        <div class="yw-sig-mark">MY</div>
+        <div>
+          <div class="yw-sig-name">[Your Name]</div>
+          <div class="yw-sig-role">Salute 2026 Fundraiser</div>
+        </div>
+      </div>
+
+      <!-- >>> Set your page's donate + share URLs <<< -->
+      <div class="yw-cta">
+        <a class="yw-btn" href="#donate">Give to my page</a>
+        <a class="yw-link" href="#share">Share my page</a>
+      </div>
+    </div>
+
+  </div>
+</section>
