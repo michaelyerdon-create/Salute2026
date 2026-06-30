@@ -428,25 +428,25 @@ header.global-bar{position:relative!important;z-index:10000!important}     /* > 
 
 
 /* ============================================================
-   LOGGED-IN ACCOUNT DROPDOWN (My Fundraising Tools / name ▾)
-   The base ".global-bar a{color:#fff}" rule makes this panel's
-   text white-on-white. Repaint EVERYTHING inside any global-bar
-   dropdown panel navy — container-agnostic so it catches the menu
-   regardless of its exact class. Excludes the login dropdown
-   (own colors) and the Bloomerang logo image.
+   LOGGED-IN ACCOUNT DROPDOWNS (verified against live DOM)
+     • "My Fundraising Tools ▾"  -> .account-tools-dropdown-container
+     • "Michael Yerdon ▾ / Sign Out" -> .account-dropdown-container
+   Both are .account-navigation .dropdown-container with white
+   panels; the base .global-bar white-link rule made their text
+   invisible. Repaint links/labels/icons navy. The login form
+   dropdown (.login-dropdown-container) is excluded; copy buttons
+   (.ui-button) and the Bloomerang <img> are left untouched.
    ============================================================ */
-.global-bar .nav-sub-menu:not(.login-dropdown-container),
-.global-bar [class*="dropdown-container"]:not(.login-dropdown-container),
-.global-bar [class*="sub-menu"]:not(.login-dropdown-container){
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container){
   background:#fff!important}
-.global-bar .nav-sub-menu:not(.login-dropdown-container) *:not(img):not(svg):not(.ui-button),
-.global-bar [class*="dropdown-container"]:not(.login-dropdown-container) *:not(img):not(svg):not(.ui-button),
-.global-bar [class*="sub-menu"]:not(.login-dropdown-container) *:not(img):not(svg):not(.ui-button){
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) a,
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) .account-tool-label,
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) .sub-nav-item-link,
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) .ui-icon{
   color:var(--navy)!important;fill:var(--navy)!important}
-.global-bar .nav-sub-menu:not(.login-dropdown-container) a:hover,
-.global-bar .nav-sub-menu:not(.login-dropdown-container) a:hover *,
-.global-bar [class*="dropdown-container"]:not(.login-dropdown-container) a:hover,
-.global-bar [class*="dropdown-container"]:not(.login-dropdown-container) a:hover *{
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) a:hover,
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) a:hover .account-tool-label,
+.global-bar .account-navigation .dropdown-container:not(.login-dropdown-container) a:hover .ui-icon{
   color:var(--orange)!important;fill:var(--orange)!important}
 
 
