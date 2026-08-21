@@ -211,7 +211,7 @@
 
         /* HERO */
         #hero {
-            min-height: 100vh;
+            min-height: auto;
             background: #0d1225;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
@@ -258,12 +258,13 @@
         .hero-content {
             position: relative; z-index: 3;
             display: flex; flex-direction: column; align-items: center; text-align: center;
-            padding: 8rem var(--gutter) 5rem;
+            padding: 7rem var(--gutter) 7.5rem;
         }
 
         .hero-pre {
-            font-size: clamp(0.9rem, 0.675rem + 0.5625vw, 1.125rem); font-weight: 600; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase;
-            color: var(--ywca-orange); margin-bottom: 2.5rem;
+            font-size: clamp(0.5rem, 2.4vw, 1.125rem); font-weight: 600; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase;
+            white-space: nowrap; max-width: 100%;
+            color: var(--ywca-orange); margin-bottom: 1.6rem;
             opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
         }
 
@@ -271,7 +272,7 @@
 
         .hero-rule {
             display: flex; align-items: center; gap: 1rem;
-            margin: 2.75rem 0 2.25rem; color: var(--lavender);
+            margin: 1.75rem 0 1.5rem; color: var(--lavender);
             opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
         }
         .hero-rule::before, .hero-rule::after { content: ''; display: block; width: 80px; height: 1px; background: currentColor; opacity: 0.5; }
@@ -286,7 +287,7 @@
         .hero-venue {
             font-family: 'Zodiak', serif; font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: 400; color: rgba(255,255,255,0.88);
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.15rem;
             opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
         }
 
@@ -296,7 +297,7 @@
             opacity: 0; animation: fadeUp 0.8s 1.05s forwards;
         }
 
-        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1.3rem 0 0; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
 
         .scroll-cue {
             position: absolute; bottom: 13px; left: 50%; transform: translateX(-50%);
@@ -1229,10 +1230,10 @@
             <p class="hero-date">Tuesday, October 13, 2026 · 6:00–9:00 PM</p>
             <p class="hero-venue">City Winery · Pier 57 · NYC</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-persimmon qgiv-trigger">Purchase</a>
+                <a href="#" class="btn btn-persimmon qgiv-trigger">Reserve Your Seat</a>
             </div>
         </div>
-        <a href="#about" class="scroll-cue" aria-label="Scroll to learn more">
+        <a href="#honorees" class="scroll-cue" aria-label="Scroll to meet the 2026 honorees">
             <span class="scroll-cue__label">SCROLL</span>
             <span class="scroll-cue__chevrons" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
