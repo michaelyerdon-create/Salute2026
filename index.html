@@ -440,8 +440,41 @@
         .honoree-ghost-tba { font-family: 'Zodiak', serif; font-style: italic; color: var(--on-dark-muted); font-size: 0.95rem; }
         .honoree-ghost-soon { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
+        /* 2026 SPONSORS (recognition wall) */
+        #sponsors { background: var(--pale-orange); }
+        .sponsors-header { text-align: left; margin: 0 0 2.5rem; }
+        .sponsors-header .eyebrow { color: var(--ywca-orange); }
+        .sponsors-title { font-family: 'Zodiak', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0; letter-spacing: -0.01em; line-height: 1.1; }
+        .sponsors-sub { font-size: 1rem; color: var(--on-light-muted); line-height: 1.55; }
+        .sponsor-tier { display: grid; grid-template-columns: minmax(160px, 220px) 1fr; align-items: center; gap: clamp(1rem,3vw,2.75rem); padding: clamp(1.6rem,3vw,2.2rem) 0; border-top: 1px solid rgba(19,35,91,0.14); text-align: left; }
+        .sponsor-tier:last-of-type { border-bottom: 1px solid rgba(19,35,91,0.14); }
+        .sponsor-tier-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ywca-orange); margin: 0; line-height: 1.5; }
+        .sponsor-row { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 1.1rem 1.9rem; }
+        .sponsor-chip { display: inline-flex; align-items: center; justify-content: center; }
+        .sponsor-chip img { display: block; width: auto; }
+        .sponsor-name { font-family: 'Zodiak', serif; font-weight: 700; color: var(--dark-navy); line-height: 1.2; }
+        .sponsor-tier--xl .sponsor-chip img { height: 56px; }
+        .sponsor-tier--xl .sponsor-name { font-size: 1.9rem; }
+        .sponsor-tier--lg .sponsor-chip img { height: 46px; }
+        .sponsor-tier--lg .sponsor-name { font-size: 1.5rem; }
+        .sponsor-tier--md .sponsor-chip img { height: 38px; }
+        .sponsor-tier--md .sponsor-name { font-size: 1.15rem; }
+        .sponsor-tier--sm .sponsor-chip img { height: 30px; }
+        .sponsor-tier--sm .sponsor-name { font-size: 1rem; color: var(--text-mid); font-weight: 600; }
+        /* Per-logo optical sizing so different logo shapes read as balanced peers */
+        .sponsor-chip img[src*="harnisch"] { height: 50px; }
+        .sponsor-chip img[src*="conedison"] { height: 26px; }
+        .sponsor-chip img[src*="chdf"] { height: 44px; }
+        @media (max-width: 600px) {
+            .sponsor-tier--xl .sponsor-chip img { height: 44px; }
+            .sponsor-tier--xl .sponsor-name { font-size: 1.5rem; }
+            .sponsor-tier--lg .sponsor-name { font-size: 1.25rem; }
+            .sponsor-tier { grid-template-columns: 1fr; gap: 0.9rem; padding: 1.4rem 0; text-align: center; justify-items: center; }
+            .sponsor-row { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+
         /* SPONSORSHIP */
-        #sponsorship { background: var(--cream); }
+        #sponsorship { background: #ffffff; }
         .sponsorship-header { margin-bottom: 4rem; }
         .sponsorship-eyebrow { color: var(--ywca-orange) !important; }
         .sponsorship-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.25rem; letter-spacing: -0.01em; line-height: 1.0; }
@@ -647,7 +680,7 @@
         .mission-since { position: absolute; bottom: 1.5rem; right: 2rem; font-family: 'Zodiak', serif; font-size: 4.5rem; font-weight: 700; color: rgba(255,255,255,0.05); line-height: 1; }
 
         /* FAQ */
-        #faq { background: var(--pale-orange); }
+        #faq { background: var(--cream); }
         .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(3rem,6vw,7rem); align-items: start; }
         .faq-sidebar { position: sticky; top: 7rem; }
         .faq-sidebar-title { font-family: 'Zodiak', serif; font-size: clamp(1.28rem,2.13vw,1.91rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.5rem; line-height: 1.0; letter-spacing: -0.01em; }
@@ -672,7 +705,7 @@
         .faq-body-inner { padding-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.45; color: var(--text-mid); }
 
         /* FUNDRAISE */
-        #fundraise { background: var(--pale-orange); }
+        #fundraise { background: var(--cream); }
         .fundraise-header { margin-bottom: 3rem; max-width: 620px; }
         .fundraise-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
         .fundraise-sub { font-size: 1rem; line-height: 1.45; color: var(--on-light-muted); }
@@ -909,7 +942,7 @@
         }
 
         /* WHAT SALUTE FUNDS */
-        #funds { background: var(--pale-orange); }
+        #funds { background: #f4f6fa; }
         /* Header: full-width text block */
         .funds-title { font-family: 'Zodiak', serif; font-size: clamp(1.49rem,2.55vw,2.34rem); font-weight: 700; color: var(--dark-navy); margin: 0.75rem 0 1.1rem; letter-spacing: -0.01em; line-height: 1.1; }
         .funds-body { font-size: clamp(1rem,1.3vw,1.1rem); line-height: 1.5; color: var(--on-light-muted); }
@@ -919,8 +952,8 @@
         .programs-tab-list { display: flex; align-items: flex-end; }
         .programs-tab {
             font-family: 'Zodiak', serif; font-size: clamp(1rem,1.6vw,1.2rem); font-weight: 700;
-            color: #9b8268; background: var(--tab-tan);
-            border: 1.5px solid transparent; border-bottom: none;
+            color: rgba(19,35,91,0.55); background: #ebedf2;
+            border: 1.5px solid rgba(19,35,91,0.32); border-bottom: none;
             border-radius: 10px 10px 0 0; padding: 0.8rem clamp(1.1rem,2.5vw,1.9rem);
             cursor: pointer; white-space: nowrap; position: relative; z-index: 1;
             transition: color 0.2s, background 0.2s;
@@ -937,6 +970,7 @@
             background: #fff; border: 1.5px solid var(--dark-navy);
             border-radius: 0 8px 8px 8px;
             padding: clamp(1.8rem,3.4vw,2.6rem) clamp(1.6rem,3vw,2.4rem) clamp(2rem,3.6vw,2.6rem);
+            box-shadow: 0 22px 50px rgba(19,35,91,0.12), 0 6px 16px rgba(19,35,91,0.07);
         }
         .programs-panel[hidden] { display: none; }
         /* Story content */
@@ -990,12 +1024,12 @@
             .stat-pull { text-align: left; padding-right: 0; border-right: none; padding-left: 1.4rem; border-left: 3px solid var(--ywca-orange); }
             .stat-pull .lbl { margin-left: 0; }
         }
-        .funds-video { margin-top: clamp(3rem, 6vw, 5rem); }
-        .funds-video-head { max-width: 640px; margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); text-align: left; }
+        .funds-video { margin-top: clamp(2.5rem, 5vw, 4rem); }
+        .funds-video-head { max-width: 620px; margin: 0 0 clamp(1.5rem, 3vw, 2rem); text-align: left; }
         .funds-video-head .tp-eyebrow { margin-bottom: 0.5rem; font-size: 0.75rem; letter-spacing: 0.18em; }
-        .funds-video-title { font-family: 'Zodiak', serif; font-weight: 700; font-size: 1.25rem; color: var(--dark-navy); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0; }
+        .funds-video-title { font-family: 'Zodiak', serif; font-weight: 700; font-size: clamp(1.35rem,2vw,1.6rem); color: var(--dark-navy); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0; }
         .funds-video-sub { font-size: 1rem; line-height: 1.5; color: var(--on-light-muted); margin-top: 0.5rem; }
-        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; }
+        .video-embed { position: relative; width: 100%; max-width: 920px; margin: 0; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; box-shadow: 0 28px 64px rgba(19,35,91,0.18), 0 8px 20px rgba(19,35,91,0.08); border: 1px solid rgba(19,35,91,0.08); }
         .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 
         /* SPONSORSHIP CONTACT */
@@ -1435,6 +1469,56 @@
 </section>
 
 <!-- HONOREES -->
+<!-- 2026 SPONSORS -->
+<section id="sponsors" class="section-pad">
+    <div class="container">
+        <div class="sponsors-header reveal">
+            <p class="eyebrow">2026 Sponsors</p>
+            <h2 class="sponsors-title">Thank You to Our Sponsors</h2>
+            <p class="sponsors-sub">Salute 2026 is made possible by the generous leaders and organizations investing in New York's next generation.</p>
+        </div>
+
+        <div class="sponsor-tier sponsor-tier--xl reveal">
+            <div class="sponsor-tier-label">Changemaker Sponsor</div>
+            <div class="sponsor-row">
+                <div class="sponsor-chip"><img src="brand.assets/sponsor-harnisch.png" alt="The Harnisch Foundation"></div>
+            </div>
+        </div>
+
+        <div class="sponsor-tier sponsor-tier--lg reveal">
+            <div class="sponsor-tier-label">She-Ro Sponsor</div>
+            <div class="sponsor-row">
+                <span class="sponsor-name">Alison &amp; William Schweizer</span>
+            </div>
+        </div>
+
+        <div class="sponsor-tier sponsor-tier--md reveal">
+            <div class="sponsor-tier-label">Visionary Sponsors</div>
+            <div class="sponsor-row">
+                <div class="sponsor-chip"><img src="brand.assets/sponsor-conedison.svg" alt="Con Edison"></div>
+                <div class="sponsor-chip sponsor-chip--flat"><img src="brand.assets/sponsor-chdf.svg" alt="Cleveland H. Dodge Foundation"></div>
+                <span class="sponsor-name">Lorryn Mai</span>
+                <span class="sponsor-name">Robin &amp; Tomer Melman</span>
+            </div>
+        </div>
+
+        <div class="sponsor-tier sponsor-tier--sm reveal">
+            <div class="sponsor-tier-label">Catalyst Sponsor</div>
+            <div class="sponsor-row">
+                <span class="sponsor-name">Barbara Denham</span>
+                <span class="sponsor-name">Brian Fox</span>
+            </div>
+        </div>
+
+        <div class="sponsor-tier sponsor-tier--sm reveal">
+            <div class="sponsor-tier-label">Advocate Sponsor</div>
+            <div class="sponsor-row">
+                <span class="sponsor-name">Linda Derrick</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- SPONSORSHIP -->
 <section id="sponsorship" class="section-pad">
     <div class="container">
