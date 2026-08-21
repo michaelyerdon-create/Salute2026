@@ -65,6 +65,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            white-space: nowrap;
         }
         .eyebrow::before, .eyebrow::after {
             content: '';
@@ -73,6 +74,10 @@
             width: 2rem;
             height: 1.5px;
             background: currentColor;
+        }
+        @media (max-width: 600px) {
+            .eyebrow { letter-spacing: 0.24em; gap: 0.5rem; }
+            .eyebrow::before, .eyebrow::after { width: 1.25rem; }
         }
 
         .container {
@@ -2281,6 +2286,27 @@
             }
         });
     });
+
+    // Eyebrows: keep on one line by shrinking font only when it would overflow
+    function fitEyebrows() {
+        document.querySelectorAll('.eyebrow').forEach(function (el) {
+            el.style.fontSize = '';
+            var size = parseFloat(getComputedStyle(el).fontSize);
+            var guard = 0;
+            while (el.scrollWidth > el.clientWidth + 1 && size > 7 && guard < 40) {
+                size -= 0.5;
+                el.style.fontSize = size + 'px';
+                guard++;
+            }
+        });
+    }
+    var eyebrowRAF;
+    window.addEventListener('resize', function () {
+        cancelAnimationFrame(eyebrowRAF);
+        eyebrowRAF = requestAnimationFrame(fitEyebrows);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitEyebrows);
+    fitEyebrows();
 
     // Sticky nav
     const nav = document.getElementById('nav');
