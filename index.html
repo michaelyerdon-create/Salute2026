@@ -290,6 +290,7 @@
             display: block; margin-top: 0.5rem;
             font-family: 'Zodiak', serif; font-style: italic; font-weight: 400;
             font-size: clamp(0.95rem, 1.8vw, 1.15rem); letter-spacing: 0.01em;
+            color: rgba(255,255,255,0.88); /* matches .hero-date */
         }
 
         .hero-logo { width: clamp(240px, 34vw, 560px); opacity: 0; animation: fadeUp 0.9s 0.45s forwards; filter: drop-shadow(0 8px 40px rgba(0,0,0,0.25)); }
@@ -399,7 +400,7 @@
         .honorees-header .eyebrow { color: var(--ywca-orange); }
         .honorees-title { font-family: 'Zodiak', serif; font-size: clamp(1.25rem,2.1vw,2rem); font-weight: 700; color: var(--on-dark); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
         .honorees-subtitle { font-size: 1rem; color: var(--on-dark-muted); line-height: 1.45; }
-        .honorees-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 804px; margin-left: auto; margin-right: auto; }
+        .honorees-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 804px; margin-left: 0; margin-right: auto; }
         .honorees-grid--single { grid-template-columns: 1fr; }
 
         .honoree-card {
@@ -417,7 +418,7 @@
         .honoree-avatar svg { width: 24px; height: 24px; stroke: var(--dark-navy); fill: none; opacity: 0.4; }
         .honoree-name-tba { font-family: 'Zodiak', serif; font-size: 1rem; font-style: italic; color: var(--on-light-muted); margin-bottom: 0.25rem; }
         .honoree-soon { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(19,35,91,0.35); }
-        .honorees-update-note { max-width: 804px; margin-left: auto; margin-right: auto; }
+        .honorees-update-note { max-width: 804px; margin-left: 0; margin-right: auto; }
         .honorees-update-note { text-align: left; margin-top: 3rem; font-size: 0.875rem; font-style: italic; color: var(--on-dark-muted); }
         .honorees-update-note a { color: var(--ywca-orange); border-bottom: 1px solid rgba(243,58,26,0.3); }
         .honorees-date { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ywca-orange); margin-top: 0.6rem; }
@@ -487,6 +488,9 @@
         .sponsor-tier--md .sponsor-chip img { height: 38px; }
         .sponsor-tier--md .sponsor-name { font-size: 1.15rem; }
         .sponsor-tier--sm .sponsor-chip img { height: 30px; }
+        /* stacked (near-square) marks need more height than a wordmark to read
+           at equivalent optical size */
+        .sponsor-tier .sponsor-chip--stacked img { height: 48px; }
         .sponsor-tier--sm .sponsor-name { font-size: 1rem; color: var(--text-mid); font-weight: 600; }
         /* Per-logo optical sizing so different logo shapes read as balanced peers */
         .sponsor-chip img[src*="harnisch"] { height: 50px; }
@@ -1544,6 +1548,7 @@
         <div class="sponsor-tier sponsor-tier--sm reveal">
             <div class="sponsor-tier-label">Advocate Sponsor</div>
             <div class="sponsor-row">
+                <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-btq.png" alt="BTQ Financial, a division of Consero"></div>
                 <span class="sponsor-name">Linda Derrick</span>
             </div>
         </div>
@@ -1786,7 +1791,7 @@
             <div class="ticket-strip-item ticket-strip-featured">
                 <div class="ticket-strip-name">Early Bird</div>
                 <div class="ticket-strip-price">$750</div>
-                <div class="ticket-strip-note">Early Bird pricing ends August 31, 2026.<br>Save $250 before standard rates begin.</div>
+                <div class="ticket-strip-note">Early Bird pricing ends September 4, 2026.<br>Save $250 before standard rates begin.</div>
                 <!-- Ticket checkout: https://secure.qgiv.com/for/2026salute/event/1011823/ -->
                 <div class="ticket-strip-action">Get Tickets</div>
                 <hr class="ticket-strip-rule">
@@ -2349,7 +2354,7 @@
         { q: "When and where is Salute 2026?", a: "Salute 2026 will take place on Tuesday, October 13, 2026, at City Winery in New York City. The cocktail reception begins at 6:00 PM, followed by dinner and the awards program." },
         { q: "What is the dress code?", a: "Cocktail attire." },
         { q: "How do I purchase tickets or a sponsorship?", a: "You can purchase directly through this page, or contact YWCA NYC's Development office at <a href=\"mailto:development@ywcanyc.org\">development@ywcanyc.org</a> or <a href=\"tel:+12127554500\">212-755-4500</a> for tables, custom partnerships, or any questions." },
-        { q: "Can I purchase a single ticket?", a: "Yes. Individual tickets are available at the Friend ($1,000), Early Bird ($750, through August 31), and Young Professional / Nonprofit Partner ($400) levels." },
+        { q: "Can I purchase a single ticket?", a: "Yes. Individual tickets are available at the Friend ($1,000), Early Bird ($750, through September 4), and Young Professional / Nonprofit Partner ($400) levels." },
         { q: "What if I can't attend but still want to support?", a: "You're welcome to make a direct gift in any amount. Contributions support YWCA NYC's year-round programs for young people and families across New York City. All gifts are fully tax-deductible. <a href=\"#\" class=\"qgiv-trigger\">Give Online</a>." },
         { q: "Are dietary accommodations available?", a: "Yes. Vegan, dairy-free, and gluten-free options will be available at the event. Let your server know when they come to your table, and reach out directly with any specific questions." },
         { q: "Is the venue accessible?", a: "City Winery is wheelchair accessible. If you have specific accessibility needs, please let us know in advance so we can ensure a smooth experience." },
