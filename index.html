@@ -430,14 +430,14 @@
 
         /* Announced honoree — photo-top card. The photo keeps a fixed 3:2 ratio so it
            never stretches when the bio accordion expands the card. */
-        .honoree-card--person { padding: 0; display: flex; flex-direction: column; align-items: stretch; }
+        .honoree-card--person { padding: 0; display: flex; flex-direction: column; align-items: stretch; align-self: start; }
         .honoree-photo { width: 100%; aspect-ratio: 3 / 2; flex-shrink: 0; background: var(--pale-orange); overflow: hidden; }
         .honoree-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
         .honoree-body { padding: 2rem 2.25rem 2.25rem; display: flex; flex-direction: column; justify-content: flex-start; flex: 1; }
         .honoree-body .honoree-award-name { font-size: 1.28rem; margin-bottom: 1.1rem; }
         .honoree-who { padding-top: 1.1rem; border-top: 1px solid rgba(19,35,91,0.1); }
         .honoree-person-name { font-family: 'Zodiak', serif; font-size: 1.08rem; font-weight: 700; color: var(--dark-navy); line-height: 1.15; }
-        .honoree-person-title { font-size: 0.82rem; color: var(--on-light-muted); line-height: 1.5; margin-top: 0.3rem; }
+        .honoree-person-title { font-size: 0.82rem; color: var(--on-light-muted); line-height: 1.5; margin-top: 0.3rem; min-height: 4.5em; }
         .honoree-bio { margin-top: 1.1rem; border-top: 1px solid rgba(19,35,91,0.1); }
         .honoree-bio-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0 0.2rem; background: none; border: none; cursor: pointer; text-align: left; }
         .honoree-bio-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dark-navy); transition: color 0.2s; }
@@ -1349,13 +1349,20 @@
                     <div class="honoree-award-name">Corporate Leadership</div>
                     <div class="honoree-who">
                         <div class="honoree-person-name">Diane Sinti</div>
-                        <div class="honoree-person-title">YWCA NYC Board Member &middot; Managing Director, Deloitte Consulting LLP</div>
+                        <div class="honoree-person-title">YWCA NYC Board Member &middot; Managing Director, Deloitte Consulting LLP &middot; Global Work re-Design Solution Leader, Financial Services</div>
                     </div>
-                    <div class="honoree-bio honoree-bio--pending">
-                        <button class="honoree-bio-trigger" disabled aria-disabled="true">
-                            <span class="honoree-bio-label">Bio coming soon</span>
+                    <div class="honoree-bio">
+                        <button class="honoree-bio-trigger" aria-expanded="false">
+                            <span class="honoree-bio-label">Read full bio</span>
                             <span class="honoree-bio-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
                         </button>
+                        <div class="honoree-bio-body">
+                            <div class="honoree-bio-inner">
+                                <p>Diane is Deloitte Consulting's Future of Work leader focused on Work re-Design and Talent Optimization, and Financial Services. Diane and her teams enable complex global organizations to &ldquo;future proof&rdquo; and maintain competitive advantage through a focus on value-based outcomes, optimal human:AI collaboration and the re-imagination of work, workforce and workplace.</p>
+                                <p>In her roles she leverages broad consulting and international corporate experience partnering with her clients to achieve market alignment, business goal achievement and positive talent and customer experience. Her experience includes work re-architecture, legal entity restructuring, M&amp;A, new business, location strategy, business line and operations transformation, technology modernization and union negotiation/works council consultation. Diane has acted as a regional Management Committee Member, HC regional head, generalist, strategist and deep functional expert; and Deloitte's Human Capital Offering Chief Modernization Officer, and FSI M&amp;A and Private Equity and AI Leader.</p>
+                                <p>Diane is on the Board of Directors of the YWCA of NYC. Past Board seats include the Women's Refugee Commission, The Wall Street Women's Alliance and the Women's Bond Club. Former industry affiliations include Goldman Sachs, TD Bank and TD Waterhouse Discount Brokerage.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
