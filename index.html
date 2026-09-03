@@ -400,7 +400,7 @@
         .honorees-header .eyebrow { color: var(--ywca-orange); }
         .honorees-title { font-family: 'Zodiak', serif; font-size: clamp(1.25rem,2.1vw,2rem); font-weight: 700; color: var(--on-dark); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
         .honorees-subtitle { font-size: 1rem; color: var(--on-dark-muted); line-height: 1.45; }
-        .honorees-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 804px; margin-left: 0; margin-right: auto; }
+        .honorees-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-left: 0; margin-right: auto; }
         .honorees-grid--single { grid-template-columns: 1fr; }
 
         .honoree-card {
@@ -430,14 +430,15 @@
 
         /* Announced honoree — photo-top card. The photo keeps a fixed 3:2 ratio so it
            never stretches when the bio accordion expands the card. */
-        .honoree-card--person { padding: 0; display: flex; flex-direction: column; align-items: stretch; align-self: start; }
+        .honoree-card--person { padding: 0; display: flex; flex-direction: column; align-items: stretch; }
+        .honorees-grid:has(.honoree-bio.open) .honoree-card--person { align-self: start; }
         .honoree-photo { width: 100%; aspect-ratio: 3 / 2; flex-shrink: 0; background: var(--pale-orange); overflow: hidden; }
         .honoree-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
         .honoree-body { padding: 2rem 2.25rem 2.25rem; display: flex; flex-direction: column; justify-content: flex-start; flex: 1; }
         .honoree-body .honoree-award-name { font-size: 1.28rem; margin-bottom: 1.1rem; }
         .honoree-who { padding-top: 1.1rem; border-top: 1px solid rgba(19,35,91,0.1); }
         .honoree-person-name { font-family: 'Zodiak', serif; font-size: 1.08rem; font-weight: 700; color: var(--dark-navy); line-height: 1.15; }
-        .honoree-person-title { font-size: 0.82rem; color: var(--on-light-muted); line-height: 1.5; margin-top: 0.3rem; min-height: 4.5em; }
+        .honoree-person-title { font-size: 0.82rem; color: var(--on-light-muted); line-height: 1.5; margin-top: 0.3rem; }
         .honoree-bio { margin-top: 1.1rem; border-top: 1px solid rgba(19,35,91,0.1); }
         .honoree-bio-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0 0.2rem; background: none; border: none; cursor: pointer; text-align: left; }
         .honoree-bio-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dark-navy); transition: color 0.2s; }
@@ -1115,6 +1116,7 @@
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .tiers-top, .tiers-bottom { grid-template-columns: 1fr; }
+            .honorees-grid { grid-template-columns: repeat(2,1fr); }
         }
         @media (max-width: 860px) {
             .nav-links { display: none; }
@@ -1125,7 +1127,6 @@
             .about-stats { grid-template-columns: repeat(3,1fr); gap: 1.5rem 1.5rem; }
             .faq-sidebar { position: static; }
             .honorees-grid, .tickets-grid { grid-template-columns: 1fr; }
-            .honorees-grid { max-width: none; }
             .honorees-grid--single { grid-template-columns: 1fr; }
             .honoree-card--person { flex-direction: column; min-height: 0; }
             .honoree-photo { width: 100%; aspect-ratio: 4/3; }
@@ -1366,19 +1367,36 @@
                     </div>
                 </div>
             </div>
+            <!-- Announced honoree -->
+            <div class="honoree-card honoree-card--person reveal reveal-delay-3">
+                <div class="honoree-photo"><img src="brand.assets/darnide-cayo.jpg" alt="Darnide Cayo"></div>
+                <div class="honoree-body">
+                    <div class="honoree-award-label">Award</div>
+                    <div class="honoree-award-name">Emerging Leader</div>
+                    <div class="honoree-who">
+                        <div class="honoree-person-name">Darnide Cayo</div>
+                        <div class="honoree-person-title">Section Manager, Staten Island Construction, Con Edison</div>
+                    </div>
+                    <div class="honoree-bio">
+                        <button class="honoree-bio-trigger" aria-expanded="false">
+                            <span class="honoree-bio-label">Read full bio</span>
+                            <span class="honoree-bio-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+                        </button>
+                        <div class="honoree-bio-body">
+                            <div class="honoree-bio-inner">
+                                <p>Darnide Cayo joined Con Edison in 2016 as a Senior Specialist in Talent Management, supporting leadership development programs and helping employees transition from union roles to management, as well as assisting recent college graduates with rotational assignments. She later moved to Electric Operations, taking on leadership roles in Manhattan Field Services, Brooklyn, Queens, and Staten Meter &amp; Test, and most recently Staten Island Underground.</p>
+                                <p>Darnide holds a BA in Business Communication and an MA in Corporate Communication from Baruch College, as well as a Master of Education from Columbia University. She is currently completing a Doctor of Education at Columbia University, where her research focuses on the psychological safety of field employees. Darnide is also a proud recipient of the 2019 Con Edison Living Our Values award and the 2025 Team Award as Co-Chairperson of the Electric Operations Safety Conference.</p>
+                                <p>Her passion for helping others led her to co-found a non-profit focused on supporting displaced victims of natural disasters in rural Haiti. In recognition of her emergency relief work, former President George W. Bush honored her for her dedication to humanitarian causes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Placeholder cards hidden for now. TO RESTORE: delete this comment block's
                  opening/closing markers.
             <div class="honoree-card honoree-card--ghost reveal reveal-delay-3">
                 <div class="honoree-ghost-inner">
                     <div class="honoree-ghost-award">Grace Hoadley Dodge Distinguished Service Award</div>
-                    <div class="honoree-ghost-ava"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                    <div class="honoree-ghost-tba">To be announced</div>
-                    <div class="honoree-ghost-soon">Coming soon</div>
-                </div>
-            </div>
-            <div class="honoree-card honoree-card--ghost reveal reveal-delay-4">
-                <div class="honoree-ghost-inner">
-                    <div class="honoree-ghost-award">Emerging Leader Award</div>
                     <div class="honoree-ghost-ava"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                     <div class="honoree-ghost-tba">To be announced</div>
                     <div class="honoree-ghost-soon">Coming soon</div>
