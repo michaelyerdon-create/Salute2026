@@ -400,7 +400,7 @@
         .honorees-header .eyebrow { color: var(--ywca-orange); }
         .honorees-title { font-family: 'Zodiak', serif; font-size: clamp(1.25rem,2.1vw,2rem); font-weight: 700; color: var(--on-dark); margin: 0.75rem 0 1rem; letter-spacing: -0.01em; line-height: 1.1; }
         .honorees-subtitle { font-size: 1rem; color: var(--on-dark-muted); line-height: 1.45; }
-        .honorees-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-left: 0; margin-right: auto; }
+        .honorees-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-left: 0; margin-right: auto; }
         .honorees-grid--single { grid-template-columns: 1fr; }
 
         .honoree-card {
@@ -1392,19 +1392,34 @@
                     </div>
                 </div>
             </div>
-            <!-- Placeholder cards hidden for now. TO RESTORE: delete this comment block's
-                 opening/closing markers.
-            <div class="honoree-card honoree-card--ghost reveal reveal-delay-3">
-                <div class="honoree-ghost-inner">
-                    <div class="honoree-ghost-award">Grace Hoadley Dodge Distinguished Service Award</div>
-                    <div class="honoree-ghost-ava"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                    <div class="honoree-ghost-tba">To be announced</div>
-                    <div class="honoree-ghost-soon">Coming soon</div>
+            <!-- Announced honoree -->
+            <div class="honoree-card honoree-card--person reveal reveal-delay-4">
+                <div class="honoree-photo"><img src="brand.assets/teresa-younger.jpg" alt="Teresa C. Younger"></div>
+                <div class="honoree-body">
+                    <div class="honoree-award-label">Award</div>
+                    <div class="honoree-award-name">Grace Hoadley Dodge Distinguished Service Award</div>
+                    <div class="honoree-who">
+                        <div class="honoree-person-name">Teresa C. Younger</div>
+                        <div class="honoree-person-title">Former CEO and President &middot; Ms. Foundation for Women</div>
+                    </div>
+                    <div class="honoree-bio">
+                        <button class="honoree-bio-trigger" aria-expanded="false">
+                            <span class="honoree-bio-label">Read full bio</span>
+                            <span class="honoree-bio-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+                        </button>
+                        <div class="honoree-bio-body">
+                            <div class="honoree-bio-inner">
+                                <p>Teresa C. Younger is an activist, advocate, renowned public speaker, and organizational strategist who has spent 30 years on the frontlines of critical battles for comprehensive equity and the elimination of institutionalized oppression. For 12 years, she served as President and CEO of the Ms. Foundation for Women, the longest-serving CEO of color and second-longest-serving CEO in the organization&rsquo;s 50-year history.</p>
+                                <p>Prior to joining the Ms. Foundation for Women, Younger served as the executive director of the Connecticut General Assembly&rsquo;s Permanent Commission on the Status of Women and as executive director of the ACLU of Connecticut &mdash; the first African American and first woman to hold that position.</p>
+                                <p>A thought leader at the intersections of gender and race, Younger has shaped the narrative of women and girls through initiatives including the Women&rsquo;s Funding Network, Grantmakers for Girls of Color, and Funders for Reproductive Equity. She was named one of the &ldquo;50 Most Powerful Women in Philanthropy&rdquo; and to the &ldquo;Top 100 Leaders in Philanthropy&rdquo; by Inside Philanthropy.</p>
+                                <p>Younger currently serves on the boards of the Girl Scouts of the USA and Equal Justice Works.</p>
+                                <p>A graduate of the University of North Dakota, Younger holds an Honorary Doctorate of Humanities from the University of New Haven and was inducted into the Connecticut Women&rsquo;s Hall of Fame.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            -->
         </div>
-        <p class="honorees-update-note reveal">More honoree announcements coming soon. <a href="#" class="cc-signup-trigger">Sign up for updates.</a></p>
     </div>
 </section>
 
@@ -1576,6 +1591,7 @@
             <div class="sponsor-tier-label">Advocate Sponsors</div>
             <div class="sponsor-row">
                 <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-btq.png" alt="BTQ Financial, a division of Consero"></div>
+                <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-g4gc.png" alt="Grantmakers for Girls of Color"></div>
                 <span class="sponsor-name">Linda Derrick</span>
                 <span class="sponsor-name">Natasha Robertson</span>
             </div>
