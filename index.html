@@ -497,7 +497,14 @@
         .sponsor-chip img[src*="harnisch"] { height: 50px; }
         .sponsor-chip img[src*="conedison"] { height: 26px; }
         .sponsor-chip img[src*="chdf"] { height: 44px; }
+        /* EY's beam sits above the wordmark, so the mark needs extra height for
+           its letterforms to match BTQ and G4GC. The beam also weights the lockup
+           upward, which drops the wordmark below the row's optical line — shift it
+           back up so "EY" sits level with the other marks. */
+        .sponsor-chip img[src*="sponsor-ey"] { height: 57px; transform: translateY(-22px); }
         @media (max-width: 600px) {
+            /* stacked column: no shared horizontal line to correct against */
+            .sponsor-chip img[src*="sponsor-ey"] { transform: none; }
             .sponsor-tier--xl .sponsor-chip img { height: 44px; }
             .sponsor-tier--xl .sponsor-name { font-size: 1.5rem; }
             .sponsor-tier--lg .sponsor-name { font-size: 1.25rem; }
@@ -1591,6 +1598,7 @@
             <div class="sponsor-tier-label">Advocate Sponsors</div>
             <div class="sponsor-row">
                 <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-btq.png" alt="BTQ Financial, a division of Consero"></div>
+                <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-ey.png" alt="EY"></div>
                 <div class="sponsor-chip sponsor-chip--stacked"><img src="brand.assets/sponsor-g4gc.png" alt="Grantmakers for Girls of Color"></div>
                 <span class="sponsor-name">Linda Derrick</span>
                 <span class="sponsor-name">Natasha Robertson</span>
