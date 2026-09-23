@@ -497,6 +497,9 @@
         .sponsor-chip img[src*="harnisch"] { height: 50px; }
         .sponsor-chip img[src*="conedison"] { height: 26px; }
         .sponsor-chip img[src*="chdf"] { height: 44px; }
+        /* AB's bracketed square mark makes the lockup taller than its wordmark,
+           so the text needs extra height to match the names beside it */
+        .sponsor-chip img[src*="alliancebernstein"] { height: 52px; }
         /* EY's beam sits above the wordmark, so the mark needs extra height for
            its letterforms to match BTQ and G4GC. The beam also weights the lockup
            upward, which drops the wordmark below the row's optical line — shift it
@@ -1588,6 +1591,7 @@
         <div class="sponsor-tier sponsor-tier--sm reveal">
             <div class="sponsor-tier-label">Catalyst Sponsors</div>
             <div class="sponsor-row">
+                <div class="sponsor-chip"><img src="brand.assets/sponsor-alliancebernstein.png" alt="AllianceBernstein"></div>
                 <span class="sponsor-name">Bianca Bonfim Exton</span>
                 <span class="sponsor-name">Barbara Denham</span>
                 <span class="sponsor-name">Brian Fox</span>
